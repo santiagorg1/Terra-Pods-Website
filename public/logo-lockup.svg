@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 60" fill="none" aria-hidden="true">
+  <g>
+    <rect x="3" y="9" width="58" height="42" rx="10" stroke="currentColor" stroke-width="3.4"/>
+    <path d="M15 39 V28 a7 7 0 0 1 14 0 V39" stroke="currentColor" stroke-width="3.4" stroke-linecap="square" fill="none"/>
+    <path d="M32 39 V31 h12 V39 Z" fill="currentColor"/>
+    <line x1="15" y1="39" x2="50" y2="39" stroke="currentColor" stroke-width="3.4" stroke-linecap="square"/>
+  </g>
+  <text x="78" y="42"
+        font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="34"
+        font-weight="800"
+        letter-spacing="0.06em"
+        fill="currentColor">TERRA PODS</text>
+</svg>

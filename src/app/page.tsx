@@ -94,10 +94,7 @@ export default function HomePage() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10">
                 <div
                   className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage:
-                      "url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80')",
-                  }}
+                  style={{ backgroundImage: "url('/images/factory.jpg')" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 to-transparent" />
               </div>

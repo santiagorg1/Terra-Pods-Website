@@ -30,6 +30,12 @@ const config: Config = {
           DEFAULT: "#5a6b4a",
           deep: "#384228",
         },
+        terra: {
+          DEFAULT: "#7a3f22",
+          deep: "#5b2d18",
+          soft: "#a85a35",
+          cream: "#f1e4d2",
+        },
       },
       fontFamily: {
         sans: [

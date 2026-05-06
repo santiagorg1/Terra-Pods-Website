@@ -48,10 +48,7 @@ export default function Hero() {
         >
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2400&q=80')",
-            }}
+            style={{ backgroundImage: "url('/images/pod-1-exterior.jpg')" }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/30 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 grid grid-cols-2 gap-px overflow-hidden md:grid-cols-4">
