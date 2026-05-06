@@ -17,41 +17,45 @@ const display = Cormorant_Garamond({
   display: "swap",
 });
 
-const SITE_URL = "https://terrapods.com";
+const SITE_URL = "https://terrapodsusa.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Terra Pods — Architectural Living Pods, Engineered for Life",
-    template: "%s · Terra Pods",
+    default: "Terra Pods USA — One Pod. Every Market. Every Need.",
+    template: "%s · Terra Pods USA",
   },
   description:
-    "Terra Pods designs and manufactures premium prefabricated living pods. Off-grid capable, architecturally crafted, delivered ready to inhabit.",
+    "ADU-ready, code-certified prefab pods from $47,500. 25+ designs. 400+ units/month. Delivered anywhere in the US & Mexico from our Del Rio, TX bonded yard.",
   keywords: [
-    "Terra Pods",
-    "prefab home",
-    "modular pod",
-    "luxury tiny home",
-    "off-grid living",
+    "Terra Pods USA",
+    "prefab pod",
     "ADU",
-    "backyard studio",
-    "sustainable architecture",
+    "Section 8 housing",
+    "container home",
+    "AirBnB pod",
+    "disaster relief housing",
+    "modular home",
+    "Del Rio Texas",
+    "US Mexico prefab",
+    "tiny home",
+    "tax write-off pod",
   ],
-  authors: [{ name: "Terra Pods" }],
-  creator: "Terra Pods",
+  authors: [{ name: "Terra Pods USA" }],
+  creator: "Terra Pods USA",
   openGraph: {
     type: "website",
     url: SITE_URL,
-    title: "Terra Pods — Architectural Living Pods",
+    title: "Terra Pods USA — One Pod. Every Market. Every Need.",
     description:
-      "Premium prefabricated living pods. Off-grid capable, architecturally crafted, delivered ready to inhabit.",
-    siteName: "Terra Pods",
+      "ADU-ready, code-certified prefab pods from $47,500. Delivered anywhere in the US & Mexico.",
+    siteName: "Terra Pods USA",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Terra Pods — Architectural Living Pods",
+    title: "Terra Pods USA — One Pod. Every Market. Every Need.",
     description:
-      "Premium prefabricated living pods. Off-grid capable, architecturally crafted, delivered ready to inhabit.",
+      "ADU-ready, code-certified prefab pods from $47,500. Delivered anywhere in the US & Mexico.",
   },
   robots: {
     index: true,
@@ -65,7 +69,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#050607",
+  themeColor: "#d44a26",
   width: "device-width",
   initialScale: 1,
 };
@@ -87,13 +91,17 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "Terra Pods",
+              name: "Terra Pods USA",
               url: SITE_URL,
               logo: `${SITE_URL}/favicon.svg`,
-              sameAs: [
-                "https://instagram.com/terrapods",
-                "https://twitter.com/terrapods",
-              ],
+              telephone: "+1-830-422-5062",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Del Rio",
+                addressRegion: "TX",
+                addressCountry: "US",
+              },
+              areaServed: ["US", "MX"],
             }),
           }}
         />

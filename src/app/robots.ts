@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [{ userAgent: "*", allow: "/" }],
-    sitemap: "https://terrapods.com/sitemap.xml",
-    host: "https://terrapods.com",
+    sitemap: "https://terrapodsusa.com/sitemap.xml",
+    host: "https://terrapodsusa.com",
   };
 }

@@ -104,29 +104,35 @@ export default function LeadForm({
         <>
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
-              <label className="label" htmlFor="model">Model of interest</label>
+              <label className="label" htmlFor="tier">Tier of interest</label>
               <select
-                id="model"
-                name="model"
+                id="tier"
+                name="tier"
                 defaultValue={defaultModel ?? ""}
                 className="field"
               >
-                <option value="">Select a model</option>
-                <option value="solo">Pod Solo — $89,000</option>
-                <option value="duo">Pod Duo — $149,000</option>
-                <option value="atelier">Pod Atelier — $219,000</option>
-                <option value="vista">Pod Vista — $329,000</option>
+                <option value="">Select a tier</option>
+                <option value="entry">Entry & Studio — from $47,500</option>
+                <option value="mid">Mid-Range — from $64,300</option>
+                <option value="flagship">Flagship — from $84,500</option>
+                <option value="bulk">Bulk / disaster relief deployment</option>
                 <option value="undecided">Help me decide</option>
               </select>
             </div>
             <div>
-              <label className="label" htmlFor="timeline">Timeline</label>
-              <select id="timeline" name="timeline" className="field" defaultValue="">
-                <option value="">Select timeline</option>
-                <option value="0-3">Within 3 months</option>
-                <option value="3-6">3 — 6 months</option>
-                <option value="6-12">6 — 12 months</option>
-                <option value="exploring">Just exploring</option>
+              <label className="label" htmlFor="useCase">Use case</label>
+              <select id="useCase" name="useCase" className="field" defaultValue="">
+                <option value="">Select use case</option>
+                <option value="airbnb">AirBnB / short-stay</option>
+                <option value="adu">ADU / accessory dwelling</option>
+                <option value="ranch">Ranch / agricultural</option>
+                <option value="cafe">Café / retail</option>
+                <option value="office">Office / studio</option>
+                <option value="man-camp">Man camp / workforce</option>
+                <option value="section-8">Section 8 / affordable housing</option>
+                <option value="disaster">Disaster relief / emergency</option>
+                <option value="developer">Developer / multi-unit</option>
+                <option value="other">Other</option>
               </select>
             </div>
           </div>
@@ -137,7 +143,7 @@ export default function LeadForm({
               name="message"
               rows={4}
               className="field resize-none"
-              placeholder="Tell us about your site, goals, and timeline."
+              placeholder="Tell us about your site, quantity, timeline, and customizations."
             />
           </div>
         </>

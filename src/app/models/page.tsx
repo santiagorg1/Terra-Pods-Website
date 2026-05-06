@@ -2,36 +2,40 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import Reveal from "@/components/Reveal";
-import { models } from "@/lib/data";
+import {
+  tiers,
+  customizations,
+  standardInclusions,
+} from "@/lib/data";
 import { formatUSD } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "Models",
   description:
-    "Four architectural pods. From a 240 sq ft studio retreat to our 1,100 sq ft flagship residence. Explore the Terra Pods collection.",
+    "Three tiers, twenty-five models, nine series. From a $47,500 ADU-ready studio to a 40m² developer-grade flagship — all factory-configured and US housing code certified.",
 };
 
 export default function ModelsPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Collection"
+        eyebrow="Built your way · 25 models · 9 series"
         title={
           <>
-            Four pods, <span className="text-gold">composed precisely.</span>
+            Three tiers. <span className="text-terra">All compliant.</span>
           </>
         }
-        subtitle="Each Terra Pod is a complete architectural object — engineered to a single design language and customized to your site, finishes, and energy strategy."
+        subtitle="ADU compliant. US housing code certified. All-weather engineered. Choose your tier — then configure every detail at the factory."
       />
 
-      <section className="container-pod py-20 sm:py-28">
+      <section className="container-pod py-20 sm:py-24">
         <div className="space-y-32">
-          {models.map((m, i) => {
+          {tiers.map((t, i) => {
             const reverse = i % 2 === 1;
             return (
               <article
-                id={m.slug}
-                key={m.slug}
+                id={t.slug}
+                key={t.slug}
                 className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-16"
               >
                 <Reveal
@@ -40,7 +44,7 @@ export default function ModelsPage() {
                   <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/10">
                     <div
                       className="absolute inset-0 scale-105 bg-cover bg-center transition-transform duration-[1.5s] hover:scale-100"
-                      style={{ backgroundImage: `url(${m.image})` }}
+                      style={{ backgroundImage: `url(${t.image})` }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent" />
                   </div>
@@ -49,31 +53,25 @@ export default function ModelsPage() {
                   delay={0.1}
                   className={`lg:col-span-5 ${reverse ? "lg:order-1" : ""}`}
                 >
-                  <span className="eyebrow">{m.tagline}</span>
-                  <h2 className="display-3 mt-5">{m.name}</h2>
+                  <span className="eyebrow">{t.tagline}</span>
+                  <h2 className="display-3 mt-5">{t.name}</h2>
                   <p className="mt-6 text-base leading-relaxed text-ink-300">
-                    {m.description}
+                    {t.description}
                   </p>
 
-                  <dl className="mt-8 grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-                    {[
-                      ["Footprint", m.size],
-                      ["Layout", m.bedrooms],
-                      ["Lead time", m.delivery],
-                    ].map(([k, v]) => (
-                      <div key={k} className="bg-ink-950 px-4 py-5 text-center">
-                        <dt className="text-[10px] uppercase tracking-[0.2em] text-ink-400">
-                          {k}
-                        </dt>
-                        <dd className="mt-1.5 text-sm font-medium text-white">
-                          {v}
-                        </dd>
-                      </div>
+                  <div className="mt-8 flex flex-wrap gap-2">
+                    {t.models.map((m) => (
+                      <span
+                        key={m}
+                        className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs uppercase tracking-[0.18em] text-ink-200"
+                      >
+                        {m}
+                      </span>
                     ))}
-                  </dl>
+                  </div>
 
                   <ul className="mt-8 space-y-2.5">
-                    {m.features.map((f) => (
+                    {t.features.map((f) => (
                       <li
                         key={f}
                         className="flex items-start gap-3 text-sm text-ink-200"
@@ -90,18 +88,19 @@ export default function ModelsPage() {
                         Starting at
                       </div>
                       <div className="font-display text-3xl text-accent">
-                        {formatUSD(m.startingPrice)}
+                        {formatUSD(t.startingPrice)}
+                        <span className="text-xl">+</span>
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-3">
                       <Link
-                        href={`/contact?model=${m.slug}`}
+                        href={`/contact?tier=${t.slug}`}
                         className="btn-primary"
                       >
-                        Request a quote
+                        Request quote
                       </Link>
                       <Link href="/financing" className="btn-ghost">
-                        Finance this pod
+                        Finance options
                       </Link>
                     </div>
                   </div>
@@ -112,15 +111,65 @@ export default function ModelsPage() {
         </div>
       </section>
 
+      <section className="container-pod py-24">
+        <Reveal>
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.03] to-transparent p-10 sm:p-12">
+            <span className="eyebrow">Factory customizations</span>
+            <h2 className="display-3 mt-5">
+              Configure every <span className="text-terra">detail.</span>
+            </h2>
+            <p className="lead mt-5 max-w-2xl">
+              Every option below is installed at the source — never on-site.
+              You receive a fully finished pod, ready to inhabit on arrival.
+            </p>
+            <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {customizations.map((c) => (
+                <div
+                  key={c.title}
+                  className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 transition-colors hover:border-accent/40 hover:bg-white/[0.04]"
+                >
+                  <h3 className="text-sm font-medium text-white">{c.title}</h3>
+                  <p className="mt-1.5 text-xs text-ink-400">{c.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
       <section className="container-pod pb-32">
-        <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-transparent p-10 text-center sm:p-16">
-          <h3 className="display-3">Not sure which pod fits?</h3>
+        <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-accent/15 to-transparent p-10 sm:p-12">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <span className="eyebrow">Standard on every pod</span>
+              <h2 className="display-3 mt-5">No upcharge.</h2>
+            </div>
+            <div className="lg:col-span-8">
+              <ul className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                {standardInclusions.map((s) => (
+                  <li
+                    key={s}
+                    className="flex items-start gap-3 text-sm text-ink-100"
+                  >
+                    <span className="mt-2 h-1 w-1 flex-none rounded-full bg-accent" />
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="container-pod pb-32">
+        <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent p-10 text-center sm:p-16">
+          <h3 className="display-3">Not sure which tier fits?</h3>
           <p className="mx-auto mt-5 max-w-xl text-ink-300">
-            Our advisors will guide you through floor plans, finishes, and site
-            considerations to match the right pod to your vision.
+            Tell us about your project — single ADU, multi-unit, or rapid
+            deployment — and we'll match you to the right configuration.
           </p>
           <Link href="/contact" className="btn-primary mt-8">
-            Talk to an advisor
+            Talk to our team
           </Link>
         </div>
       </section>

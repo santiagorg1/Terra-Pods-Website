@@ -30,20 +30,24 @@ const benefits = [
 
 const faqs = [
   {
+    q: "Can a Terra Pod be a business tax write-off?",
+    a: "Yes — for many use cases (AirBnB, ranch operations, commercial deployments, developer projects), a Terra Pod can be purchased as a business tax write-off. Consult your CPA for your specific situation.",
+  },
+  {
+    q: "Are there permits or property tax obligations?",
+    a: "Because Terra Pods are temporary structures, most jurisdictions require no permits and assess no property tax. ADU compliance and US housing code certification handle the rest.",
+  },
+  {
     q: "Can I finance a Terra Pod like a traditional home?",
-    a: "In most cases, yes. When the pod is permanently sited on owned land, lenders typically treat it as new construction. We coordinate with you and your lender on the appraisal package.",
+    a: "Yes. We work with lenders who treat Terra Pods as new construction or personal property loans depending on your project. We coordinate the appraisal package with you and your lender.",
   },
   {
     q: "What credit profile is needed?",
-    a: "Our partner lenders generally look for a credit score of 680+, though programs exist for scores as low as 640 with stronger down payments.",
+    a: "Our partner lenders generally look for a credit score of 680+, though programs exist for scores as low as 640 with stronger down payments and stronger DTI.",
   },
   {
-    q: "Are off-grid pods financeable?",
-    a: "Yes. Many of our lenders specialize in off-grid and solar-equipped residences. Energy systems are factored into the appraised value.",
-  },
-  {
-    q: "Do you offer rent-to-own?",
-    a: "We offer a 36-month lease-to-purchase program on Pod Solo and Pod Duo for qualifying clients.",
+    q: "Do you finance multi-unit deployments?",
+    a: "Yes — for developer, hospitality, workforce-housing, and disaster-relief projects we work with commercial lenders and bonded escrow structures. Bulk pricing applies above 10 units.",
   },
 ];
 
@@ -51,13 +55,13 @@ export default function FinancingPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Financing"
+        eyebrow="Financing · Tax write-off eligible"
         title={
           <>
-            Move in sooner. <span className="text-gold">Pay over time.</span>
+            Move in sooner. <span className="text-terra">Pay over time.</span>
           </>
         }
-        subtitle="Use our calculator to model your monthly payment, then pre-qualify in 48 hours through a Terra Pods lending partner."
+        subtitle="Model your monthly payment with our calculator, then pre-qualify in 48 hours through a Terra Pods lending partner. Many use cases qualify as a business tax write-off."
       />
 
       <section className="container-pod py-20 sm:py-28">
@@ -74,7 +78,7 @@ export default function FinancingPage() {
             <Reveal>
               <span className="eyebrow">Why finance with us</span>
               <h2 className="display-3 mt-5">
-                Lending, made <span className="text-gold">tasteful.</span>
+                Lending, made <span className="text-terra">simple.</span>
               </h2>
             </Reveal>
           </div>
@@ -97,7 +101,7 @@ export default function FinancingPage() {
             <Reveal>
               <span className="eyebrow">Frequently asked</span>
               <h2 className="display-3 mt-5">
-                Answers, <span className="text-gold">first.</span>
+                Answers, <span className="text-terra">first.</span>
               </h2>
             </Reveal>
           </div>

@@ -5,6 +5,6 @@ import LeadForm from "./LeadForm";
 
 export default function ContactFormShell() {
   const params = useSearchParams();
-  const model = params.get("model") ?? undefined;
-  return <LeadForm defaultModel={model} />;
+  const tier = params.get("tier") ?? params.get("model") ?? undefined;
+  return <LeadForm defaultModel={tier} />;
 }

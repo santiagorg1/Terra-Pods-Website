@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://terrapods.com";
+const SITE_URL = "https://terrapodsusa.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = ["", "/models", "/financing", "/gallery", "/contact"];

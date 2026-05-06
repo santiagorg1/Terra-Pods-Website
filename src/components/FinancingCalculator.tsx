@@ -2,15 +2,15 @@
 
 import { useMemo, useState } from "react";
 import { formatUSD } from "@/lib/format";
-import { models } from "@/lib/data";
+import { tiers } from "@/lib/data";
 
 const TERMS = [10, 15, 20, 25];
 
 export default function FinancingCalculator() {
-  const [price, setPrice] = useState<number>(149000);
+  const [price, setPrice] = useState<number>(64300);
   const [down, setDown] = useState<number>(20);
   const [rate, setRate] = useState<number>(7.25);
-  const [term, setTerm] = useState<number>(20);
+  const [term, setTerm] = useState<number>(15);
 
   const calc = useMemo(() => {
     const principal = price * (1 - down / 100);
@@ -39,26 +39,26 @@ export default function FinancingCalculator() {
           <input
             id="price"
             type="range"
-            min={75000}
-            max={500000}
-            step={1000}
+            min={47500}
+            max={250000}
+            step={500}
             value={price}
             onChange={(e) => setPrice(Number(e.target.value))}
             className="mt-4 w-full"
           />
           <div className="mt-3 flex flex-wrap gap-2">
-            {models.map((m) => (
+            {tiers.map((t) => (
               <button
-                key={m.slug}
+                key={t.slug}
                 type="button"
-                onClick={() => setPrice(m.startingPrice)}
+                onClick={() => setPrice(t.startingPrice)}
                 className={`rounded-full border px-3.5 py-1.5 text-xs transition-colors ${
-                  price === m.startingPrice
+                  price === t.startingPrice
                     ? "border-accent/60 bg-accent/10 text-accent"
                     : "border-white/10 bg-white/[0.02] text-ink-300 hover:border-white/30"
                 }`}
               >
-                {m.name}
+                {t.name}
               </button>
             ))}
           </div>

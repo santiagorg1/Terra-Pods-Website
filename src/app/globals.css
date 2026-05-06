@@ -19,14 +19,14 @@ body {
 
 body {
   background-image:
-    radial-gradient(1200px 600px at 50% -10%, rgba(201, 168, 106, 0.10), transparent 60%),
-    radial-gradient(900px 500px at 90% 10%, rgba(90, 107, 74, 0.08), transparent 60%),
+    radial-gradient(1200px 600px at 50% -10%, rgba(212, 74, 38, 0.14), transparent 60%),
+    radial-gradient(900px 500px at 90% 10%, rgba(212, 74, 38, 0.06), transparent 60%),
     linear-gradient(180deg, #050607 0%, #0a0c0e 100%);
   background-attachment: fixed;
 }
 
 ::selection {
-  background: rgba(201, 168, 106, 0.4);
+  background: rgba(212, 74, 38, 0.5);
   color: #fff;
 }
 
@@ -40,7 +40,7 @@ body {
   }
 
   .btn-primary {
-    @apply btn bg-accent text-ink-950 hover:bg-accent-soft hover:shadow-[0_10px_40px_-10px_rgba(201,168,106,0.6)];
+    @apply btn bg-accent text-white hover:bg-accent-soft hover:shadow-[0_10px_40px_-10px_rgba(212,74,38,0.7)];
   }
 
   .btn-ghost {
@@ -103,14 +103,21 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(180deg, #ffffff 0%, #c9a86a 120%);
+  background: linear-gradient(180deg, #ffffff 0%, #e96a3f 120%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gold {
-  background: linear-gradient(135deg, #d9bf8e 0%, #c9a86a 50%, #8a6f3d 100%);
+  background: linear-gradient(135deg, #f1e4d2 0%, #e96a3f 50%, #a8341a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-terra {
+  background: linear-gradient(135deg, #f1a384 0%, #d44a26 60%, #8a2e15 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -153,21 +160,21 @@ input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   width: 20px;
   height: 20px;
-  background: #c9a86a;
+  background: #d44a26;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 0 0 6px rgba(201, 168, 106, 0.12);
+  box-shadow: 0 0 0 6px rgba(212, 74, 38, 0.15);
   transition: box-shadow 0.2s;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
-  box-shadow: 0 0 0 10px rgba(201, 168, 106, 0.18);
+  box-shadow: 0 0 0 10px rgba(212, 74, 38, 0.22);
 }
 
 input[type="range"]::-moz-range-thumb {
   width: 20px;
   height: 20px;
-  background: #c9a86a;
+  background: #d44a26;
   border: none;
   border-radius: 50%;
   cursor: pointer;
