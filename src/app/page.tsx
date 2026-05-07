@@ -1,11 +1,11 @@
 import Link from "next/link";
-import Image from "next/image";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import Reveal from "@/components/Reveal";
 import ModelCard from "@/components/ModelCard";
 import LeadForm from "@/components/LeadForm";
 import SeriesStrip from "@/components/SeriesStrip";
+import PodSilhouette from "@/components/PodSilhouette";
 import { models, series, getSeriesModels } from "@/lib/data";
 
 const featuredSlugs = ["a9", "h5", "ae40-a", "w9", "r7", "a9d"];
@@ -121,15 +121,41 @@ export default function HomePage() {
         <div className="container-pod relative">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
             <Reveal>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 bg-[#fbfaf6]">
-                <Image
-                  src={models.find((m) => m.slug === "ae40-a")!.catalogImage}
-                  alt="AE40 cabin catalog page"
-                  fill
-                  sizes="(min-width: 1024px) 40vw, 90vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
+              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] p-8">
+                <svg className="absolute inset-0 h-full w-full opacity-[0.06]">
+                  <defs>
+                    <pattern id="proc-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" />
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#proc-grid)" />
+                </svg>
+                <div className="relative flex h-full flex-col">
+                  <div className="text-[10px] uppercase tracking-[0.24em] text-ink-400">
+                    Series silhouettes
+                  </div>
+                  <div className="mt-2 font-display text-2xl text-white">A line of forms.</div>
+                  <div className="mt-auto space-y-6">
+                    {series.slice(0, 4).map((s) => {
+                      const first = models.find((m) => m.seriesSlug === s.slug)!;
+                      return (
+                        <div key={s.slug} className="grid grid-cols-[60px_1fr_auto] items-center gap-4">
+                          <div className="font-display text-base text-accent">{s.shortCode}</div>
+                          <PodSilhouette
+                            variant={first.silhouette}
+                            color={s.accent}
+                            className="h-10 w-full"
+                            animated={false}
+                            showGround={false}
+                          />
+                          <div className="text-[10px] uppercase tracking-[0.22em] text-ink-400">
+                            {s.name}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </Reveal>
             <Reveal delay={0.1}>

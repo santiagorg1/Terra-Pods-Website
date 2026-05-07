@@ -3,9 +3,9 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import type { Model, Series } from "@/lib/data";
 import { formatUSD } from "@/lib/format";
+import PodSilhouette from "./PodSilhouette";
 
 type Sort = "name" | "price" | "size";
 
@@ -30,6 +30,8 @@ export default function ModelsBrowser({
     });
     return list;
   }, [active, sort, models]);
+
+  const seriesByKey = Object.fromEntries(series.map((s) => [s.slug, s]));
 
   return (
     <>
@@ -95,62 +97,72 @@ export default function ModelsBrowser({
           transition={{ duration: 0.4 }}
           className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {filtered.map((m, i) => (
-            <motion.div
-              key={m.slug}
-              layout
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: (i % 9) * 0.04, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <Link
-                href={`/models/${m.slug}`}
-                className="group block h-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] transition-colors hover:border-accent/40"
+          {filtered.map((m, i) => {
+            const accent = seriesByKey[m.seriesSlug]?.accent ?? "#c9a86a";
+            return (
+              <motion.div
+                key={m.slug}
+                layout
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: (i % 9) * 0.04, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-[#fbfaf6]">
-                  <Image
-                    src={m.catalogImage}
-                    alt={`${m.name} catalog page`}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-105"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent" />
-                  <div className="absolute left-4 right-4 top-4 flex items-start justify-between">
-                    <span className="rounded-full border border-white/20 bg-ink-950/60 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-ink-100 backdrop-blur-md">
-                      {m.series}
-                    </span>
-                    {m.badge && (
-                      <span className="rounded-full border border-accent/40 bg-accent/15 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-accent backdrop-blur-md">
-                        {m.badge}
+                <Link
+                  href={`/models/${m.slug}`}
+                  className="group block h-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] transition-colors hover:border-accent/40"
+                >
+                  <div className="relative aspect-[16/9] overflow-hidden border-b border-white/5 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.04),transparent_70%)]">
+                    <svg className="absolute inset-0 h-full w-full opacity-[0.05]">
+                      <defs>
+                        <pattern id={`b-grid-${m.slug}`} width="32" height="32" patternUnits="userSpaceOnUse">
+                          <path d="M 32 0 L 0 0 0 32" fill="none" stroke="currentColor" strokeWidth="1" />
+                        </pattern>
+                      </defs>
+                      <rect width="100%" height="100%" fill={`url(#b-grid-${m.slug})`} />
+                    </svg>
+                    <div className="relative flex h-full items-center justify-center p-6">
+                      <PodSilhouette
+                        variant={m.silhouette}
+                        color={accent}
+                        className="h-full w-full max-w-[420px]"
+                      />
+                    </div>
+                    <div className="absolute left-4 right-4 top-4 flex items-start justify-between">
+                      <span className="rounded-full border border-white/20 bg-ink-950/60 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-ink-100 backdrop-blur-md">
+                        {m.series}
                       </span>
-                    )}
+                      {m.badge && (
+                        <span className="rounded-full border border-accent/40 bg-accent/15 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-accent backdrop-blur-md">
+                          {m.badge}
+                        </span>
+                      )}
+                    </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="font-display text-2xl text-white">{m.name.replace("Terra Pod ", "")}</h3>
-                    <span className="font-display text-lg text-accent">{formatUSD(m.startingPrice)}</span>
-                  </div>
-                  <div className="mt-1 text-[11px] uppercase tracking-[0.22em] text-ink-400">
-                    {m.tagline}
-                  </div>
-                  <div className="mt-5 grid grid-cols-3 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/5">
-                    {[
-                      ["Area", m.area],
-                      ["Guests", m.guests],
-                      ["Lead", m.delivery],
-                    ].map(([k, v]) => (
-                      <div key={k} className="bg-ink-950 px-2 py-3 text-center">
-                        <div className="text-[9px] uppercase tracking-[0.22em] text-ink-400">{k}</div>
-                        <div className="mt-1 text-xs font-medium text-white">{v}</div>
+                  <div className="p-6">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <div>
+                        <div className="text-[10px] uppercase tracking-[0.22em] text-ink-400">{m.tagline}</div>
+                        <h3 className="mt-1 font-display text-2xl text-white">{m.short}</h3>
                       </div>
-                    ))}
+                      <span className="font-display text-lg text-accent">{formatUSD(m.startingPrice)}</span>
+                    </div>
+                    <div className="mt-5 grid grid-cols-3 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/5">
+                      {[
+                        ["Area", m.area],
+                        ["Guests", m.guests],
+                        ["Lead", m.delivery],
+                      ].map(([k, v]) => (
+                        <div key={k} className="bg-ink-950 px-2 py-3 text-center">
+                          <div className="text-[9px] uppercase tracking-[0.22em] text-ink-400">{k}</div>
+                          <div className="mt-1 text-xs font-medium text-white">{v}</div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+                </Link>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </AnimatePresence>
     </>
