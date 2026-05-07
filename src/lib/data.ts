@@ -12,6 +12,12 @@ export type ConfigGroup = {
   items: string[];
 };
 
+export type InteriorPhoto = {
+  src: string;
+  label: string;
+  alt: string;
+};
+
 export type Model = {
   // identity
   slug: string;
@@ -51,10 +57,11 @@ export type Model = {
   hardFittedFurniture?: string[];
   optionalConfigurations: ConfigGroup[];
 
+  // interior photos (extracted from catalog), with semantic labels
+  interiors: InteriorPhoto[];
+
   // curated marketing list
   features: string[];
-
-  // reference (downloadable spec sheet, not displayed inline)
 };
 
 export type Series = {
@@ -354,6 +361,76 @@ export const series: Series[] = [
   },
 ];
 
+// Per-slug interior photo labels. Position-ordered, matches the catalog
+// bottom-strip order (left → right). Counts must match the extracted asset
+// counts in /public/pods/<slug>-interior-N.jpg.
+const INTERIOR_LABELS: Record<string, string[]> = {
+  // A series
+  a3: ["Bedroom", "Bathroom"],
+  a5: ["Living", "Bedroom", "Bathroom"],
+  a7: ["Living", "Bedroom", "Bathroom"],
+  a9: ["Living", "Bedroom", "Bathroom"],
+  // F series
+  f7: ["Living", "Bedroom", "Bathroom"],
+  // H series
+  h5: ["Living", "Bedroom", "Bathroom"],
+  // R series
+  r5: ["Living", "Bedroom", "Bathroom"],
+  r7: ["Living", "Bedroom", "Bathroom"],
+  // P series
+  p5: ["Living", "Bedroom", "Bathroom"],
+  p7: ["Living", "Bedroom", "Bathroom"],
+  // Z series
+  z5: ["Living", "Bedroom", "Bathroom"],
+  z7: ["Living", "Bedroom", "Bathroom"],
+  // E-II series
+  "e3-ii": ["Bathroom", "Bedroom"],
+  "e5-ii": ["Hallway", "Living", "Bathroom"],
+  "e6-ii": ["Living", "Bedroom", "Bathroom"],
+  "e7-ii": ["Hallway", "Living", "Bathroom"],
+  // W series
+  w3: ["Living", "Bedroom"],
+  w6: ["Kitchen", "Bedroom", "Bathroom"],
+  w9: ["Kitchen", "Bedroom", "Laundry"],
+  // Specialty
+  a7s: ["Reception", "Lounge"],
+  a9d: ["Bar", "Dining"],
+  // AE Cabin
+  "ae23-a": ["Bedroom", "Kitchen", "Bathroom"],
+  "ae31-a": ["Bedroom", "Kitchen"],
+  "ae31-b": ["Bedroom", "Kitchen"],
+  "ae40-a": ["Bedroom", "Living"],
+  "ae40-b": ["Bedroom", "Living"],
+};
+
+// Per-slug interior photo counts (matches generated assets).
+const INTERIOR_COUNTS: Record<string, number> = {
+  a3: 2, a5: 3, a7: 3, a9: 3,
+  f7: 3, h5: 3,
+  r5: 3, r7: 3,
+  p5: 3, p7: 3,
+  z5: 3, z7: 3,
+  "e3-ii": 2, "e5-ii": 3, "e6-ii": 3, "e7-ii": 3,
+  w3: 2, w6: 3, w9: 3,
+  a7s: 2, a9d: 2,
+  "ae23-a": 3, "ae31-a": 2, "ae31-b": 2, "ae40-a": 2, "ae40-b": 2,
+};
+
+function buildInteriors(slug: string, modelName: string): InteriorPhoto[] {
+  const count = INTERIOR_COUNTS[slug] ?? 0;
+  const labels = INTERIOR_LABELS[slug] ?? [];
+  const out: InteriorPhoto[] = [];
+  for (let i = 0; i < count; i++) {
+    const label = labels[i] ?? `Interior ${i + 1}`;
+    out.push({
+      src: `/pods/${slug}-interior-${i + 1}.jpg`,
+      label,
+      alt: `${modelName} — ${label.toLowerCase()}`,
+    });
+  }
+  return out;
+}
+
 // Helper to compose model with shared sections.
 type Build = Omit<
   Model,
@@ -362,12 +439,14 @@ type Build = Omit<
   | "guestControl"
   | "productAccessories"
   | "optionalConfigurations"
+  | "interiors"
 > & {
   exteriorProtection?: string[];
   interiorDecoration?: string[];
   guestControl?: string[];
   productAccessories?: string[];
   optionalConfigurations?: ConfigGroup[];
+  interiors?: InteriorPhoto[];
 };
 
 const m = (data: Build): Model => ({
@@ -377,6 +456,7 @@ const m = (data: Build): Model => ({
   productAccessories: data.productAccessories ?? PRODUCT_ACCESSORIES,
   optionalConfigurations:
     data.optionalConfigurations ?? [OPT_INSULATION, OPT_COMFORT_BASIC, OPT_ACCESSORIES],
+  interiors: data.interiors ?? buildInteriors(data.slug, data.name),
   ...data,
 });
 

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import PodSilhouette from "@/components/PodSilhouette";
 import Reveal from "@/components/Reveal";
 import LeadForm from "@/components/LeadForm";
+import InsideThePod from "@/components/InsideThePod";
 import {
   getModel,
   getSeries,
@@ -186,6 +187,13 @@ export default function ModelPage({ params }: { params: { slug: string } }) {
           ))}
         </div>
       </section>
+
+      {/* ─── INSIDE THE POD ────────────────────────────────────────────────── */}
+      <InsideThePod
+        interiors={model.interiors}
+        modelShort={model.short}
+        accent={accent}
+      />
 
       {/* ─── EXTERIOR / INTERIOR ───────────────────────────────────────────── */}
       <section className="container-pod py-24 sm:py-32">

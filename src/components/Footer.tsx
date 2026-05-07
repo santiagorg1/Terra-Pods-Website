@@ -3,38 +3,50 @@ import Logo from "./Logo";
 
 export default function Footer() {
   return (
-    <footer className="relative mt-32 border-t border-white/5">
-      <div className="container-pod py-16">
-        <div className="grid gap-12 md:grid-cols-4">
-          <div className="md:col-span-2">
+    <footer className="relative mt-24 border-t border-white/[0.06]">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+      <div className="container-pod py-20 sm:py-24">
+        <div className="grid gap-14 lg:grid-cols-12">
+          <div className="lg:col-span-5">
             <Logo />
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-ink-300">
+            <p className="mt-7 max-w-sm text-base leading-relaxed text-ink-300">
               Architectural living pods, engineered with precision and delivered
               ready to inhabit. Crafted in California. Sited anywhere.
             </p>
-            <form className="mt-8 flex max-w-md items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] p-1.5">
-              <input
-                type="email"
-                required
-                placeholder="Your email"
-                aria-label="Email"
-                className="flex-1 bg-transparent px-4 py-2 text-sm text-white placeholder:text-ink-400 outline-none"
-              />
-              <button className="rounded-full bg-accent px-5 py-2 text-sm font-medium text-ink-950 transition-colors hover:bg-accent-soft">
-                Join
-              </button>
+            <form className="mt-10 max-w-md">
+              <label className="text-[10px] uppercase tracking-[0.32em] text-ink-500">
+                Studio dispatch
+              </label>
+              <div className="mt-3 flex items-center gap-2 border-b border-white/15 pb-1.5 transition-colors duration-500 focus-within:border-accent">
+                <input
+                  type="email"
+                  required
+                  placeholder="you@domain.com"
+                  aria-label="Email"
+                  className="flex-1 bg-transparent px-1 py-2 text-sm text-white placeholder:text-ink-400 outline-none"
+                />
+                <button
+                  type="submit"
+                  className="text-[11px] uppercase tracking-[0.32em] text-accent transition-all duration-500 hover:tracking-[0.38em]"
+                >
+                  Subscribe →
+                </button>
+              </div>
+              <p className="mt-3 text-xs leading-relaxed text-ink-500">
+                Quarterly. Architecture, sites, and reservations. No spam.
+              </p>
             </form>
           </div>
 
-          <div>
-            <h4 className="mb-5 text-xs font-medium uppercase tracking-[0.24em] text-ink-400">
+          <div className="lg:col-span-3">
+            <h4 className="mb-7 text-[10px] uppercase tracking-[0.32em] text-ink-500">
               Explore
             </h4>
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-4 font-display text-lg">
               {[
                 ["/models", "Models"],
+                ["/gallery", "Catalog"],
                 ["/financing", "Financing"],
-                ["/gallery", "Gallery"],
                 ["/contact", "Contact"],
               ].map(([href, label]) => (
                 <li key={href}>
@@ -49,14 +61,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h4 className="mb-5 text-xs font-medium uppercase tracking-[0.24em] text-ink-400">
+          <div className="lg:col-span-4">
+            <h4 className="mb-7 text-[10px] uppercase tracking-[0.32em] text-ink-500">
               Studio
             </h4>
-            <ul className="space-y-3 text-sm text-ink-200">
-              <li>2440 Coastal Hwy</li>
-              <li>San Mateo, California</li>
-              <li>
+            <ul className="space-y-3 text-base text-ink-200">
+              <li className="font-display text-lg text-white">2440 Coastal Highway</li>
+              <li>San Mateo, California 94401</li>
+              <li className="pt-3">
                 <a
                   href="mailto:hello@terrapods.com"
                   className="transition-colors hover:text-accent"
@@ -73,15 +85,18 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
+            <p className="mt-6 text-xs text-ink-500">
+              By appointment only · Mon — Fri 9am — 6pm PT
+            </p>
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-white/5 pt-8 text-xs text-ink-400 sm:flex-row sm:items-center">
-          <p>© {new Date().getFullYear()} Terra Pods, Inc. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <Link href="/" className="hover:text-white">Privacy</Link>
-            <Link href="/" className="hover:text-white">Terms</Link>
-            <Link href="/" className="hover:text-white">Press</Link>
+        <div className="mt-20 flex flex-col items-start justify-between gap-4 border-t border-white/[0.06] pt-8 text-[10px] uppercase tracking-[0.32em] text-ink-500 sm:flex-row sm:items-center">
+          <p>© {new Date().getFullYear()} Terra Pods, Inc. — All rights reserved.</p>
+          <div className="flex items-center gap-8">
+            <Link href="/" className="transition-colors hover:text-white">Privacy</Link>
+            <Link href="/" className="transition-colors hover:text-white">Terms</Link>
+            <Link href="/" className="transition-colors hover:text-white">Press</Link>
           </div>
         </div>
       </div>
