@@ -1,63 +1,81 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
 import Reveal from "@/components/Reveal";
-import { galleryImages } from "@/lib/data";
+import { models, series } from "@/lib/data";
+import { formatUSD } from "@/lib/format";
 
 export const metadata: Metadata = {
-  title: "Gallery",
+  title: "Catalog",
   description:
-    "Explore Terra Pods in real settings — coastal cliffs, alpine clearings, urban gardens. A study in architecture, light, and landscape.",
+    "The complete Terra Pods 2028 catalog. Twenty-six pods, ten series — every page, every specification, every interior.",
 };
-
-const layout = [
-  "md:col-span-2 md:row-span-2 aspect-[4/5]",
-  "aspect-square",
-  "aspect-[4/5]",
-  "md:col-span-2 aspect-[16/9]",
-  "aspect-[4/5]",
-  "aspect-square",
-  "md:col-span-2 md:row-span-2 aspect-[4/5]",
-  "aspect-square",
-  "aspect-[4/5]",
-  "md:col-span-2 aspect-[16/9]",
-  "aspect-square",
-  "aspect-[4/5]",
-];
 
 export default function GalleryPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Gallery"
+        eyebrow="The Catalog"
         title={
           <>
-            Sited in the world. <span className="text-gold">Quietly.</span>
+            The 2028 catalog, <span className="text-gold">in full.</span>
           </>
         }
-        subtitle="Coastal cliffs, alpine clearings, urban gardens. A growing record of Terra Pods in their landscapes."
+        subtitle="Every model, every page. A growing record of the Terra Pods collection — open any catalog page to step into the model."
       />
 
-      <section className="container-pod py-20">
-        <div className="grid auto-rows-[minmax(0,1fr)] grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-          {galleryImages.map((src, i) => (
-            <Reveal
-              key={i}
-              delay={(i % 6) * 0.05}
-              className={`group relative overflow-hidden rounded-2xl border border-white/10 ${
-                layout[i % layout.length]
-              }`}
-            >
-              <div
-                className="absolute inset-0 scale-105 bg-cover bg-center transition-transform duration-[1.4s] ease-out group-hover:scale-100"
-                style={{ backgroundImage: `url(${src})` }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              <div className="absolute bottom-4 left-4 translate-y-2 text-xs uppercase tracking-[0.2em] text-white opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                Pod · Field 0{(i % 9) + 1}
+      <section className="container-pod py-20 sm:py-24">
+        <div className="space-y-24">
+          {series.map((s) => {
+            const items = models.filter((m) => m.seriesSlug === s.slug);
+            return (
+              <div key={s.slug}>
+                <Reveal>
+                  <div className="flex flex-col items-start justify-between gap-4 border-b border-white/5 pb-6 md:flex-row md:items-end">
+                    <div>
+                      <span className="eyebrow">{s.tagline}</span>
+                      <h2 className="display-3 mt-4">{s.name}</h2>
+                    </div>
+                    <Link href={`/models?series=${s.slug}`} className="btn-link">
+                      Browse {s.name} <span>→</span>
+                    </Link>
+                  </div>
+                </Reveal>
+
+                <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {items.map((m, i) => (
+                    <Reveal key={m.slug} delay={(i % 3) * 0.06}>
+                      <Link
+                        href={`/models/${m.slug}`}
+                        className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-[#fbfaf6] transition-transform duration-500 hover:-translate-y-1 hover:border-accent/40"
+                      >
+                        <div className="relative aspect-[4/3]">
+                          <Image
+                            src={m.catalogImage}
+                            alt={`${m.name} catalog page`}
+                            fill
+                            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                            className="object-cover transition-transform duration-[1.4s] group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-ink-950/55 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                        </div>
+                        <div className="absolute inset-x-0 bottom-0 translate-y-2 p-5 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                          <div className="flex items-baseline justify-between rounded-xl border border-white/10 bg-ink-950/85 px-4 py-3 backdrop-blur-md">
+                            <div>
+                              <div className="font-display text-lg text-white">{m.name.replace("Terra Pod ", "")}</div>
+                              <div className="text-[10px] uppercase tracking-[0.22em] text-ink-400">{m.area} · {m.guests}</div>
+                            </div>
+                            <div className="font-display text-base text-accent">{formatUSD(m.startingPrice)}</div>
+                          </div>
+                        </div>
+                      </Link>
+                    </Reveal>
+                  ))}
+                </div>
               </div>
-            </Reveal>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -68,7 +86,7 @@ export default function GalleryPage() {
             See a Terra Pod <span className="text-gold">in person.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-ink-300">
-            We host private tours at our flagship pavilion in Northern California,
+            We host private tours at our flagship pavilion in Northern California
             and at select client residences across the West Coast.
           </p>
           <Link href="/contact" className="btn-primary mt-8">

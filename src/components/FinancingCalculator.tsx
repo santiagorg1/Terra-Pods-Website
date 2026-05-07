@@ -7,7 +7,7 @@ import { models } from "@/lib/data";
 const TERMS = [10, 15, 20, 25];
 
 export default function FinancingCalculator() {
-  const [price, setPrice] = useState<number>(149000);
+  const [price, setPrice] = useState<number>(85500);
   const [down, setDown] = useState<number>(20);
   const [rate, setRate] = useState<number>(7.25);
   const [term, setTerm] = useState<number>(20);
@@ -39,14 +39,14 @@ export default function FinancingCalculator() {
           <input
             id="price"
             type="range"
-            min={75000}
-            max={500000}
-            step={1000}
+            min={45000}
+            max={150000}
+            step={500}
             value={price}
             onChange={(e) => setPrice(Number(e.target.value))}
             className="mt-4 w-full"
           />
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-3 flex max-h-32 flex-wrap gap-2 overflow-y-auto">
             {models.map((m) => (
               <button
                 key={m.slug}
@@ -58,7 +58,7 @@ export default function FinancingCalculator() {
                     : "border-white/10 bg-white/[0.02] text-ink-300 hover:border-white/30"
                 }`}
               >
-                {m.name}
+                {m.name.replace("Terra Pod ", "")}
               </button>
             ))}
           </div>
