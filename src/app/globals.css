@@ -19,14 +19,16 @@ body {
 
 body {
   background-image:
-    radial-gradient(1200px 600px at 50% -10%, rgba(201, 168, 106, 0.10), transparent 60%),
-    radial-gradient(900px 500px at 90% 10%, rgba(90, 107, 74, 0.08), transparent 60%),
-    linear-gradient(180deg, #050607 0%, #0a0c0e 100%);
+    radial-gradient(1400px 700px at 30% -10%, rgba(217, 191, 142, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 88% 6%, rgba(143, 182, 221, 0.09), transparent 60%),
+    radial-gradient(900px 500px at 12% 55%, rgba(63, 93, 128, 0.08), transparent 65%),
+    radial-gradient(900px 500px at 95% 70%, rgba(217, 191, 142, 0.05), transparent 65%),
+    linear-gradient(180deg, #050607 0%, #07080a 60%, #0a0c0e 100%);
   background-attachment: fixed;
 }
 
 ::selection {
-  background: rgba(201, 168, 106, 0.4);
+  background: rgba(217, 191, 142, 0.4);
   color: #fff;
 }
 
@@ -35,24 +37,53 @@ body {
     @apply mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12;
   }
 
+  .container-narrow {
+    @apply mx-auto w-full max-w-5xl px-6 sm:px-8 lg:px-12;
+  }
+
+  .container-prose {
+    @apply mx-auto w-full max-w-2xl px-6;
+  }
+
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium tracking-wide transition-all duration-300 ease-out;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium tracking-wide transition-all duration-500 ease-soft-out;
   }
 
   .btn-primary {
-    @apply btn bg-accent text-ink-950 hover:bg-accent-soft hover:shadow-[0_10px_40px_-10px_rgba(201,168,106,0.6)];
+    @apply btn bg-accent text-ink-950 hover:bg-accent-soft hover:shadow-[0_20px_60px_-20px_rgba(217,191,142,0.55)];
   }
 
   .btn-ghost {
     @apply btn border border-white/15 bg-white/[0.02] text-white backdrop-blur hover:border-accent/60 hover:bg-white/[0.05];
   }
 
+  .btn-luxury {
+    @apply relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-none border-y border-accent/40 px-9 py-4 text-[11px] font-medium uppercase tracking-[0.32em] text-accent transition-all duration-700 ease-cinema hover:border-accent hover:tracking-[0.38em];
+  }
+
+  .btn-luxury::before {
+    content: "";
+    @apply absolute inset-0 -z-10 bg-accent/0 transition-colors duration-700 ease-cinema;
+  }
+
+  .btn-luxury:hover::before {
+    @apply bg-accent/[0.06];
+  }
+
   .btn-link {
     @apply inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-accent-soft;
   }
 
+  .btn-link-luxury {
+    @apply inline-flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.32em] text-accent transition-all duration-500 hover:tracking-[0.38em];
+  }
+
   .hairline {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent;
+    @apply h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent;
+  }
+
+  .hairline-vertical {
+    @apply w-px bg-gradient-to-b from-transparent via-white/15 to-transparent;
   }
 
   .glass {
@@ -60,32 +91,53 @@ body {
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.24em] text-ink-300;
+    @apply inline-flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.32em] text-ink-300;
   }
 
   .eyebrow::before {
     content: "";
-    @apply h-px w-8 bg-accent/70;
+    @apply h-px w-10 bg-accent/70;
+  }
+
+  .eyebrow-center {
+    @apply mx-auto inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase tracking-[0.32em] text-ink-300;
+  }
+
+  .eyebrow-center::before,
+  .eyebrow-center::after {
+    content: "";
+    @apply h-px w-10 bg-accent/70;
   }
 
   .display-1 {
-    @apply font-display text-5xl font-light leading-[0.95] tracking-tightest text-white sm:text-6xl md:text-7xl lg:text-[5.5rem];
+    @apply font-display font-light leading-editorial tracking-cinema text-white;
+    font-size: clamp(2.75rem, 7.5vw, 6.5rem);
   }
 
   .display-2 {
-    @apply font-display text-4xl font-light leading-[1.02] tracking-tightest text-white sm:text-5xl md:text-6xl;
+    @apply font-display font-light leading-editorial tracking-tightest text-white;
+    font-size: clamp(2.25rem, 5.5vw, 4.5rem);
   }
 
   .display-3 {
-    @apply font-display text-3xl font-light leading-[1.05] tracking-tight text-white sm:text-4xl md:text-5xl;
+    @apply font-display font-light leading-editorial tracking-tight text-white;
+    font-size: clamp(1.75rem, 3.5vw, 3rem);
+  }
+
+  .display-italic {
+    @apply font-display italic font-light;
   }
 
   .lead {
     @apply text-base leading-relaxed text-ink-300 sm:text-lg;
   }
 
+  .lead-prose {
+    @apply text-lg leading-[1.7] text-ink-200 sm:text-xl;
+  }
+
   .field {
-    @apply w-full rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-white placeholder:text-ink-400 outline-none transition-all duration-300 focus:border-accent/60 focus:bg-white/[0.05] focus:ring-2 focus:ring-accent/20;
+    @apply w-full rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-white placeholder:text-ink-400 outline-none transition-all duration-500 focus:border-accent/60 focus:bg-white/[0.05] focus:ring-2 focus:ring-accent/20;
   }
 
   .label {
@@ -93,12 +145,34 @@ body {
   }
 
   .card {
-    @apply relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] p-8 transition-all duration-500 hover:border-accent/30 hover:from-white/[0.07];
+    @apply relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] p-8 transition-all duration-700 ease-cinema hover:border-accent/30 hover:from-white/[0.08];
   }
 
   .grain::after {
     content: "";
-    @apply pointer-events-none absolute inset-0 bg-grain opacity-[0.04] mix-blend-overlay;
+    @apply pointer-events-none absolute inset-0 bg-grain opacity-[0.05] mix-blend-overlay;
+  }
+
+  .vignette::after {
+    content: "";
+    @apply pointer-events-none absolute inset-0 bg-vignette;
+  }
+
+  .scene {
+    @apply relative overflow-hidden;
+  }
+
+  .scene-tall {
+    @apply relative flex min-h-screen flex-col justify-center overflow-hidden;
+  }
+
+  .rule-mark {
+    @apply relative pl-7;
+  }
+
+  .rule-mark::before {
+    content: "";
+    @apply absolute left-0 top-[0.65em] h-px w-5 bg-accent/60;
   }
 }
 
@@ -110,10 +184,76 @@ body {
 }
 
 .text-gold {
-  background: linear-gradient(135deg, #d9bf8e 0%, #c9a86a 50%, #8a6f3d 100%);
+  background: linear-gradient(135deg, #f3e6c5 0%, #d9bf8e 35%, #c9a86a 65%, #8a6f3d 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.text-ember {
+  background: linear-gradient(135deg, #d9bf8e 0%, #a85a3c 60%, #5a2614 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-azure {
+  background: linear-gradient(135deg, #d4e3f3 0%, #9bb6cf 35%, #6f8ba8 65%, #324a66 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-twilight {
+  background: linear-gradient(135deg, #f3e6c5 0%, #d6b785 35%, #8fb6dd 70%, #3f5d80 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Tron pod silhouette — continuous loops ──────────────────────────────── */
+@keyframes tronRun {
+  0% { stroke-dashoffset: 0; opacity: 0; }
+  6% { opacity: 1; }
+  94% { opacity: 1; }
+  100% { stroke-dashoffset: -2400; opacity: 0; }
+}
+
+@keyframes tronScan {
+  0% { transform: translateX(-12%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(112%); opacity: 0; }
+}
+
+@keyframes tronPulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.6); }
+}
+
+@keyframes tronGroundPulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.7; }
+}
+
+.tron-run {
+  animation: tronRun 6.5s linear infinite;
+}
+
+.tron-scan {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: tronScan 7s ease-in-out infinite;
+}
+
+.tron-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tronPulse 3.4s ease-in-out infinite;
+}
+
+.tron-ground {
+  animation: tronGroundPulse 5s ease-in-out infinite;
 }
 
 html {

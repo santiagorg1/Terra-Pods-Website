@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { models } from "@/lib/data";
+import { formatUSD } from "@/lib/format";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -112,10 +114,11 @@ export default function LeadForm({
                 className="field"
               >
                 <option value="">Select a model</option>
-                <option value="solo">Pod Solo — $89,000</option>
-                <option value="duo">Pod Duo — $149,000</option>
-                <option value="atelier">Pod Atelier — $219,000</option>
-                <option value="vista">Pod Vista — $329,000</option>
+                {models.map((m) => (
+                  <option key={m.slug} value={m.slug}>
+                    {m.name} — {formatUSD(m.startingPrice)}
+                  </option>
+                ))}
                 <option value="undecided">Help me decide</option>
               </select>
             </div>

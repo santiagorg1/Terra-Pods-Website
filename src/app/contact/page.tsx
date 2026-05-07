@@ -32,8 +32,8 @@ export default function ContactPage() {
                   Studio
                 </h3>
                 <p className="mt-3 text-lg leading-relaxed text-white">
-                  2440 Coastal Highway<br />
-                  San Mateo, California 94401
+                  3221 E Hwy 90<br />
+                  Del Rio, Texas 78840
                 </p>
                 <p className="mt-2 text-sm text-ink-400">
                   By appointment only.
@@ -41,33 +41,46 @@ export default function ContactPage() {
               </div>
               <div>
                 <h3 className="text-xs font-medium uppercase tracking-[0.24em] text-ink-300">
-                  Direct
+                  Sales
                 </h3>
                 <ul className="mt-3 space-y-1 text-lg text-white">
                   <li>
                     <a
-                      href="mailto:hello@terrapods.com"
+                      href="tel:+18304225062"
                       className="transition-colors hover:text-accent"
                     >
-                      hello@terrapods.com
+                      (830) 422-5062
                     </a>
                   </li>
                   <li>
                     <a
-                      href="tel:+18005552337"
+                      href="tel:+13614349855"
                       className="transition-colors hover:text-accent"
                     >
-                      +1 (800) 555-PODS
+                      (361) 434-9855
                     </a>
                   </li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-xs font-medium uppercase tracking-[0.24em] text-ink-300">
+                  Email
+                </h3>
+                <p className="mt-3 text-lg text-white">
+                  <a
+                    href="mailto:hello@terrapods.com"
+                    className="transition-colors hover:text-accent"
+                  >
+                    hello@terrapods.com
+                  </a>
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xs font-medium uppercase tracking-[0.24em] text-ink-300">
                   Hours
                 </h3>
                 <p className="mt-3 text-lg text-white">
-                  Mon — Fri · 9am — 6pm PT
+                  Mon — Fri · 9am — 6pm CT
                 </p>
                 <p className="mt-1 text-sm text-ink-400">
                   Sat — Sun · By appointment

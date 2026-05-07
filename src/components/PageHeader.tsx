@@ -5,21 +5,33 @@ export default function PageHeader({
   title,
   subtitle,
   children,
+  align = "left",
 }: {
   eyebrow?: string;
   title: ReactNode;
   subtitle?: ReactNode;
   children?: ReactNode;
+  align?: "left" | "center";
 }) {
   return (
-    <section className="relative overflow-hidden pt-36 sm:pt-44">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[40vh] bg-radial-glow" />
+    <section className="relative overflow-hidden pb-12 pt-44 sm:pb-20 sm:pt-56">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-x-0 top-0 h-[60vh] bg-radial-glow" />
+        <div className="absolute left-1/2 top-[20%] h-[60vh] w-[60vh] -translate-x-1/2 rounded-full bg-accent/[0.04] blur-[100px]" />
+      </div>
+
       <div className="container-pod relative">
-        <div className="max-w-3xl">
-          {eyebrow && <span className="eyebrow">{eyebrow}</span>}
-          <h1 className="display-2 mt-5 text-balance">{title}</h1>
+        <div className={align === "center" ? "mx-auto max-w-4xl text-center" : "max-w-4xl"}>
+          {eyebrow && (
+            <span className={align === "center" ? "eyebrow-center" : "eyebrow"}>
+              {eyebrow}
+            </span>
+          )}
+          <h1 className="display-1 mt-10 text-balance">{title}</h1>
           {subtitle && (
-            <p className="lead mt-6 max-w-2xl text-balance">{subtitle}</p>
+            <p className="lead-prose mt-10 max-w-2xl text-balance text-ink-200">
+              {subtitle}
+            </p>
           )}
         </div>
         {children}

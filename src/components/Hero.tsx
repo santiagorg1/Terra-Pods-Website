@@ -1,79 +1,104 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function Hero() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const yHead = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
+  const opacityHead = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+
   return (
-    <section className="relative overflow-hidden pt-32 sm:pt-40 lg:pt-44">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-x-0 top-0 h-[60vh] bg-radial-glow" />
-        <div className="absolute left-1/2 top-1/3 h-[80vh] w-[80vh] -translate-x-1/2 rounded-full bg-accent/[0.04] blur-3xl" />
-      </div>
+    <section
+      ref={ref}
+      className="scene-tall vignette grain pt-24 sm:pt-28"
+    >
+      {/* Atmospheric background — gold + cool blue */}
+      <motion.div aria-hidden style={{ y: yBg }} className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-warm-night" />
+        <div className="absolute inset-x-0 top-0 h-[80vh] bg-radial-glow" />
+        {/* Warm gold core */}
+        <div className="absolute left-[20%] top-[28%] h-[80vh] w-[80vh] rounded-full bg-accent/[0.07] blur-[110px]" />
+        {/* Cool azure counterpoint */}
+        <div className="absolute right-[5%] top-[18%] h-[70vh] w-[70vh] rounded-full bg-azure-glow/[0.10] blur-[120px]" />
+        {/* Distant lapis depth */}
+        <div className="absolute left-[5%] bottom-[5%] h-[50vh] w-[50vh] rounded-full bg-lapis/[0.18] blur-[100px]" />
+        {/* Light leak */}
+        <div className="absolute inset-y-0 left-[-10%] w-[35%] animate-lightPan bg-gradient-to-r from-transparent via-accent/[0.05] to-transparent" />
+      </motion.div>
 
-      <div className="container-pod relative">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
+      <motion.div
+        style={{ y: yHead, opacity: opacityHead }}
+        className="container-narrow relative flex flex-1 flex-col items-center justify-center text-center"
+      >
+        <motion.span
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto max-w-4xl text-center"
+          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+          className="eyebrow-center"
         >
-          <span className="eyebrow mx-auto justify-center">
-            New · 2026 Collection
-          </span>
-          <h1 className="display-1 mt-6 text-balance">
-            <span className="block">Architectural pods,</span>
-            <span className="block text-gold">engineered for life.</span>
-          </h1>
-          <p className="lead mx-auto mt-8 max-w-2xl text-balance">
-            Terra Pods designs and manufactures premium prefabricated residences.
-            Off-grid capable. Architecturally crafted. Delivered ready to inhabit.
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link href="/models" className="btn-primary group">
-              Explore Models
-              <span className="transition-transform group-hover:translate-x-0.5">→</span>
-            </Link>
-            <Link href="/financing" className="btn-ghost">
-              Calculate Financing
-            </Link>
-          </div>
-        </motion.div>
+          Terra Pods · 2028
+        </motion.span>
+
+        <h1 className="display-1 mt-12 max-w-[14ch] sm:mt-14">
+          <motion.span
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="block"
+          >
+            Architectural pods,
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="block"
+          >
+            <span className="display-italic text-twilight">quietly</span>
+            <span className="text-white/95"> composed.</span>
+          </motion.span>
+        </h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.4, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="lead-prose mt-14 max-w-xl text-balance text-ink-200 sm:mt-16"
+        >
+          Ten series. Twenty-six models.
+          <br className="hidden sm:block" /> From a sixteen-square-metre studio to a forty-five-square-metre flagship — engineered in our factory, delivered complete.
+        </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.96, y: 40 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1.1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto mt-16 aspect-[16/9] max-w-6xl overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.05] to-transparent shadow-[0_50px_120px_-40px_rgba(0,0,0,0.8)]"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.4, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-16 flex flex-col items-center gap-6 sm:mt-20"
         >
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2400&q=80')",
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/30 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 grid grid-cols-2 gap-px overflow-hidden md:grid-cols-4">
-            {[
-              ["1,100", "sq ft flagship"],
-              ["12 wk", "lead time"],
-              ["100%", "factory-built"],
-              ["10 yr", "structural warranty"],
-            ].map(([k, v]) => (
-              <div
-                key={k}
-                className="bg-ink-950/60 px-5 py-5 text-center backdrop-blur-md sm:px-8 sm:py-6"
-              >
-                <div className="font-display text-2xl text-white sm:text-3xl">{k}</div>
-                <div className="mt-1 text-[11px] uppercase tracking-[0.2em] text-ink-300">
-                  {v}
-                </div>
-              </div>
-            ))}
-          </div>
+          <Link href="/models" className="btn-luxury">
+            Explore the catalog
+            <span className="text-base">→</span>
+          </Link>
+          <Link href="/financing" className="btn-link">
+            Or model your investment <span>↓</span>
+          </Link>
         </motion.div>
-      </div>
+      </motion.div>
+
+      {/* Scroll cue */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.6, delay: 1.4 }}
+        className="relative mb-14 flex flex-col items-center gap-3 text-[10px] uppercase tracking-[0.32em] text-ink-400"
+      >
+        <span>Scroll</span>
+        <span className="block h-14 w-px bg-gradient-to-b from-accent/60 via-azure/40 to-transparent" />
+      </motion.div>
     </section>
   );
 }

@@ -43,7 +43,7 @@ const faqs = [
   },
   {
     q: "Do you offer rent-to-own?",
-    a: "We offer a 36-month lease-to-purchase program on Pod Solo and Pod Duo for qualifying clients.",
+    a: "We offer a 36-month lease-to-purchase program on the A3, E3-II, and W3 entry capsules for qualifying clients.",
   },
 ];
 
