@@ -41,8 +41,9 @@ export default function ModelCard({ model }: { model: Model }) {
             className="relative flex h-full w-full items-center justify-center p-10"
           >
             <PodSilhouette
-              variant={model.silhouette}
+              slug={model.slug}
               color={seriesData.accent}
+              label={model.name}
               className="h-full w-full max-w-[420px]"
             />
           </motion.div>

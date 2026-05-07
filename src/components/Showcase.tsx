@@ -124,9 +124,11 @@ export default function Showcase() {
                 className="absolute inset-0 flex items-center justify-center"
               >
                 <PodSilhouette
-                  variant={current.silhouette}
+                  slug={current.slug}
                   color={seriesData.accent}
+                  label={current.name}
                   className="h-full w-full"
+                  priority
                 />
               </motion.div>
             </AnimatePresence>

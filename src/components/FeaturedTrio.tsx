@@ -53,8 +53,9 @@ export default function FeaturedTrio() {
                     />
                     <div className="relative flex h-full items-center justify-center px-8">
                       <PodSilhouette
-                        variant={m.silhouette}
+                        slug={m.slug}
                         color={seriesData.accent}
+                        label={m.name}
                         className="h-full w-full"
                       />
                     </div>

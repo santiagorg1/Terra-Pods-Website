@@ -59,8 +59,9 @@ export default function SeriesStrip({
                   <div className="relative aspect-[16/9] overflow-hidden border-b border-white/5 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.04),transparent_70%)]">
                     <div className="flex h-full items-center justify-center p-6">
                       <PodSilhouette
-                        variant={m.silhouette}
+                        slug={m.slug}
                         color={series.accent}
+                        label={m.name}
                         className="h-full w-full"
                       />
                     </div>

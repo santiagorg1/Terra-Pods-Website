@@ -81,10 +81,11 @@ export default function GalleryPage() {
                             href={`/models/${m.slug}`}
                             className="grid items-center gap-x-8 gap-y-3 py-8 transition-colors duration-700 ease-cinema hover:bg-white/[0.015] sm:py-10 lg:grid-cols-[120px_1.5fr_1fr_1fr_1fr_1fr_auto]"
                           >
-                            <div className="aspect-[2/1] w-[120px]">
+                            <div className="aspect-[2/1] w-[140px]">
                               <PodSilhouette
-                                variant={m.silhouette}
+                                slug={m.slug}
                                 color={s.accent}
+                                label={m.name}
                                 className="h-full w-full"
                                 animated={false}
                                 showGround={false}

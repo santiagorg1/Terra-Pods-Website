@@ -127,9 +127,10 @@ export default function ModelsBrowser({
                     <div className="pointer-events-none absolute inset-0 bg-vignette" />
                     <div className="relative flex h-full items-center justify-center p-8">
                       <PodSilhouette
-                        variant={m.silhouette}
+                        slug={m.slug}
                         color={accent}
-                        className="h-full w-full max-w-[420px]"
+                        label={m.name}
+                        className="h-full w-full max-w-[460px]"
                       />
                     </div>
                     <div className="absolute left-5 right-5 top-5 flex items-start justify-between">

@@ -66,11 +66,12 @@ export default function SeriesIndex() {
                       {s.description.split(".")[0]}.
                     </p>
 
-                    {/* Silhouette */}
-                    <div className="hidden h-12 w-full items-center lg:flex">
+                    {/* Series exemplar render */}
+                    <div className="hidden h-16 w-full items-center lg:flex">
                       <PodSilhouette
-                        variant={s.silhouette}
+                        slug={exemplar.slug}
                         color={s.accent}
+                        label={exemplar.name}
                         className="h-full w-full"
                         animated={false}
                         showGround={false}

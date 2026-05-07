@@ -97,8 +97,10 @@ export default function ModelPage({ params }: { params: { slug: string } }) {
             />
             <div className="relative aspect-[16/8]">
               <PodSilhouette
-                variant={model.silhouette}
+                slug={model.slug}
                 color={accent}
+                label={model.name}
+                priority
                 className="h-full w-full"
               />
             </div>
@@ -345,8 +347,9 @@ export default function ModelPage({ params }: { params: { slug: string } }) {
                     <div className="pointer-events-none absolute inset-0 bg-vignette" />
                     <div className="relative flex h-full items-center justify-center p-8">
                       <PodSilhouette
-                        variant={o.silhouette}
+                        slug={o.slug}
                         color={accent}
+                        label={o.name}
                         className="h-full w-full"
                       />
                     </div>
