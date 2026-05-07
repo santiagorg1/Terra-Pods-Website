@@ -72,6 +72,7 @@ export default function SeriesIndex() {
                         slug={exemplar.slug}
                         color={s.accent}
                         label={exemplar.name}
+                        intensity="card"
                         className="h-full w-full"
                         animated={false}
                         showGround={false}

@@ -21,11 +21,11 @@ export default function Hero() {
         <div className="absolute inset-0 bg-warm-night" />
         <div className="absolute inset-x-0 top-0 h-[80vh] bg-radial-glow" />
         {/* Warm gold core */}
-        <div className="absolute left-[20%] top-[28%] h-[80vh] w-[80vh] rounded-full bg-accent/[0.07] blur-[110px]" />
+        <div className="ambient-drift-a absolute left-[20%] top-[28%] h-[80vh] w-[80vh] rounded-full bg-accent/[0.07] blur-[110px]" />
         {/* Cool azure counterpoint */}
-        <div className="absolute right-[5%] top-[18%] h-[70vh] w-[70vh] rounded-full bg-azure-glow/[0.10] blur-[120px]" />
+        <div className="ambient-drift-b absolute right-[5%] top-[18%] h-[70vh] w-[70vh] rounded-full bg-azure-glow/[0.10] blur-[120px]" />
         {/* Distant lapis depth */}
-        <div className="absolute left-[5%] bottom-[5%] h-[50vh] w-[50vh] rounded-full bg-lapis/[0.18] blur-[100px]" />
+        <div className="ambient-drift-a absolute left-[5%] bottom-[5%] h-[50vh] w-[50vh] rounded-full bg-lapis/[0.18] blur-[100px]" />
         {/* Light leak */}
         <div className="absolute inset-y-0 left-[-10%] w-[35%] animate-lightPan bg-gradient-to-r from-transparent via-accent/[0.05] to-transparent" />
       </motion.div>

@@ -131,6 +131,18 @@ const config: Config = {
           "30%": { opacity: "0.4" },
           "100%": { transform: "translateX(115%) skewX(-12deg)", opacity: "0" },
         },
+        ambientDrift: {
+          "0%, 100%": { transform: "translate3d(0, 0, 0) scale(1)" },
+          "50%": { transform: "translate3d(2.5%, -2%, 0) scale(1.06)" },
+        },
+        ambientDriftAlt: {
+          "0%, 100%": { transform: "translate3d(0, 0, 0) scale(1)" },
+          "50%": { transform: "translate3d(-3%, 2.5%, 0) scale(1.08)" },
+        },
+        wordIn: {
+          "0%": { opacity: "0", transform: "translateY(28px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         floatUp: "floatUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both",
@@ -139,6 +151,9 @@ const config: Config = {
         slowPulse: "slowPulse 8s ease-in-out infinite",
         scrollHint: "scrollHint 2.4s ease-in-out infinite",
         lightPan: "lightPan 8s cubic-bezier(0.22, 1, 0.36, 1) infinite",
+        ambientDrift: "ambientDrift 22s ease-in-out infinite",
+        ambientDriftAlt: "ambientDriftAlt 28s ease-in-out infinite",
+        wordIn: "wordIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) both",
       },
     },
   },

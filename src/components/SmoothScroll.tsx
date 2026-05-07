@@ -18,12 +18,12 @@ export default function SmoothScroll() {
     }
 
     const lenis = new Lenis({
-      duration: 1.4,
+      duration: 1.15,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      // Touch devices use native momentum; only smooth wheel on desktop.
       smoothWheel: true,
-      wheelMultiplier: 1,
-      lerp: 0.085,
+      wheelMultiplier: 1.05,
+      lerp: 0.075,
+      syncTouch: false,
     });
 
     let frame = 0;

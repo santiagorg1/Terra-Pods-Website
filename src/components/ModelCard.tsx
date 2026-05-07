@@ -44,6 +44,7 @@ export default function ModelCard({ model }: { model: Model }) {
               slug={model.slug}
               color={seriesData.accent}
               label={model.name}
+              intensity="card"
               className="h-full w-full max-w-[420px]"
             />
           </motion.div>
@@ -60,34 +61,34 @@ export default function ModelCard({ model }: { model: Model }) {
           </div>
         </div>
 
-        {/* Caption */}
-        <div className="p-8">
-          <div className="flex items-baseline justify-between gap-4">
+        {/* Caption — generous breathing room */}
+        <div className="p-9 sm:p-10">
+          <div className="flex items-start justify-between gap-6">
             <div>
               <span
-                className="font-display text-[2.5rem] leading-none tracking-cinema"
+                className="block font-display text-[2.75rem] leading-none tracking-cinema"
                 style={{ color: seriesData.accent }}
               >
                 {model.short}
               </span>
-              <div className="mt-2 text-[10px] uppercase tracking-[0.32em] text-ink-400">
+              <div className="mt-4 text-[10px] uppercase tracking-[0.32em] text-ink-400">
                 {model.tagline}
               </div>
             </div>
             <div className="text-right">
-              <div className="text-[10px] uppercase tracking-[0.28em] text-ink-500">From</div>
-              <div className="mt-1 font-display text-2xl text-accent">
+              <div className="text-[10px] uppercase tracking-[0.32em] text-ink-500">From</div>
+              <div className="mt-3 font-display text-2xl text-accent">
                 {formatUSD(model.startingPrice)}
               </div>
             </div>
           </div>
 
-          <p className="mt-6 line-clamp-3 text-sm leading-relaxed text-ink-300">
+          <p className="mt-8 line-clamp-3 text-sm leading-[1.75] text-ink-300">
             {model.description}
           </p>
 
-          <div className="mt-8 flex items-center justify-between border-t border-white/5 pt-6">
-            <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.28em] text-ink-400">
+          <div className="mt-10 flex items-center justify-between border-t border-white/5 pt-7">
+            <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.32em] text-ink-400">
               <span>{model.area}</span>
               <span className="h-3 w-px bg-white/15" />
               <span>{model.guests}</span>

@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -80,6 +81,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${display.variable}`}>
       <body className="min-h-screen antialiased">
         <SmoothScroll />
+        <ScrollProgress />
         <Nav />
         <main className="relative">{children}</main>
         <Footer />

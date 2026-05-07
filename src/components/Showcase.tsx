@@ -34,8 +34,8 @@ export default function Showcase() {
       {/* Atmosphere — warm gold core, cool azure counterpoint */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-ember-glow" />
-        <div className="absolute right-[-10%] top-[10%] h-[60vh] w-[60vh] rounded-full bg-azure-glow/[0.10] blur-[120px]" />
-        <div className="absolute left-[-5%] bottom-[5%] h-[40vh] w-[40vh] rounded-full bg-lapis/[0.18] blur-[100px]" />
+        <div className="ambient-drift-a absolute right-[-10%] top-[10%] h-[60vh] w-[60vh] rounded-full bg-azure-glow/[0.10] blur-[120px]" />
+        <div className="ambient-drift-b absolute left-[-5%] bottom-[5%] h-[40vh] w-[40vh] rounded-full bg-lapis/[0.18] blur-[100px]" />
         <motion.div
           key={`bg-${current.slug}`}
           initial={{ opacity: 0 }}
@@ -59,36 +59,36 @@ export default function Showcase() {
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="mt-8 flex items-baseline gap-5">
+              <div className="mt-10 flex flex-col items-start gap-3">
                 <span
                   className="font-display text-[clamp(4rem,9vw,7.5rem)] leading-none tracking-cinema"
                   style={{ color: seriesData.accent }}
                 >
                   {current.short}
                 </span>
-                <span className="font-display italic text-2xl text-ink-300">
+                <span className="font-display italic text-2xl text-ink-300 sm:text-3xl">
                   {current.tagline}
                 </span>
               </div>
 
-              <p className="lead-prose mt-8 max-w-md text-ink-200">
+              <p className="lead-prose mt-12 max-w-md text-ink-200 leading-[1.75]">
                 {current.description}
               </p>
 
-              <dl className="mt-12 grid grid-cols-3 gap-x-8 border-y border-white/5 py-6">
+              <dl className="mt-16 grid grid-cols-3 gap-x-8 border-y border-white/5 py-8">
                 {[
                   ["Footprint", current.area],
                   ["Capacity", current.guests],
                   ["From", formatUSD(current.startingPrice)],
                 ].map(([k, v]) => (
                   <div key={k}>
-                    <dt className="text-[10px] uppercase tracking-[0.28em] text-ink-500">{k}</dt>
-                    <dd className="mt-2 font-display text-xl text-white">{v}</dd>
+                    <dt className="text-[10px] uppercase tracking-[0.32em] text-ink-500">{k}</dt>
+                    <dd className="mt-4 font-display text-xl text-white sm:text-2xl">{v}</dd>
                   </div>
                 ))}
               </dl>
 
-              <div className="mt-10 flex items-center gap-6">
+              <div className="mt-14 flex items-center gap-6">
                 <Link
                   href={`/models/${current.slug}`}
                   className="btn-link-luxury"

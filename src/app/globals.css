@@ -256,6 +256,16 @@ body {
   animation: tronGroundPulse 5s ease-in-out infinite;
 }
 
+/* Ambient drift for hero/scene background glows. Cheap GPU transform. */
+.ambient-drift-a {
+  animation: ambientDrift 22s ease-in-out infinite;
+  will-change: transform;
+}
+.ambient-drift-b {
+  animation: ambientDriftAlt 28s ease-in-out infinite;
+  will-change: transform;
+}
+
 html {
   scroll-behavior: smooth;
 }

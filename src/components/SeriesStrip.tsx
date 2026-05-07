@@ -62,6 +62,7 @@ export default function SeriesStrip({
                         slug={m.slug}
                         color={series.accent}
                         label={m.name}
+                        intensity="card"
                         className="h-full w-full"
                       />
                     </div>

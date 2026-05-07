@@ -213,11 +213,13 @@ export default function ModelPage({ params }: { params: { slug: string } }) {
             <p className="mt-5 max-w-md text-base leading-relaxed text-ink-300">
               The standard exterior protection package, included in the base price of every {model.short}.
             </p>
-            <ul className="mt-12 space-y-4">
-              {model.exteriorProtection.map((f) => (
-                <li key={f} className="rule-mark text-base text-ink-100">
-                  {f}
-                </li>
+            <ul className="mt-14 space-y-5">
+              {model.exteriorProtection.map((f, i) => (
+                <Reveal key={f} delay={i * 0.04}>
+                  <li className="rule-mark text-base leading-[1.75] text-ink-100">
+                    {f}
+                  </li>
+                </Reveal>
               ))}
             </ul>
           </Reveal>
@@ -229,11 +231,13 @@ export default function ModelPage({ params }: { params: { slug: string } }) {
             <p className="mt-5 max-w-md text-base leading-relaxed text-ink-300">
               The standard interior package — fixtures, finishes, and systems, ready on day one.
             </p>
-            <ul className="mt-12 grid grid-cols-1 gap-x-10 gap-y-4 sm:grid-cols-2">
-              {model.interiorDecoration.map((f) => (
-                <li key={f} className="rule-mark text-sm text-ink-100">
-                  {f}
-                </li>
+            <ul className="mt-14 grid grid-cols-1 gap-x-10 gap-y-5 sm:grid-cols-2">
+              {model.interiorDecoration.map((f, i) => (
+                <Reveal key={f} delay={(i % 6) * 0.04}>
+                  <li className="rule-mark text-sm leading-[1.75] text-ink-100">
+                    {f}
+                  </li>
+                </Reveal>
               ))}
             </ul>
           </Reveal>
@@ -365,6 +369,7 @@ export default function ModelPage({ params }: { params: { slug: string } }) {
                         slug={o.slug}
                         color={accent}
                         label={o.name}
+                        intensity="card"
                         className="h-full w-full"
                       />
                     </div>

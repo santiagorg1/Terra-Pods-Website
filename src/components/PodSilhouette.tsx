@@ -19,17 +19,16 @@ type Props = {
   label?: string;
   /** Sizes attribute passed to next/image. */
   sizes?: string;
+  /**
+   * Visual intensity preset.
+   *  – "hero": full glow stack, scan line, ground halo, horizon. Use on
+   *    feature scenes (Hero, Showcase, FeaturedTrio, per-model hero).
+   *  – "card": cheaper render — single drop-shadow, no scan line, no
+   *    horizon. Use in grids of many silhouettes (cards, lists).
+   */
+  intensity?: "hero" | "card";
 };
 
-/**
- * Renders an actual pod 3D rendering (extracted from the catalog) on a dark
- * stage with a luminous Tron-style glow:
- *   – Multi-layer drop-shadow tinted with the series accent.
- *   – Soft radial backlight + ground halo.
- *   – A bright scan-line stripe sweeping horizontally, masked to the pod's
- *     silhouette so it only appears within the pod itself.
- *   – Subtle horizon line beneath the pod for the floating-on-grid feel.
- */
 export default function PodSilhouette({
   slug,
   color = "#c9a86a",
@@ -39,8 +38,10 @@ export default function PodSilhouette({
   priority = false,
   label = "Terra Pod",
   sizes = "(min-width: 1024px) 50vw, 100vw",
+  intensity = "hero",
 }: Props) {
   const src = `/pods/${slug}.png`;
+  const isCard = intensity === "card";
 
   return (
     <motion.div
@@ -50,41 +51,38 @@ export default function PodSilhouette({
       transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
       className={`relative ${className}`}
     >
-      {/* Atmospheric backlight — soft radial glow tinted with accent */}
+      {/* Atmospheric backlight */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
-          background: `radial-gradient(ellipse 70% 60% at 50% 50%, ${color}40, transparent 70%)`,
+          background: `radial-gradient(ellipse 70% 60% at 50% 50%, ${color}${isCard ? "33" : "40"}, transparent 70%)`,
         }}
       />
 
-      {/* Far halo — wider, softer */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-[-10%]"
-        style={{
-          background: `radial-gradient(ellipse 60% 50% at 50% 50%, ${color}1f, transparent 72%)`,
-          filter: "blur(40px)",
-        }}
-      />
+      {/* Far halo — only on hero intensity */}
+      {!isCard && (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-[-10%]"
+          style={{
+            background: `radial-gradient(ellipse 60% 50% at 50% 50%, ${color}1f, transparent 72%)`,
+            filter: "blur(40px)",
+          }}
+        />
+      )}
 
-      {/* Pod render with multi-layer drop-shadow halo */}
+      {/* Pod render with drop-shadow halo */}
       <motion.div
-        initial={{ scale: 0.96, y: 16 }}
+        initial={{ scale: 0.96, y: isCard ? 8 : 16 }}
         whileInView={{ scale: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: isCard ? 1.1 : 1.6, ease: [0.16, 1, 0.3, 1] }}
         className="relative h-full w-full"
         style={{
-          filter: `
-            contrast(1.04)
-            brightness(1.06)
-            drop-shadow(0 0 6px ${color}cc)
-            drop-shadow(0 0 18px ${color}99)
-            drop-shadow(0 0 48px ${color}55)
-            drop-shadow(0 0 96px ${color}22)
-          `,
+          filter: isCard
+            ? `contrast(1.03) brightness(1.04) drop-shadow(0 0 12px ${color}88) drop-shadow(0 0 32px ${color}33)`
+            : `contrast(1.04) brightness(1.06) drop-shadow(0 0 6px ${color}cc) drop-shadow(0 0 18px ${color}99) drop-shadow(0 0 48px ${color}55) drop-shadow(0 0 96px ${color}22)`,
         }}
       >
         <Image
@@ -92,14 +90,14 @@ export default function PodSilhouette({
           alt={`${label} elevation rendering`}
           fill
           sizes={sizes}
-          quality={95}
+          quality={isCard ? 88 : 95}
           className="select-none object-contain"
           priority={priority}
         />
       </motion.div>
 
-      {/* Scan-line — masked to pod silhouette */}
-      {animated && (
+      {/* Scan-line — only on hero intensity */}
+      {animated && !isCard && (
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 overflow-hidden"
@@ -129,16 +127,16 @@ export default function PodSilhouette({
       {showGround && (
         <div
           aria-hidden
-          className={`pointer-events-none absolute inset-x-[6%] bottom-[6%] h-[14%] ${animated ? "tron-ground" : ""}`}
+          className={`pointer-events-none absolute inset-x-[6%] bottom-[6%] h-[14%] ${animated && !isCard ? "tron-ground" : ""}`}
           style={{
-            background: `radial-gradient(ellipse 80% 100% at 50% 0%, ${color}88, transparent 70%)`,
+            background: `radial-gradient(ellipse 80% 100% at 50% 0%, ${color}${isCard ? "55" : "88"}, transparent 70%)`,
             filter: "blur(10px)",
           }}
         />
       )}
 
-      {/* Horizon line */}
-      {showGround && (
+      {/* Horizon line — only on hero */}
+      {showGround && !isCard && (
         <div
           aria-hidden
           className="pointer-events-none absolute inset-x-[6%] bottom-[10%] h-px"

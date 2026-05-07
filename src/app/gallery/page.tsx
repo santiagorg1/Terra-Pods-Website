@@ -86,6 +86,7 @@ export default function GalleryPage() {
                                 slug={m.slug}
                                 color={s.accent}
                                 label={m.name}
+                                intensity="card"
                                 className="h-full w-full"
                                 animated={false}
                                 showGround={false}

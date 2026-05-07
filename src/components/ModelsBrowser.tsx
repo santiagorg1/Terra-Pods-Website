@@ -130,6 +130,7 @@ export default function ModelsBrowser({
                         slug={m.slug}
                         color={accent}
                         label={m.name}
+                        intensity="card"
                         className="h-full w-full max-w-[460px]"
                       />
                     </div>

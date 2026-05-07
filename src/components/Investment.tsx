@@ -35,9 +35,9 @@ export default function Investment() {
   return (
     <section className="scene relative py-32 sm:py-44">
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[20%] top-1/4 h-[60vh] w-[60vh] rounded-full bg-accent/[0.06] blur-[100px]" />
-        <div className="absolute right-[15%] bottom-[20%] h-[55vh] w-[55vh] rounded-full bg-azure-glow/[0.10] blur-[110px]" />
-        <div className="absolute left-[40%] bottom-0 h-[45vh] w-[45vh] rounded-full bg-lapis/[0.16] blur-[100px]" />
+        <div className="ambient-drift-a absolute left-[20%] top-1/4 h-[60vh] w-[60vh] rounded-full bg-accent/[0.06] blur-[100px]" />
+        <div className="ambient-drift-b absolute right-[15%] bottom-[20%] h-[55vh] w-[55vh] rounded-full bg-azure-glow/[0.10] blur-[110px]" />
+        <div className="ambient-drift-a absolute left-[40%] bottom-0 h-[45vh] w-[45vh] rounded-full bg-lapis/[0.16] blur-[100px]" />
       </div>
 
       <div className="container-pod relative">
