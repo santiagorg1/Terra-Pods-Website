@@ -3,6 +3,8 @@ import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
 import TierCard from "@/components/TierCard";
 import LeadForm from "@/components/LeadForm";
+import InventoryGrid from "@/components/InventoryGrid";
+import DeliveryRadar from "@/components/DeliveryRadar";
 import {
   tiers,
   customizations,
@@ -73,6 +75,37 @@ export default function HomePage() {
       </section>
 
       <section className="container-pod py-24 sm:py-32">
+        <Reveal>
+          <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+            <div className="max-w-2xl">
+              <span className="eyebrow">
+                <span className="relative mr-2 flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+                </span>
+                Available now · Del Rio yard
+              </span>
+              <h2 className="display-2 mt-5">
+                Three pods. <span className="text-terra">Ready to ship.</span>
+              </h2>
+              <p className="lead mt-6">
+                On the yard right now — fully configured, US-cleared, and ready
+                to ship within days, not months. First come, first served.
+              </p>
+            </div>
+            <Link href="/contact" className="btn-link">
+              Schedule a visit <span>→</span>
+            </Link>
+          </div>
+        </Reveal>
+        <div className="mt-12">
+          <Reveal>
+            <InventoryGrid />
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="container-pod py-24 sm:py-32">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
             <Reveal>
@@ -109,6 +142,15 @@ export default function HomePage() {
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden py-24 sm:py-32">
+        <div className="absolute inset-0 bg-radial-fade" />
+        <div className="container-pod relative">
+          <Reveal>
+            <DeliveryRadar />
+          </Reveal>
         </div>
       </section>
 
@@ -153,6 +195,57 @@ export default function HomePage() {
             </Reveal>
           </div>
         </div>
+      </section>
+
+      <section className="container-pod py-16 sm:py-20">
+        <Reveal>
+          <Link
+            href="/roi"
+            className="group relative block overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-ink-800 via-ink-900 to-ink-950 p-10 transition-all hover:border-accent/40 sm:p-12"
+          >
+            <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-accent/15 blur-3xl transition-all group-hover:bg-accent/25" />
+            <div className="relative grid gap-10 lg:grid-cols-12 lg:items-center">
+              <div className="lg:col-span-7">
+                <span className="eyebrow">ROI calculator</span>
+                <h2 className="display-2 mt-5 text-balance">
+                  How much can your pod{" "}
+                  <span className="text-terra">earn?</span>
+                </h2>
+                <p className="lead mt-5 max-w-xl">
+                  Model rental income, expenses, and payback for any US market
+                  in seconds. Default rates reflect AirDNA-style averages.
+                </p>
+                <span className="btn-link mt-6 inline-flex">
+                  Run the numbers
+                  <span className="transition-transform group-hover:translate-x-0.5">
+                    →
+                  </span>
+                </span>
+              </div>
+              <div className="lg:col-span-5">
+                <div className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+                  {[
+                    ["$54k", "Net / yr · Hill Country"],
+                    ["1.4 yr", "Avg payback"],
+                    ["340%", "10-year ROI"],
+                  ].map(([k, v]) => (
+                    <div
+                      key={k}
+                      className="bg-ink-950 px-4 py-5 text-center"
+                    >
+                      <div className="font-display text-xl text-accent sm:text-2xl">
+                        {k}
+                      </div>
+                      <div className="mt-1 text-[9px] uppercase tracking-[0.2em] text-ink-400">
+                        {v}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Link>
+        </Reveal>
       </section>
 
       <section className="container-pod py-16 sm:py-20">
