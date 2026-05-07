@@ -142,8 +142,8 @@ export default function GalleryPage() {
             See a Terra Pod <span className="display-italic text-gold">in person.</span>
           </h2>
           <p className="lead-prose mx-auto mt-8 max-w-2xl">
-            Private tours at our flagship pavilion in Northern California
-            and at select client residences across the West Coast.
+            Private tours at our Del Rio, Texas pavilion
+            and at select client residences across the country.
           </p>
           <Link href="/contact" className="btn-luxury mt-12">
             Book a private tour

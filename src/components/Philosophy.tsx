@@ -61,7 +61,7 @@ export default function Philosophy() {
           >
             <span className="block h-px w-16 bg-accent/60" />
             <span className="text-xs uppercase tracking-[0.32em] text-ink-300">
-              Terra Pods Studio · Northern California
+              Terra Pods Studio · Del Rio, Texas
             </span>
           </motion.div>
         </motion.div>

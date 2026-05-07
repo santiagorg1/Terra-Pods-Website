@@ -19,10 +19,11 @@ body {
 
 body {
   background-image:
-    radial-gradient(1400px 700px at 50% -10%, rgba(217, 191, 142, 0.10), transparent 60%),
-    radial-gradient(900px 500px at 90% 10%, rgba(168, 90, 60, 0.06), transparent 60%),
-    radial-gradient(900px 500px at 10% 50%, rgba(90, 107, 74, 0.06), transparent 60%),
-    linear-gradient(180deg, #050607 0%, #0a0c0e 100%);
+    radial-gradient(1400px 700px at 30% -10%, rgba(217, 191, 142, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 88% 6%, rgba(143, 182, 221, 0.09), transparent 60%),
+    radial-gradient(900px 500px at 12% 55%, rgba(63, 93, 128, 0.08), transparent 65%),
+    radial-gradient(900px 500px at 95% 70%, rgba(217, 191, 142, 0.05), transparent 65%),
+    linear-gradient(180deg, #050607 0%, #07080a 60%, #0a0c0e 100%);
   background-attachment: fixed;
 }
 
@@ -191,6 +192,20 @@ body {
 
 .text-ember {
   background: linear-gradient(135deg, #d9bf8e 0%, #a85a3c 60%, #5a2614 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-azure {
+  background: linear-gradient(135deg, #d4e3f3 0%, #9bb6cf 35%, #6f8ba8 65%, #324a66 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-twilight {
+  background: linear-gradient(135deg, #f3e6c5 0%, #d6b785 35%, #8fb6dd 70%, #3f5d80 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

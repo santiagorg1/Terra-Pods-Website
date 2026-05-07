@@ -16,7 +16,8 @@ export default function ReserveCta() {
         >
           {/* Atmospheric glow */}
           <div className="pointer-events-none absolute -right-32 -top-32 h-[480px] w-[480px] rounded-full bg-accent/[0.18] blur-[100px]" />
-          <div className="pointer-events-none absolute -bottom-32 -left-32 h-[480px] w-[480px] rounded-full bg-ember/[0.10] blur-[100px]" />
+          <div className="pointer-events-none absolute -bottom-32 -left-32 h-[480px] w-[480px] rounded-full bg-azure-glow/[0.14] blur-[110px]" />
+          <div className="pointer-events-none absolute right-[20%] bottom-0 h-[280px] w-[280px] rounded-full bg-lapis/[0.18] blur-[80px]" />
           <div className="pointer-events-none absolute inset-0 bg-grain opacity-[0.04] mix-blend-overlay" />
           {/* Light pan */}
           <div className="pointer-events-none absolute inset-y-0 left-[-15%] w-[40%] animate-lightPan bg-gradient-to-r from-transparent via-accent/[0.06] to-transparent" />
@@ -24,8 +25,8 @@ export default function ReserveCta() {
           <div className="relative grid gap-12 p-10 sm:p-16 lg:grid-cols-2 lg:items-center lg:gap-20 lg:p-20">
             <div>
               <span className="eyebrow">Reserve</span>
-              <h2 className="display-2 mt-7 text-balance">
-                Begin your <span className="display-italic text-gold">Terra Pod</span> reservation.
+              <h2 className="display-2 mt-8 text-balance">
+                Begin your <span className="display-italic text-twilight">Terra Pod</span> reservation.
               </h2>
               <p className="lead-prose mt-8 max-w-md">
                 A small refundable deposit secures your build slot. A specialist will

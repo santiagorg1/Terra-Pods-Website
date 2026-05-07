@@ -43,12 +43,12 @@ export default function ModelPage({ params }: { params: { slug: string } }) {
   return (
     <>
       {/* ─── CINEMATIC HERO ─────────────────────────────────────────────────── */}
-      <section className="scene vignette grain pt-32 sm:pt-40">
+      <section className="scene vignette grain pt-32 sm:pt-44">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
           style={{
-            background: `radial-gradient(ellipse at top, ${accent}26, transparent 60%), linear-gradient(180deg, transparent 0%, rgba(5,6,7,1) 100%)`,
+            background: `radial-gradient(ellipse 70% 50% at 30% 0%, ${accent}26, transparent 60%), radial-gradient(ellipse 60% 50% at 75% 30%, rgba(143,182,221,0.10), transparent 60%), linear-gradient(180deg, transparent 0%, rgba(5,6,7,1) 100%)`,
           }}
         />
         <div
@@ -56,22 +56,27 @@ export default function ModelPage({ params }: { params: { slug: string } }) {
           className="pointer-events-none absolute left-1/2 top-1/3 h-[80vh] w-[80vh] -translate-x-1/2 rounded-full blur-[120px]"
           style={{ backgroundColor: `${accent}1a` }}
         />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute right-[5%] bottom-[10%] h-[40vh] w-[40vh] rounded-full bg-lapis/[0.18] blur-[100px]"
+        />
 
         <div className="container-pod relative">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-3 text-[10px] uppercase tracking-[0.32em] text-ink-400">
-            <Link href="/models" className="hover:text-white">Catalog</Link>
+            <Link href="/models" className="transition-colors hover:text-white">Catalog</Link>
             <span className="text-ink-600">·</span>
-            <Link href={`/models?series=${model.seriesSlug}`} className="hover:text-white">{model.series}</Link>
+            <Link href={`/models?series=${model.seriesSlug}`} className="transition-colors hover:text-white">{model.series}</Link>
             <span className="text-ink-600">·</span>
             <span className="text-white">{model.short}</span>
           </nav>
 
-          {/* Editorial title */}
-          <div className="mt-16 flex flex-col items-center text-center sm:mt-24">
+          {/* Editorial title — generous breathing room between elements */}
+          <div className="mt-20 flex flex-col items-center text-center sm:mt-28">
             <span className="eyebrow-center">{model.tagline}</span>
+
             <h1
-              className="mt-10 font-display font-light leading-none tracking-cinema"
+              className="mt-14 font-display font-light leading-none tracking-cinema sm:mt-16"
               style={{
                 fontSize: "clamp(5rem, 16vw, 13rem)",
                 color: accent,
@@ -79,16 +84,18 @@ export default function ModelPage({ params }: { params: { slug: string } }) {
             >
               {model.short}
             </h1>
-            <div className="mt-4 font-display italic text-2xl text-ink-200 sm:text-3xl">
+
+            <div className="mt-6 font-display italic text-2xl text-ink-200 sm:mt-7 sm:text-3xl">
               {model.name}
             </div>
-            <p className="lead-prose mt-10 max-w-2xl text-balance text-ink-200">
+
+            <p className="lead-prose mt-14 max-w-2xl text-balance text-ink-200 sm:mt-16">
               {model.description}
             </p>
           </div>
 
           {/* Silhouette stage */}
-          <div className="relative mx-auto mt-16 w-full max-w-5xl sm:mt-24">
+          <div className="relative mx-auto mt-20 w-full max-w-5xl sm:mt-28">
             <div
               aria-hidden
               className="absolute inset-0"
@@ -108,7 +115,7 @@ export default function ModelPage({ params }: { params: { slug: string } }) {
           </div>
 
           {/* Editorial stat ledger */}
-          <dl className="mt-20 grid grid-cols-2 gap-y-10 border-y border-white/10 py-10 sm:grid-cols-3 lg:grid-cols-6">
+          <dl className="mt-24 grid grid-cols-2 gap-x-6 gap-y-12 border-y border-white/10 py-12 sm:grid-cols-3 sm:gap-x-10 lg:grid-cols-6">
             {[
               ["Footprint", model.area],
               ["Sq ft", model.areaSqft],
@@ -117,28 +124,28 @@ export default function ModelPage({ params }: { params: { slug: string } }) {
               ["Net weight", model.weight],
               ["Power", model.power],
             ].map(([k, v]) => (
-              <div key={k} className="px-2">
+              <div key={k}>
                 <dt className="text-[10px] uppercase tracking-[0.32em] text-ink-500">{k}</dt>
-                <dd className="mt-3 font-display text-xl text-white">{v}</dd>
+                <dd className="mt-4 font-display text-xl text-white">{v}</dd>
               </div>
             ))}
           </dl>
 
           {/* Price + CTAs */}
-          <div className="mt-20 flex flex-col items-start justify-between gap-10 sm:flex-row sm:items-end">
+          <div className="mt-24 flex flex-col items-start justify-between gap-12 sm:flex-row sm:items-end">
             <div>
               <div className="text-[10px] uppercase tracking-[0.32em] text-ink-500">Starting at</div>
-              <div className="mt-3 font-display text-5xl text-accent sm:text-6xl">
+              <div className="mt-4 font-display text-5xl text-accent sm:text-6xl">
                 {formatUSD(model.startingPrice)}
               </div>
               {model.badge && (
-                <div className="mt-5 inline-flex items-center gap-3 rounded-full border border-accent/30 bg-accent/[0.06] px-4 py-2 text-[10px] uppercase tracking-[0.32em] text-accent">
+                <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-accent/30 bg-accent/[0.06] px-4 py-2 text-[10px] uppercase tracking-[0.32em] text-accent">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                   {model.badge}
                 </div>
               )}
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-4">
               <Link href={`/contact?model=${model.slug}`} className="btn-luxury">
                 Reserve the {model.short}
                 <span>→</span>

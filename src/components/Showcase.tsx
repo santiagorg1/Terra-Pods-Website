@@ -31,9 +31,11 @@ export default function Showcase() {
       onMouseLeave={() => setPaused(false)}
       className="scene-tall vignette grain"
     >
-      {/* Atmosphere */}
+      {/* Atmosphere — warm gold core, cool azure counterpoint */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-ember-glow" />
+        <div className="absolute right-[-10%] top-[10%] h-[60vh] w-[60vh] rounded-full bg-azure-glow/[0.10] blur-[120px]" />
+        <div className="absolute left-[-5%] bottom-[5%] h-[40vh] w-[40vh] rounded-full bg-lapis/[0.18] blur-[100px]" />
         <motion.div
           key={`bg-${current.slug}`}
           initial={{ opacity: 0 }}

@@ -35,7 +35,9 @@ export default function Investment() {
   return (
     <section className="scene relative py-32 sm:py-44">
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/3 h-[60vh] w-[60vh] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-[100px]" />
+        <div className="absolute left-[20%] top-1/4 h-[60vh] w-[60vh] rounded-full bg-accent/[0.06] blur-[100px]" />
+        <div className="absolute right-[15%] bottom-[20%] h-[55vh] w-[55vh] rounded-full bg-azure-glow/[0.10] blur-[110px]" />
+        <div className="absolute left-[40%] bottom-0 h-[45vh] w-[45vh] rounded-full bg-lapis/[0.16] blur-[100px]" />
       </div>
 
       <div className="container-pod relative">
@@ -48,8 +50,8 @@ export default function Investment() {
             className="lg:col-span-5"
           >
             <span className="eyebrow">Lifestyle &amp; investment</span>
-            <h2 className="display-2 mt-7 text-balance">
-              An aluminium <span className="display-italic text-gold">asset</span>,
+            <h2 className="display-2 mt-8 text-balance">
+              An aluminium <span className="display-italic text-twilight">asset</span>,
               sited quietly.
             </h2>
             <p className="lead-prose mt-10 max-w-md text-ink-200">

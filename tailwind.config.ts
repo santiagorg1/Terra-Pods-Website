@@ -43,6 +43,16 @@ const config: Config = {
           DEFAULT: "#a85a3c",
           deep: "#5a2614",
         },
+        azure: {
+          DEFAULT: "#6f8ba8",
+          soft: "#9bb6cf",
+          deep: "#324a66",
+          glow: "#8fb6dd",
+        },
+        lapis: {
+          DEFAULT: "#3f5d80",
+          deep: "#1c2c44",
+        },
       },
       fontFamily: {
         sans: [
@@ -81,13 +91,15 @@ const config: Config = {
       },
       backgroundImage: {
         "radial-glow":
-          "radial-gradient(ellipse at top, rgba(201,168,106,0.22), transparent 60%)",
+          "radial-gradient(ellipse 80% 60% at 30% 0%, rgba(201,168,106,0.22), transparent 65%), radial-gradient(ellipse 70% 60% at 80% 30%, rgba(143,182,221,0.14), transparent 60%)",
         "radial-fade":
           "radial-gradient(ellipse at center, rgba(255,255,255,0.06), transparent 70%)",
         "warm-night":
-          "linear-gradient(180deg, rgba(201,168,106,0.10) 0%, rgba(168,90,60,0.04) 30%, rgba(5,6,7,1) 100%)",
+          "linear-gradient(180deg, rgba(201,168,106,0.10) 0%, rgba(143,182,221,0.06) 35%, rgba(5,6,7,1) 100%)",
         "ember-glow":
-          "radial-gradient(ellipse at 50% 0%, rgba(217,191,142,0.18), transparent 55%), radial-gradient(ellipse at 50% 100%, rgba(168,90,60,0.10), transparent 60%)",
+          "radial-gradient(ellipse at 30% 0%, rgba(217,191,142,0.18), transparent 55%), radial-gradient(ellipse at 75% 100%, rgba(143,182,221,0.10), transparent 60%)",
+        "azure-glow":
+          "radial-gradient(ellipse at 40% 0%, rgba(143,182,221,0.16), transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(63,93,128,0.14), transparent 65%)",
         "vignette":
           "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.35) 80%, rgba(0,0,0,0.7) 100%)",
         grain:
