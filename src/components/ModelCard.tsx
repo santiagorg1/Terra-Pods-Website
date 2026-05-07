@@ -15,25 +15,30 @@ export default function ModelCard({ model }: { model: Model }) {
       whileHover="hover"
       initial="rest"
       animate="rest"
-      className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] transition-colors duration-500 hover:border-accent/40"
+      className="group relative h-full overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent transition-all duration-700 ease-cinema hover:border-accent/40 hover:shadow-[0_40px_120px_-40px_rgba(217,191,142,0.25)]"
     >
       <Link href={`/models/${model.slug}`} className="block h-full">
-        {/* Silhouette panel */}
-        <div className="relative aspect-[16/9] overflow-hidden border-b border-white/5 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.04),transparent_70%)]">
-          {/* subtle architectural grid */}
-          <svg className="absolute inset-0 h-full w-full opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id={`card-grid-${model.slug}`} width="32" height="32" patternUnits="userSpaceOnUse">
-                <path d="M 32 0 L 0 0 0 32" fill="none" stroke="currentColor" strokeWidth="1" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill={`url(#card-grid-${model.slug})`} />
-          </svg>
+        {/* Stage */}
+        <div className="relative aspect-[16/10] overflow-hidden border-b border-white/[0.06]">
+          {/* Atmospheric glow */}
+          <motion.div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background: `radial-gradient(ellipse at center, ${seriesData.accent}1f, transparent 65%)`,
+            }}
+            variants={{
+              rest: { opacity: 0.6 },
+              hover: { opacity: 1 },
+            }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          />
+          <div className="pointer-events-none absolute inset-0 bg-vignette" />
 
           <motion.div
-            variants={{ rest: { scale: 0.98 }, hover: { scale: 1.02 } }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative flex h-full w-full items-center justify-center p-8"
+            variants={{ rest: { scale: 1, y: 0 }, hover: { scale: 1.04, y: -6 } }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="relative flex h-full w-full items-center justify-center p-10"
           >
             <PodSilhouette
               variant={model.silhouette}
@@ -42,55 +47,56 @@ export default function ModelCard({ model }: { model: Model }) {
             />
           </motion.div>
 
-          {/* badges */}
-          <div className="absolute left-5 right-5 top-5 flex items-start justify-between">
-            <span className="rounded-full border border-white/15 bg-ink-950/60 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-ink-100 backdrop-blur-md">
+          <div className="absolute left-6 right-6 top-6 flex items-start justify-between">
+            <span className="text-[10px] uppercase tracking-[0.32em] text-ink-300">
               {model.series}
             </span>
             {model.badge && (
-              <span className="rounded-full border border-accent/40 bg-accent/15 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-accent backdrop-blur-md">
+              <span className="rounded-full border border-accent/40 bg-accent/15 px-3 py-1 text-[10px] uppercase tracking-[0.28em] text-accent backdrop-blur-md">
                 {model.badge}
               </span>
             )}
           </div>
         </div>
 
-        {/* Content */}
-        <div className="p-7 sm:p-8">
+        {/* Caption */}
+        <div className="p-8">
           <div className="flex items-baseline justify-between gap-4">
             <div>
-              <div className="text-[10px] uppercase tracking-[0.22em] text-ink-400">{model.tagline}</div>
-              <h3 className="mt-1 font-display text-3xl text-white">{model.short}</h3>
+              <span
+                className="font-display text-[2.5rem] leading-none tracking-cinema"
+                style={{ color: seriesData.accent }}
+              >
+                {model.short}
+              </span>
+              <div className="mt-2 text-[10px] uppercase tracking-[0.32em] text-ink-400">
+                {model.tagline}
+              </div>
             </div>
             <div className="text-right">
-              <div className="text-[10px] uppercase tracking-[0.22em] text-ink-400">From</div>
-              <div className="font-display text-2xl text-accent">{formatUSD(model.startingPrice)}</div>
-            </div>
-          </div>
-
-          <div className="mt-6 grid grid-cols-3 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/5">
-            {[
-              ["Area", model.area],
-              ["Guests", model.guests],
-              ["Lead", model.delivery],
-            ].map(([k, v]) => (
-              <div key={k} className="bg-ink-950 px-3 py-3 text-center">
-                <div className="text-[9px] uppercase tracking-[0.22em] text-ink-400">{k}</div>
-                <div className="mt-1 text-xs font-medium text-white">{v}</div>
+              <div className="text-[10px] uppercase tracking-[0.28em] text-ink-500">From</div>
+              <div className="mt-1 font-display text-2xl text-accent">
+                {formatUSD(model.startingPrice)}
               </div>
-            ))}
+            </div>
           </div>
 
-          <p className="mt-6 line-clamp-3 text-sm leading-relaxed text-ink-300">{model.description}</p>
+          <p className="mt-6 line-clamp-3 text-sm leading-relaxed text-ink-300">
+            {model.description}
+          </p>
 
-          <div className="mt-6 flex items-center justify-between border-t border-white/5 pt-5">
-            <div className="flex items-center gap-2 text-xs text-ink-400">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              <span>{model.finish}</span>
+          <div className="mt-8 flex items-center justify-between border-t border-white/5 pt-6">
+            <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.28em] text-ink-400">
+              <span>{model.area}</span>
+              <span className="h-3 w-px bg-white/15" />
+              <span>{model.guests}</span>
             </div>
-            <span className="btn-link">
-              View model{" "}
-              <motion.span variants={{ rest: { x: 0 }, hover: { x: 4 } }} transition={{ duration: 0.4 }}>
+            <span className="btn-link-luxury">
+              View{" "}
+              <motion.span
+                variants={{ rest: { x: 0 }, hover: { x: 6 } }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              >
                 →
               </motion.span>
             </span>

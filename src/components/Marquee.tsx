@@ -1,23 +1,20 @@
 import { models } from "@/lib/data";
 
 export default function Marquee() {
-  const items = models.map((m) => m.name.replace("Terra Pod ", ""));
+  const items = models.map((m) => m.short);
   const doubled = [...items, ...items];
 
   return (
-    <div className="relative overflow-hidden border-y border-white/5 py-10">
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-ink-950 to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-ink-950 to-transparent" />
-      <div className="flex w-max animate-marquee items-center gap-12 whitespace-nowrap">
+    <div className="relative overflow-hidden border-y border-white/5 bg-ink-950/40 py-12 backdrop-blur-md">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-40 bg-gradient-to-r from-ink-950 to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-40 bg-gradient-to-l from-ink-950 to-transparent" />
+      <div className="flex w-max animate-marquee items-center gap-16 whitespace-nowrap">
         {doubled.map((item, i) => (
-          <span
-            key={i}
-            className="flex items-center gap-12"
-          >
-            <span className="font-display text-2xl font-light tracking-wide text-ink-300">
+          <span key={i} className="flex items-center gap-16">
+            <span className="font-display italic text-2xl font-light tracking-cinema text-ink-300/80">
               {item}
             </span>
-            <span className="h-1.5 w-1.5 rounded-full bg-accent/60" />
+            <span className="block h-px w-10 bg-accent/40" />
           </span>
         ))}
       </div>

@@ -16,65 +16,70 @@ export default function GalleryPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Catalog Index"
+        eyebrow="The catalog"
         title={
           <>
-            The 2028 collection, <span className="text-gold">at a glance.</span>
+            The 2028 collection,
+            <br />
+            <span className="display-italic text-gold">at a glance.</span>
           </>
         }
-        subtitle="Every model, organized by series — with elevation, footprint, capacity, finish, and starting price. Open any line to step into the model."
+        subtitle="Every model, organized by series. Footprint, capacity, finish, lead time, starting price — open any line to step into the model."
       />
 
-      <section className="container-pod py-20 sm:py-24">
-        <div className="space-y-24">
+      <section className="container-pod py-20 sm:py-28">
+        <div className="space-y-32 sm:space-y-44">
           {series.map((s) => {
             const items = models.filter((m) => m.seriesSlug === s.slug);
             return (
-              <div key={s.slug}>
+              <div key={s.slug} className="scene relative">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -left-24 top-1/3 h-[60vh] w-[60vh] rounded-full blur-[100px]"
+                  style={{ backgroundColor: `${s.accent}10` }}
+                />
+
                 <Reveal>
-                  <div className="grid items-end gap-6 border-b border-white/5 pb-6 lg:grid-cols-12">
+                  <div className="relative grid items-end gap-10 border-b border-white/5 pb-10 lg:grid-cols-12">
                     <div className="lg:col-span-7">
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-6">
                         <span
-                          className="inline-flex h-12 w-12 items-center justify-center rounded-full border font-display text-base"
-                          style={{ borderColor: `${s.accent}55`, color: s.accent }}
+                          className="font-display text-[clamp(3rem,6vw,5rem)] leading-none tracking-cinema"
+                          style={{ color: s.accent }}
                         >
                           {s.shortCode}
                         </span>
-                        <span className="text-[11px] uppercase tracking-[0.24em] text-ink-300">{s.tagline}</span>
+                        <div>
+                          <span className="text-[10px] uppercase tracking-[0.32em] text-ink-300">
+                            {s.tagline}
+                          </span>
+                          <h2 className="mt-3 display-3">{s.name}</h2>
+                        </div>
                       </div>
-                      <h2 className="display-3 mt-5">{s.name}</h2>
-                      <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-300">{s.description}</p>
+                      <p className="lead-prose mt-8 max-w-2xl text-ink-200">
+                        {s.description}
+                      </p>
                     </div>
-                    <div className="flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.22em] text-ink-400 lg:col-span-5 lg:justify-end">
+                    <div className="flex flex-wrap items-center gap-6 text-[10px] uppercase tracking-[0.32em] text-ink-400 lg:col-span-5 lg:justify-end">
                       <span>{items.length} model{items.length === 1 ? "" : "s"}</span>
                       <span className="h-3 w-px bg-white/15" />
-                      <span>From {formatUSD(Math.min(...items.map((m) => m.startingPrice)))}</span>
-                      <Link href={`/models?series=${s.slug}`} className="btn-link">
+                      <span className="text-accent">From {formatUSD(Math.min(...items.map((m) => m.startingPrice)))}</span>
+                      <Link href={`/models?series=${s.slug}`} className="btn-link-luxury">
                         Browse <span>→</span>
                       </Link>
                     </div>
                   </div>
                 </Reveal>
 
-                {/* Tabular catalog index — typography-first */}
+                {/* Editorial table — no grid borders, just rules */}
                 <Reveal delay={0.05}>
-                  <div className="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]">
-                    <div className="hidden grid-cols-[120px_1.5fr_1fr_1fr_1fr_1fr_auto] gap-6 border-b border-white/5 px-6 py-4 text-[10px] uppercase tracking-[0.22em] text-ink-500 lg:grid">
-                      <div>Model</div>
-                      <div>Designation</div>
-                      <div>Area</div>
-                      <div>Guests</div>
-                      <div>Lead</div>
-                      <div>Finish</div>
-                      <div className="text-right">From</div>
-                    </div>
+                  <div className="relative mt-12">
                     <ul>
-                      {items.map((m) => (
-                        <li key={m.slug} className="border-b border-white/5 last:border-0">
+                      {items.map((m, i) => (
+                        <li key={m.slug} className={`group ${i === 0 ? "" : "border-t border-white/5"}`}>
                           <Link
                             href={`/models/${m.slug}`}
-                            className="group grid items-center gap-x-6 gap-y-3 px-6 py-6 transition-colors hover:bg-white/[0.02] lg:grid-cols-[120px_1.5fr_1fr_1fr_1fr_1fr_auto]"
+                            className="grid items-center gap-x-8 gap-y-3 py-8 transition-colors duration-700 ease-cinema hover:bg-white/[0.015] sm:py-10 lg:grid-cols-[120px_1.5fr_1fr_1fr_1fr_1fr_auto]"
                           >
                             <div className="aspect-[2/1] w-[120px]">
                               <PodSilhouette
@@ -86,30 +91,35 @@ export default function GalleryPage() {
                               />
                             </div>
                             <div>
-                              <div className="font-display text-2xl text-white">{m.short}</div>
-                              <div className="mt-0.5 text-[11px] uppercase tracking-[0.22em] text-ink-400">
+                              <span
+                                className="font-display text-3xl tracking-cinema"
+                                style={{ color: s.accent }}
+                              >
+                                {m.short}
+                              </span>
+                              <div className="mt-2 text-[10px] uppercase tracking-[0.32em] text-ink-400">
                                 {m.tagline}
                               </div>
                             </div>
                             <div className="text-sm text-ink-200">
-                              <span className="lg:hidden text-[10px] uppercase tracking-[0.22em] text-ink-500">Area · </span>
+                              <span className="text-[10px] uppercase tracking-[0.28em] text-ink-500 lg:hidden">Area · </span>
                               {m.area}
                             </div>
                             <div className="text-sm text-ink-200">
-                              <span className="lg:hidden text-[10px] uppercase tracking-[0.22em] text-ink-500">Guests · </span>
+                              <span className="text-[10px] uppercase tracking-[0.28em] text-ink-500 lg:hidden">Capacity · </span>
                               {m.guests}
                             </div>
                             <div className="text-sm text-ink-200">
-                              <span className="lg:hidden text-[10px] uppercase tracking-[0.22em] text-ink-500">Lead · </span>
+                              <span className="text-[10px] uppercase tracking-[0.28em] text-ink-500 lg:hidden">Lead · </span>
                               {m.delivery}
                             </div>
                             <div className="text-sm text-ink-200">
-                              <span className="lg:hidden text-[10px] uppercase tracking-[0.22em] text-ink-500">Finish · </span>
+                              <span className="text-[10px] uppercase tracking-[0.28em] text-ink-500 lg:hidden">Finish · </span>
                               {m.finish}
                             </div>
-                            <div className="flex items-baseline gap-3 text-right lg:justify-end">
+                            <div className="flex items-center justify-between gap-4 lg:justify-end">
                               <span className="font-display text-2xl text-accent">{formatUSD(m.startingPrice)}</span>
-                              <span className="text-accent transition-transform group-hover:translate-x-1">→</span>
+                              <span className="text-2xl text-accent transition-transform duration-700 ease-cinema group-hover:translate-x-2">→</span>
                             </div>
                           </Link>
                         </li>
@@ -123,18 +133,20 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      <section className="container-pod py-20">
-        <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent p-10 text-center sm:p-16">
-          <span className="eyebrow mx-auto justify-center">Site visits</span>
-          <h2 className="display-2 mt-5">
-            See a Terra Pod <span className="text-gold">in person.</span>
+      <section className="container-pod py-32 sm:py-44">
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-ink-800 via-ink-900 to-ink-950 p-12 text-center sm:p-20">
+          <div className="pointer-events-none absolute -right-32 -top-32 h-[480px] w-[480px] rounded-full bg-accent/[0.18] blur-[100px]" />
+          <span className="eyebrow-center mx-auto">Site visits</span>
+          <h2 className="display-2 mt-8 text-balance">
+            See a Terra Pod <span className="display-italic text-gold">in person.</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-ink-300">
-            We host private tours at our flagship pavilion in Northern California
+          <p className="lead-prose mx-auto mt-8 max-w-2xl">
+            Private tours at our flagship pavilion in Northern California
             and at select client residences across the West Coast.
           </p>
-          <Link href="/contact" className="btn-primary mt-8">
+          <Link href="/contact" className="btn-luxury mt-12">
             Book a private tour
+            <span>→</span>
           </Link>
         </div>
       </section>
