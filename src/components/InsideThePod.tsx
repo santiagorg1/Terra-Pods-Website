@@ -185,7 +185,8 @@ function InteriorTile({
           src={photo.src}
           alt={photo.alt}
           fill
-          sizes="(min-width: 1024px) 60vw, 100vw"
+          sizes="(min-width: 1280px) 60vw, (min-width: 768px) 80vw, 100vw"
+          quality={92}
           className="object-cover"
           priority={priority}
         />
@@ -314,7 +315,9 @@ function Lightbox({
           alt={photo.alt}
           fill
           sizes="90vw"
+          quality={95}
           className="object-contain"
+          priority
         />
       </motion.div>
 

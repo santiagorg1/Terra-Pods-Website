@@ -3,6 +3,7 @@ import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -78,6 +79,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${display.variable}`}>
       <body className="min-h-screen antialiased">
+        <SmoothScroll />
         <Nav />
         <main className="relative">{children}</main>
         <Footer />

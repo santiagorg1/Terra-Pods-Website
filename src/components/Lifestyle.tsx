@@ -147,7 +147,8 @@ function ChapterImage({
           src={interior.src}
           alt={interior.alt}
           fill
-          sizes="(min-width: 1024px) 60vw, 100vw"
+          sizes="(min-width: 1280px) 58vw, (min-width: 768px) 80vw, 100vw"
+          quality={92}
           className="object-cover"
           priority={index === 0}
         />

@@ -61,7 +61,7 @@ async function processPodRender({ n, slug }) {
 
   const cropped = await sharp(src)
     .extract(POD_CROP)
-    .resize({ width: 1400, withoutEnlargement: true, kernel: "lanczos3" })
+    .resize({ width: 2000, withoutEnlargement: true, kernel: "lanczos3" })
     .ensureAlpha()
     .raw()
     .toBuffer({ resolveWithObject: true });
@@ -183,8 +183,9 @@ async function processInteriors({ n, slug }) {
     const out = path.join(OUT_DIR, `${slug}-interior-${i + 1}.jpg`);
     await sharp(src)
       .extract(tight)
-      .resize({ width: 1600, withoutEnlargement: true, kernel: "lanczos3" })
-      .jpeg({ quality: 86, mozjpeg: true })
+      .resize({ width: 2400, withoutEnlargement: true, kernel: "lanczos3" })
+      .sharpen({ sigma: 0.5, m1: 0.5, m2: 0.5 })
+      .jpeg({ quality: 92, mozjpeg: true, chromaSubsampling: "4:4:4" })
       .toFile(out);
     written.push(out);
   }

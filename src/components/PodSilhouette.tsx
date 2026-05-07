@@ -92,6 +92,7 @@ export default function PodSilhouette({
           alt={`${label} elevation rendering`}
           fill
           sizes={sizes}
+          quality={95}
           className="select-none object-contain"
           priority={priority}
         />
