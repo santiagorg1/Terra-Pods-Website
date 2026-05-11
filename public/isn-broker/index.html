@@ -318,6 +318,9 @@
   .pc .partners .lg{background:#fff;color:#0a2752;border-radius:10px;height:64px;display:grid;place-items:center;font-weight:800;font-size:12px;letter-spacing:.04em;text-align:center;padding:6px;line-height:1.1}
   .pc .partners .lg.dark{background:#0e0e0e;color:#fff}
   .pc .partners .lg.brand{background:linear-gradient(135deg,#0a66ff,#22a2ff);color:#fff}
+  .pc .partners .lg.terrapods{background:linear-gradient(135deg,#0d2616,#1a4d2e);color:#e7f5ec;font-family:'Manrope';letter-spacing:.14em;position:relative;overflow:hidden}
+  .pc .partners .lg.terrapods .tp-mark{position:absolute;left:8px;top:8px;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #8fd4a4, #2f8a52 70%, #16562f);box-shadow:0 0 8px rgba(120,220,160,.4)}
+  .pc .partners .lg.terrapods::after{content:"";position:absolute;right:-10px;bottom:-10px;width:36px;height:36px;border-radius:50%;background:radial-gradient(circle, rgba(143,212,164,.35), transparent 70%)}
 
   /* ---------- 16. Thank you / Ecosystem ---------- */
   .end{position:relative;background:radial-gradient(80% 80% at 70% 30%, rgba(34,162,255,.25), transparent 60%),linear-gradient(135deg,#08213f,#0a4fbf 90%);color:#fff;overflow:hidden}
@@ -332,11 +335,14 @@
   .node .dot{width:10px;height:10px;border-radius:999px;background:var(--brand)}
   .node.dark{background:#0e0e0e;color:#fff}
   .node.brand{background:linear-gradient(135deg,#0a66ff,#22a2ff);color:#fff}
-  .node.n1{left:0;top:20%}
-  .node.n2{left:40%;top:0%}
-  .node.n3{right:0;top:20%}
-  .node.n4{left:18%;bottom:6%}
-  .node.n5{right:18%;bottom:6%}
+  .node.n1{left:0;top:18%}
+  .node.n2{left:40%;top:-2%}
+  .node.n3{right:0;top:18%}
+  .node.n4{left:14%;bottom:10%}
+  .node.n5{right:14%;bottom:10%}
+  .node.n6{left:50%;transform:translateX(-50%);bottom:-2%}
+  .node.terrapods{background:linear-gradient(135deg,#0d2616,#1a4d2e);color:#e7f5ec;font-family:'Manrope';letter-spacing:.12em}
+  .node.terrapods .dot{background:radial-gradient(circle at 30% 30%, #8fd4a4, #2f8a52 70%);box-shadow:0 0 10px rgba(143,212,164,.5)}
   .links{position:absolute;inset:0;pointer-events:none}
 
   /* Print / large-screen tweaks */
@@ -1132,7 +1138,7 @@
         <div class="lg">Santiago<br/>Forwarding</div>
         <div class="lg">CSI</div>
         <div class="lg brand">SNC</div>
-        <div class="lg">+ More</div>
+        <div class="lg terrapods"><span class="tp-mark"></span>TERRA<br/>PODS</div>
         <div class="lg dark">35 Years<br/>Partnership</div>
       </div>
     </div>
@@ -1162,6 +1168,7 @@
         <div class="node n3 brand">ISN CUSTOMS</div>
         <div class="node n4">DYNSER</div>
         <div class="node n5 brand">PROJECT A</div>
+        <div class="node n6 terrapods"><span class="dot"></span> TERRA PODS</div>
       </div>
     </div>
     <div class="pageno">16 / 16</div>
