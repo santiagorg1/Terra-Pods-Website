@@ -1,0 +1,1222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ISN Customs Broker — Company Profile</title>
+<meta name="description" content="ISN Customs Broker — Company Profile. C-TPAT certified customs broker, freight forwarder and logistics partner on the US–Mexico border." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0b1a36;
+    --ink-2:#10254a;
+    --brand:#0a84ff;
+    --brand-2:#0066ff;
+    --brand-3:#22a2ff;
+    --sky:#dbeeff;
+    --sky-2:#eaf4ff;
+    --paper:#f7fbff;
+    --line:rgba(11,26,54,.08);
+    --line-2:rgba(11,26,54,.14);
+    --muted:#445877;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#06122a;color:var(--ink);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  body{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:32px 16px 96px}
+  h1,h2,h3,h4{font-family:'Manrope','Inter',sans-serif;letter-spacing:-.02em;margin:0}
+  p{margin:0;line-height:1.6}
+
+  /* ---------- Top toolbar ---------- */
+  .toolbar{position:fixed;inset:auto 0 16px 0;display:flex;justify-content:center;z-index:50;pointer-events:none}
+  .toolbar .pill{pointer-events:auto;display:inline-flex;align-items:center;gap:10px;background:rgba(8,18,40,.78);backdrop-filter:blur(10px);color:#cfe1ff;border:1px solid rgba(255,255,255,.08);padding:8px 12px;border-radius:999px;font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  .toolbar button{appearance:none;border:0;background:rgba(255,255,255,.06);color:#eaf2ff;width:30px;height:30px;border-radius:999px;cursor:pointer;font-size:14px;display:inline-flex;align-items:center;justify-content:center;transition:.15s}
+  .toolbar button:hover{background:rgba(255,255,255,.14)}
+  .toolbar .count{min-width:56px;text-align:center;font-variant-numeric:tabular-nums;color:#9ec2ff}
+  .toolbar .hint{opacity:.6;font-size:12px;margin-left:6px}
+
+  /* ---------- Slide frame ---------- */
+  .deck{width:min(1280px,100%);display:flex;flex-direction:column;gap:28px}
+  .slide{
+    position:relative;width:100%;aspect-ratio:16/9;border-radius:22px;overflow:hidden;
+    background:var(--white);box-shadow:0 30px 80px rgba(0,0,0,.35), 0 4px 12px rgba(0,0,0,.25);
+    isolation:isolate;
+  }
+  .slide .pageno{position:absolute;right:24px;bottom:18px;color:rgba(11,26,54,.45);font-size:12px;letter-spacing:.1em;font-weight:600}
+  .slide.dark .pageno{color:rgba(255,255,255,.55)}
+  .slide .crumb{position:absolute;left:28px;bottom:18px;font-size:12px;color:rgba(11,26,54,.55);letter-spacing:.08em}
+  .slide .crumb b{color:var(--brand-2);font-weight:700}
+  .slide.dark .crumb{color:rgba(255,255,255,.6)}
+  .slide.dark .crumb b{color:#9fd0ff}
+
+  /* Brand mark */
+  .brand{display:inline-flex;align-items:center;gap:10px}
+  .brand .mark{width:42px;height:42px;border-radius:10px;background:radial-gradient(120% 120% at 0% 0%,#3aa9ff 0%,#0a66ff 60%);display:grid;place-items:center;color:#fff;font-weight:800;font-family:'Manrope';box-shadow:0 8px 20px rgba(10,102,255,.35)}
+  .brand .mark svg{width:24px;height:24px}
+  .brand .name{font-family:'Manrope';font-weight:800;color:#0a2752;letter-spacing:.02em;line-height:1}
+  .brand .name small{display:block;font-size:9px;letter-spacing:.32em;color:#6b86b3;font-weight:700;margin-top:4px}
+  .slide.dark .brand .name{color:#fff}
+  .slide.dark .brand .name small{color:#a9c8ff}
+
+  /* Common bits */
+  .eyebrow{display:inline-block;padding:6px 12px;border-radius:999px;background:rgba(10,132,255,.1);color:var(--brand-2);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+  .slide.dark .eyebrow{background:rgba(255,255,255,.12);color:#cde6ff}
+
+  /* ---------- 1. Cover ---------- */
+  .cover{
+    background:
+      radial-gradient(80% 90% at 90% 10%, rgba(10,132,255,.18) 0%, transparent 60%),
+      radial-gradient(80% 90% at 10% 90%, rgba(34,162,255,.12) 0%, transparent 60%),
+      linear-gradient(180deg,#eaf4ff 0%, #ffffff 70%);
+  }
+  .cover .grid{position:absolute;inset:0;opacity:.4;background-image:linear-gradient(rgba(10,102,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(10,102,255,.08) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(60% 60% at 70% 50%,#000 30%,transparent 80%)}
+  .cover-inner{position:absolute;inset:0;padding:64px 72px;display:grid;grid-template-columns:1.05fr 1fr;gap:24px;align-items:center}
+  .cover h1{font-size:96px;line-height:.98;color:#0a2752;font-weight:800}
+  .cover h1 span{color:var(--brand-2)}
+  .cover .tag{margin-top:18px;display:inline-flex;align-items:center;gap:10px;background:var(--brand-2);color:#fff;padding:10px 16px;border-radius:8px;font-weight:700;letter-spacing:.28em;font-size:12px}
+  .cover .sub{margin-top:22px;color:#3d557b;max-width:480px;font-size:16px}
+  .cover .badges{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap}
+  .cover .badges .b{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);color:#0a2752;padding:8px 12px;border-radius:999px;font-size:12px;font-weight:600;box-shadow:0 6px 16px rgba(11,26,54,.06)}
+  .cover .badges .b .dot{width:8px;height:8px;border-radius:999px;background:var(--brand-2)}
+  .globe{position:relative;width:100%;aspect-ratio:1;max-width:520px;margin-left:auto}
+  .globe .ring{position:absolute;inset:8% 8%;border-radius:50%;background:
+    radial-gradient(60% 60% at 30% 30%,#bcdcff 0%, #3a8dff 45%, #0a4fbf 80%);
+    box-shadow:inset -20px -30px 60px rgba(0,30,90,.55), 0 30px 80px rgba(10,102,255,.35)}
+  .globe .ring::after{content:"";position:absolute;inset:6%;border-radius:50%;background:
+    radial-gradient(40% 40% at 70% 25%, rgba(255,255,255,.55), transparent 60%),
+    repeating-linear-gradient(90deg, transparent 0 14px, rgba(255,255,255,.18) 14px 15px),
+    repeating-linear-gradient(0deg, transparent 0 14px, rgba(255,255,255,.18) 14px 15px);
+    mix-blend-mode:screen;mask-image:radial-gradient(closest-side,#000 65%, transparent 75%)}
+  .box{position:absolute;background:linear-gradient(180deg,#d39256,#a96a36);border-radius:6px;box-shadow:0 14px 22px rgba(0,0,0,.18);transform:rotate(var(--r,0deg))}
+  .box::before{content:"";position:absolute;inset:0;border:1px solid rgba(0,0,0,.18);border-radius:6px}
+  .box::after{content:"";position:absolute;left:10%;right:10%;top:48%;height:18%;border-top:1px dashed rgba(0,0,0,.25);border-bottom:1px dashed rgba(0,0,0,.25)}
+  .box .lbl{position:absolute;left:10%;top:14%;width:30%;height:22%;background:#fff8e8;border:1px solid rgba(0,0,0,.15);border-radius:2px}
+  .globe .b1{width:22%;height:18%;left:-2%;top:36%;--r:-8deg}
+  .globe .b2{width:24%;height:20%;left:10%;top:62%;--r:6deg}
+  .globe .b3{width:20%;height:16%;left:34%;top:78%;--r:-3deg}
+  .globe .b4{width:22%;height:18%;right:6%;top:62%;--r:5deg}
+  .globe .b5{width:18%;height:14%;right:-2%;top:42%;--r:-6deg}
+  .globe .b6{width:24%;height:20%;right:20%;top:18%;--r:4deg}
+  .globe .b7{width:20%;height:16%;left:28%;top:6%;--r:-4deg}
+  .cover .topbar{position:absolute;left:0;right:0;top:0;height:10px;background:var(--brand)}
+  .cover .brand{position:absolute;left:64px;top:42px}
+
+  /* ---------- Section: standard layout ---------- */
+  .pad{padding:56px 64px}
+  .topstripe{position:absolute;left:0;right:0;top:0;height:38px;background:var(--brand)}
+  .topstripe .brand{position:absolute;left:28px;top:50%;transform:translateY(-50%)}
+  .topstripe .brand .name{color:#fff}
+  .topstripe .brand .name small{color:#cde6ff}
+
+  /* ---------- 2. About ---------- */
+  .about{display:grid;grid-template-columns:1fr 1.05fr;gap:0}
+  .about .visual{position:relative;background:
+    radial-gradient(60% 60% at 30% 30%, rgba(10,102,255,.25), transparent 70%),
+    linear-gradient(135deg,#0a2752,#0a66ff 90%);
+    overflow:hidden}
+  .about .visual::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:36px 36px;mask-image:radial-gradient(60% 60% at 30% 60%,#000 0%,transparent 80%)}
+  .containers{position:absolute;inset:0;display:grid;place-items:center}
+  .stack{position:relative;width:60%;aspect-ratio:1.4/1}
+  .ctn{position:absolute;border-radius:6px;box-shadow:0 14px 30px rgba(0,0,0,.35);background:linear-gradient(180deg,var(--c1,#e54040),var(--c2,#9d1f1f));border:1px solid rgba(0,0,0,.25)}
+  .ctn::before,.ctn::after{content:"";position:absolute;left:6%;right:6%;height:8%;background:rgba(0,0,0,.15);border-radius:2px}
+  .ctn::before{top:18%}
+  .ctn::after{bottom:18%}
+  .ctn.r{--c1:#e54040;--c2:#a51d1d}
+  .ctn.b{--c1:#3a8dff;--c2:#0a4fbf}
+  .ctn.w{--c1:#f3f5f7;--c2:#cdd5df;border-color:#9aa6b6}
+  .ctn.w::before,.ctn.w::after{background:rgba(0,0,0,.08)}
+  .stack .c1{left:0;bottom:0;width:60%;height:28%}
+  .stack .c2{left:20%;bottom:28%;width:60%;height:28%}
+  .stack .c3{left:8%;bottom:56%;width:60%;height:28%}
+  .stack .c4{right:0;bottom:14%;width:42%;height:24%}
+  .about .copy{padding:84px 60px 64px 56px;background:#fff;position:relative}
+  .about h2{font-size:80px;color:#0a2752;line-height:1}
+  .about .body{margin-top:24px;color:#3d557b;font-size:16px;max-width:560px}
+  .about .body b{color:var(--brand-2)}
+  .stat-row{margin-top:36px;display:flex;gap:24px}
+  .stat{flex:1;border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:linear-gradient(180deg,#fff,#f5faff)}
+  .stat .n{font-family:'Manrope';font-weight:800;font-size:28px;color:#0a2752}
+  .stat .l{font-size:11px;letter-spacing:.18em;color:#5b76a0;text-transform:uppercase;font-weight:600;margin-top:2px}
+
+  /* ---------- 3. Office Location ---------- */
+  .office{display:grid;grid-template-columns:1.1fr 1fr;gap:0;background:#fff}
+  .office .left{padding:96px 64px}
+  .office h2{font-size:78px;color:#0a2752;line-height:.95}
+  .office .card{margin-top:28px;background:#f7fbff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;color:#3d557b;max-width:520px}
+  .office .card b{color:var(--brand-2);font-weight:800}
+  .office .right{position:relative;background:linear-gradient(180deg,#f3f8ff,#e1ecff)}
+  .pin{position:absolute;left:50%;top:50%;transform:translate(-50%,-55%);width:62%;aspect-ratio:.78;filter:drop-shadow(0 30px 30px rgba(120,0,0,.28))}
+  .pin .head{position:absolute;left:0;right:0;top:0;height:78%;border-radius:50%;background:radial-gradient(60% 60% at 35% 30%,#ff6a6a,#c81d1d 70%, #8d0e0e);}
+  .pin .tail{position:absolute;left:18%;right:18%;top:60%;height:50%;background:radial-gradient(60% 60% at 50% 0%,#ff6a6a,#c81d1d 60%,#7a0c0c);clip-path:polygon(0 0,100% 0,50% 100%);}
+  .pin .flag{position:absolute;left:18%;right:18%;top:14%;bottom:30%;border-radius:50%;background:#fff;overflow:hidden;border:6px solid #fff;box-shadow:inset 0 0 0 2px rgba(0,0,0,.05)}
+  .pin .flag .stripes{position:absolute;inset:0;background:repeating-linear-gradient(180deg,#b22234 0 8.33%, #fff 8.33% 16.66%)}
+  .pin .flag .canton{position:absolute;left:0;top:0;width:46%;height:53%;background:#3c3b6e;display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:1fr;padding:6%;gap:3%}
+  .pin .flag .canton i{display:block;background:radial-gradient(circle,#fff 40%, transparent 50%);}
+  .office .ribbon{position:absolute;left:0;top:0;width:36%;height:42px;background:var(--brand)}
+
+  /* ---------- 4. Vision / Mission ---------- */
+  .vision{
+    background:
+      radial-gradient(80% 80% at 100% 0%, rgba(255,255,255,.16) 0%, transparent 50%),
+      linear-gradient(135deg,#0a2dff 0%, #073fbb 40%, #0a2752 100%);
+    color:#fff;
+  }
+  .vision .pad{height:100%;display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+  .vision .bg{position:absolute;inset:0;opacity:.16;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(60% 80% at 70% 50%,#000 20%, transparent 90%)}
+  .vision h2{font-size:64px;line-height:1;font-weight:800;color:#fff}
+  .vision .lede{margin-top:14px;max-width:560px;color:#d6e6ff;font-size:14.5px}
+  .vision .panels{display:grid;gap:24px}
+  .vision .p{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:22px 24px;backdrop-filter:blur(6px)}
+  .vision .p .ttl{display:flex;align-items:center;gap:10px;color:#a4c8ff;font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:12px}
+  .vision .p .ttl .ic{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;color:#fff}
+  .vision .p h3{margin-top:8px;font-size:32px}
+  .vision .p p{margin-top:8px;color:#dbe7ff;font-size:14px}
+
+  /* ---------- 5. Our Services ---------- */
+  .services{background:linear-gradient(180deg,#e9f3ff 0%, #d6eaff 100%)}
+  .services .head{position:absolute;left:0;right:0;top:0;height:160px;background:
+    radial-gradient(120% 120% at 50% -10%, rgba(255,255,255,.7), transparent 70%),
+    linear-gradient(180deg, var(--brand) 0%, var(--brand-2) 100%);
+    display:grid;place-items:center;color:#fff}
+  .services h2{position:relative;top:46px;font-size:64px;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.18)}
+  .services .cards{position:absolute;left:64px;right:64px;top:220px;bottom:80px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .svc{position:relative;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 22px 40px rgba(11,26,54,.18);display:flex;flex-direction:column}
+  .svc .art{flex:1;position:relative;background:linear-gradient(135deg,#0a4fbf,#0a84ff);}
+  .svc.s1 .art{background:linear-gradient(135deg,#0b3d7a,#1f7adb)}
+  .svc.s2 .art{background:linear-gradient(135deg,#0a2752,#0a66ff)}
+  .svc.s3 .art{background:linear-gradient(135deg,#0a4fbf,#22a2ff)}
+  .svc .art svg{position:absolute;inset:0;width:100%;height:100%}
+  .svc .label{background:var(--brand);color:#fff;text-align:center;font-weight:800;letter-spacing:.18em;font-size:12px;padding:14px}
+
+  /* ---------- 6. Freight Forwarder ---------- */
+  .ff{display:grid;grid-template-columns:1fr 1.1fr;gap:0}
+  .ff .gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:6px;padding:24px;background:linear-gradient(180deg,#dceaff,#f3f8ff)}
+  .tile{border-radius:14px;background:linear-gradient(135deg,#0a4fbf,#0a84ff);position:relative;overflow:hidden;box-shadow:0 10px 24px rgba(11,26,54,.18)}
+  .tile.span2{grid-column:1 / -1}
+  .tile svg{position:absolute;inset:0;width:100%;height:100%}
+  .ff .right{padding:64px 60px;background:#fff;position:relative}
+  .ff .banner{display:inline-block;background:var(--brand);color:#fff;padding:12px 18px;border-radius:8px;font-size:13px;letter-spacing:.18em;font-weight:700;text-transform:uppercase}
+  .ff h2{margin-top:14px;font-size:72px;color:#0a2752;line-height:.95}
+  .ff ul{margin-top:24px;padding:0;list-style:none;display:grid;gap:10px}
+  .ff li{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;color:#1f3458;font-weight:500}
+  .ff li .dot{width:8px;height:8px;border-radius:999px;background:var(--brand)}
+  .ff li .ic{margin-left:auto;color:var(--brand-2);opacity:.7}
+
+  /* ---------- 7. Customs Broker ---------- */
+  .cb{display:grid;grid-template-columns:1.1fr 1fr;gap:0;background:#fff}
+  .cb .left{padding:64px 60px;position:relative}
+  .cb .left::before{content:"";position:absolute;left:0;top:0;width:60%;height:28px;background:var(--brand)}
+  .cb h2{margin-top:24px;font-size:72px;color:#0a2752;line-height:.95}
+  .cb ul{margin-top:24px;padding:0;list-style:none;display:grid;gap:10px}
+  .cb li{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,#fff,#f5faff);color:#1f3458;font-weight:500;font-size:14px}
+  .cb li b{color:var(--brand-2);font-weight:700;margin-right:6px}
+  .cb .photo{position:relative;background:linear-gradient(180deg,#dceaff,#f3f8ff);overflow:hidden}
+  .cb .photo svg{position:absolute;inset:0;width:100%;height:100%}
+
+  /* ---------- 8. Logistics ---------- */
+  .lg{display:grid;grid-template-rows:1.05fr 1fr;gap:0;background:#fff}
+  .lg .photo{position:relative;background:linear-gradient(180deg,#08234c,#0a4fbf);overflow:hidden}
+  .lg .photo svg{position:absolute;inset:0;width:100%;height:100%}
+  .lg .bottom{display:grid;grid-template-columns:1.2fr 1fr;gap:0;align-items:stretch}
+  .lg .pills{padding:34px 60px;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:center}
+  .lg .pills div{padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;font-weight:600;color:#1f3458;display:flex;align-items:center;gap:10px;font-size:14px}
+  .lg .pills div::before{content:"";width:8px;height:8px;border-radius:999px;background:var(--brand)}
+  .lg .title{background:var(--brand);color:#fff;display:grid;place-items:center;padding:24px;text-align:center}
+  .lg .title h2{font-size:64px;line-height:1;font-family:'Manrope';font-weight:800}
+
+  /* ---------- 9. Why ISN Stands Out ---------- */
+  .why{display:grid;grid-template-columns:1.05fr 1fr;gap:0;background:#fff}
+  .why .left{padding:64px 56px}
+  .why .left h2{font-size:66px;color:#0a2752;line-height:.95}
+  .why .left h2 span{color:var(--brand-2)}
+  .why .left p{margin-top:16px;color:#3d557b;font-size:14.5px;max-width:520px}
+  .why .grid{padding:64px 56px 56px 8px;display:grid;grid-template-columns:1fr 1fr;gap:18px;align-content:center}
+  .why .it{padding:14px 0;border-top:1px solid var(--line)}
+  .why .it h4{color:var(--brand-2);font-size:14px;letter-spacing:.02em}
+  .why .it p{margin-top:6px;color:#3d557b;font-size:12.5px;line-height:1.5}
+  .why .right-art{position:relative;background:linear-gradient(135deg,#08234c,#0a66ff);overflow:hidden}
+  .why .right-art svg{position:absolute;inset:0;width:100%;height:100%}
+
+  /* ---------- 10. Value-Added Services ---------- */
+  .vas{display:grid;grid-template-columns:1.05fr 1fr;background:#fff}
+  .vas .left{padding:64px 56px}
+  .vas h2{font-size:72px;color:var(--brand-2);line-height:.95}
+  .vas .lede{margin-top:14px;color:#3d557b;max-width:480px;font-size:14.5px}
+  .vas .grid{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .vas .t{padding:18px;border-radius:14px;font-weight:700;color:#0a2752;background:#f3f8ff;border:1px solid var(--line);min-height:96px;display:flex;align-items:center;font-size:13.5px;line-height:1.35}
+  .vas .t.fill{background:linear-gradient(135deg,#1289ff,#0a66ff);color:#fff;border:0;box-shadow:0 14px 24px rgba(10,102,255,.25)}
+  .vas .right{position:relative;background:linear-gradient(180deg,#0a4fbf,#22a2ff)}
+  .vas .right svg{position:absolute;inset:0;width:100%;height:100%}
+
+  /* ---------- 11. Bonded Yard ---------- */
+  .by{position:relative;background:#fff;padding:48px 56px;display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
+  .by h2{font-size:64px;color:var(--brand-2);line-height:.95;text-align:right}
+  .by .gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px}
+  .by .gallery div{border-radius:12px;overflow:hidden;position:relative}
+  .by .gallery div svg{position:absolute;inset:0;width:100%;height:100%}
+  .by .right{display:grid;grid-template-rows:auto 1fr;gap:14px;align-content:end}
+  .by .right .photo{border-radius:14px;overflow:hidden;position:relative;background:#0a2752}
+  .by .right .photo svg{position:absolute;inset:0;width:100%;height:100%}
+
+  /* ---------- 12. Bonded Warehouse ---------- */
+  .bw{position:relative;background:#fff;padding:48px 56px;display:grid;grid-template-columns:1fr 1.4fr;gap:24px;align-items:end}
+  .bw h2{font-size:64px;color:var(--brand-2);line-height:.95}
+  .bw .photo{border-radius:14px;overflow:hidden;position:relative;height:100%}
+  .bw .photo svg{position:absolute;inset:0;width:100%;height:100%}
+  .bw .left{display:grid;grid-template-rows:auto 1fr;gap:18px;height:100%}
+
+  /* ---------- 13. Process Diagram ---------- */
+  .proc{background:#fff;position:relative}
+  .proc .ttl{padding:64px 0 12px;text-align:center}
+  .proc h2{font-size:64px;color:var(--brand-2)}
+  .proc .row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:32px 56px 0;position:relative}
+  .proc .step{flex:1;text-align:center;position:relative;padding:14px 6px}
+  .proc .step .card{background:#fff;border:1px solid var(--line);border-radius:14px;width:88px;height:88px;margin:0 auto;display:grid;place-items:center;box-shadow:0 14px 30px rgba(11,26,54,.06)}
+  .proc .step .card svg{width:38px;height:38px;color:var(--brand-2)}
+  .proc .step.up{margin-top:-46px}
+  .proc .step.dn{margin-top:46px}
+  .proc .step h4{margin-top:14px;font-size:12.5px;color:#0a2752;line-height:1.35}
+  .proc .map{position:absolute;inset:0;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'><path fill='%230a84ff' fill-opacity='.06' d='M30,150 q60,-70 140,-30 q70,40 120,-10 q60,-60 140,-10 q60,40 130,0 q40,-30 0,30 q-60,80 -140,40 q-60,-30 -120,10 q-70,50 -150,0 q-60,-40 -120,-10 q-40,20 0,-20z'/></svg>") center/contain no-repeat;opacity:.5;pointer-events:none}
+
+  /* ---------- 14. Service Unit Hexagons ---------- */
+  .su{position:relative;background:#fff}
+  .su .head{background:var(--brand);color:#fff;padding:36px 0;text-align:center}
+  .su .head h2{font-size:54px;font-weight:800;letter-spacing:-.02em}
+  .su .stage{position:absolute;left:0;right:0;top:140px;bottom:60px;display:flex;align-items:center;justify-content:center}
+  .hex-grid{position:relative;width:740px;height:380px}
+  .hx{position:absolute;width:130px;height:150px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);display:grid;place-items:center;color:#fff;text-align:center;padding:10px;font-size:11px;font-weight:700;line-height:1.2}
+  .hx.fill{background:linear-gradient(135deg,#22a2ff,#0a66ff);box-shadow:inset 0 -10px 20px rgba(0,0,0,.15)}
+  .hx.light{background:#eef4ff;color:#0a2752;border:0}
+  .hx .ic{width:36px;height:36px;display:grid;place-items:center;margin-bottom:8px}
+  .hx .ic svg{width:30px;height:30px}
+  /* positions */
+  .hx.p1{left:0;top:115px}
+  .hx.p2{left:97px;top:40px}
+  .hx.p3{left:97px;top:190px}
+  .hx.p4{left:194px;top:115px}
+  .hx.p5{left:291px;top:40px}
+  .hx.p6{left:291px;top:190px}
+  .hx.p7{left:388px;top:115px}
+  .hx.p8{left:485px;top:40px}
+  .hx.p9{left:485px;top:190px}
+  .hx.p10{left:582px;top:115px}
+
+  /* ---------- 15. Partners + Contact ---------- */
+  .pc{position:relative;background:linear-gradient(180deg,#0a2752 0%, #08213f 100%);color:#fff;overflow:hidden}
+  .pc .bg{position:absolute;inset:0;opacity:.12;background-image:radial-gradient(rgba(255,255,255,.4) 1px,transparent 1.5px);background-size:18px 18px}
+  .pc .pad{display:grid;grid-template-columns:1fr 1.3fr;gap:32px;align-items:center;height:100%}
+  .pc h2{color:#fff;font-size:46px;line-height:1.05}
+  .pc .lede{margin-top:10px;color:#bcd3ff;max-width:380px;font-size:14px}
+  .pc .contact{margin-top:22px;display:grid;gap:10px}
+  .pc .row{display:flex;align-items:center;gap:12px;font-size:13.5px}
+  .pc .row .ic{width:30px;height:30px;border-radius:8px;background:var(--brand);display:grid;place-items:center}
+  .pc .ctpat{margin-top:18px;display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0a2752;font-weight:800;letter-spacing:.18em;padding:10px 14px;border-radius:10px;font-size:11px}
+  .pc .ctpat .badge{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0a66ff,#22a2ff);display:grid;place-items:center;color:#fff}
+  .pc .partners{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:18px;backdrop-filter:blur(6px)}
+  .pc .partners .lg{background:#fff;color:#0a2752;border-radius:10px;height:64px;display:grid;place-items:center;font-weight:800;font-size:12px;letter-spacing:.04em;text-align:center;padding:6px;line-height:1.1}
+  .pc .partners .lg.dark{background:#0e0e0e;color:#fff}
+  .pc .partners .lg.brand{background:linear-gradient(135deg,#0a66ff,#22a2ff);color:#fff}
+
+  /* ---------- 16. Thank you / Ecosystem ---------- */
+  .end{position:relative;background:radial-gradient(80% 80% at 70% 30%, rgba(34,162,255,.25), transparent 60%),linear-gradient(135deg,#08213f,#0a4fbf 90%);color:#fff;overflow:hidden}
+  .end .pad{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;height:100%}
+  .end h2{font-size:80px;line-height:.95;font-weight:800}
+  .end h2 span{color:#9fd0ff}
+  .end .lede{margin-top:14px;color:#cfe2ff;max-width:480px}
+  .end .url{margin-top:22px;display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0a2752;font-weight:800;padding:12px 18px;border-radius:999px;letter-spacing:.04em}
+  .end .url .dot{width:8px;height:8px;border-radius:999px;background:var(--brand-2)}
+  .ecosystem{position:relative;width:100%;aspect-ratio:1.1/1;max-width:520px;margin-left:auto}
+  .node{position:absolute;background:#fff;color:#0a2752;border-radius:14px;padding:14px 18px;font-weight:800;letter-spacing:.04em;font-size:14px;box-shadow:0 14px 30px rgba(0,0,0,.25);display:flex;align-items:center;gap:10px}
+  .node .dot{width:10px;height:10px;border-radius:999px;background:var(--brand)}
+  .node.dark{background:#0e0e0e;color:#fff}
+  .node.brand{background:linear-gradient(135deg,#0a66ff,#22a2ff);color:#fff}
+  .node.n1{left:0;top:20%}
+  .node.n2{left:40%;top:0%}
+  .node.n3{right:0;top:20%}
+  .node.n4{left:18%;bottom:6%}
+  .node.n5{right:18%;bottom:6%}
+  .links{position:absolute;inset:0;pointer-events:none}
+
+  /* Print / large-screen tweaks */
+  @media (max-width: 800px){
+    .deck{gap:18px}
+    .pad{padding:24px}
+    .cover h1{font-size:48px}
+    .about h2,.office h2,.ff h2,.cb h2{font-size:40px}
+    .vision h2,.services h2,.lg .title h2,.vas h2,.by h2,.bw h2,.proc h2,.su .head h2,.end h2{font-size:32px}
+    .why .left h2{font-size:36px}
+    .vas .grid{grid-template-columns:1fr 1fr}
+    .why .grid{grid-template-columns:1fr;padding:24px}
+    .pc .partners{grid-template-columns:repeat(3,1fr)}
+  }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- ============ SLIDE 1: Cover ============ -->
+  <section class="slide cover" data-title="Cover">
+    <div class="topbar"></div>
+    <div class="grid"></div>
+    <div class="brand">
+      <div class="mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+      </div>
+      <div class="name">ISN CUSTOMS<small>BROKER · INTERNATIONAL</small></div>
+    </div>
+    <div class="cover-inner">
+      <div>
+        <h1>ISN<br/>Customs<br/><span>Broker</span></h1>
+        <div class="tag">COMPANY PROFILE · 2026</div>
+        <p class="sub">Cross-border customs clearance, freight forwarding and bonded logistics from the US–Mexico border.</p>
+        <div class="badges">
+          <span class="b"><span class="dot"></span> C-TPAT Certified</span>
+          <span class="b"><span class="dot"></span> Remote Location Filing</span>
+          <span class="b"><span class="dot"></span> 35+ Years Experience</span>
+        </div>
+      </div>
+      <div class="globe">
+        <div class="ring"></div>
+        <div class="box b1"><span class="lbl"></span></div>
+        <div class="box b2"><span class="lbl"></span></div>
+        <div class="box b3"><span class="lbl"></span></div>
+        <div class="box b4"><span class="lbl"></span></div>
+        <div class="box b5"><span class="lbl"></span></div>
+        <div class="box b6"><span class="lbl"></span></div>
+        <div class="box b7"><span class="lbl"></span></div>
+      </div>
+    </div>
+    <div class="pageno">01 / 16</div>
+  </section>
+
+  <!-- ============ SLIDE 2: About Us ============ -->
+  <section class="slide" data-title="About Us">
+    <div class="topstripe">
+      <div class="brand">
+        <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/></svg></div>
+        <div class="name">ISN Customs Broker<small>COMPANY PROFILE</small></div>
+      </div>
+    </div>
+    <div class="about" style="height:100%;padding-top:38px">
+      <div class="visual">
+        <div class="containers">
+          <div class="stack">
+            <div class="ctn r c1"></div>
+            <div class="ctn b c2"></div>
+            <div class="ctn r c3"></div>
+            <div class="ctn w c4"></div>
+          </div>
+        </div>
+      </div>
+      <div class="copy">
+        <span class="eyebrow">About Us</span>
+        <h2>About Us</h2>
+        <p class="body"><b>ISN Customs Broker</b> delivers top-notch customer satisfaction, boasting <b>C-TPAT certification</b> and active participation in the <b>Remote Location Filing</b> program — enabling seamless processing of shipments across the U.S.A. With a collective experience of <b>thirty-five years</b> in customs clearance, ISN and its partners offer comprehensive services in customs clearance, freight, and logistics.</p>
+        <div class="stat-row">
+          <div class="stat"><div class="n">35+</div><div class="l">Years Experience</div></div>
+          <div class="stat"><div class="n">24 / 7</div><div class="l">365 Days a Year</div></div>
+          <div class="stat"><div class="n">USA</div><div class="l">Nationwide RLF</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="pageno" style="color:#9aa6b6">02 / 16</div>
+  </section>
+
+  <!-- ============ SLIDE 3: Office Location ============ -->
+  <section class="slide" data-title="Office Location">
+    <div class="office" style="height:100%">
+      <div class="ribbon"></div>
+      <div class="left">
+        <span class="eyebrow">Headquarters</span>
+        <h2 style="margin-top:14px">Office<br/>Location</h2>
+        <div class="card">
+          <p>Based in <b>Del Rio, Texas</b>, ISN (CHB) leverages <b>35 years</b> of combined experience to consistently exceed the expectations of our valued long-term clients.</p>
+          <p style="margin-top:10px">Strategically positioned along the <b>US–Mexico border</b>, our seasoned team possesses extensive expertise in customs operations and innovative solutions.</p>
+        </div>
+        <div style="margin-top:24px;display:flex;gap:16px;color:#5b76a0;font-size:13px">
+          <div>● 594 Industrial Blvd, Unit A</div>
+          <div>● Del Rio, TX 78840 · USA</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="pin">
+          <div class="head"></div>
+          <div class="tail"></div>
+          <div class="flag">
+            <div class="stripes"></div>
+            <div class="canton">
+              <i></i><i></i><i></i><i></i><i></i><i></i>
+              <i></i><i></i><i></i><i></i><i></i><i></i>
+              <i></i><i></i><i></i><i></i><i></i><i></i>
+              <i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="crumb"><b>ISN Customs Broker</b> · Company Profile</div>
+    <div class="pageno" style="color:#9aa6b6">03 / 16</div>
+  </section>
+
+  <!-- ============ SLIDE 4: Vision / Mission ============ -->
+  <section class="slide dark vision" data-title="Vision & Mission">
+    <div class="bg"></div>
+    <div class="pad" style="height:100%">
+      <div>
+        <span class="eyebrow">Our North Star</span>
+        <h2 style="margin-top:14px">Vision &<br/>Mission.</h2>
+        <p class="lede">At ISN, the customer is paramount. Our primary goal is to optimize efficiency, reduce costs, and save time for our clients — all accessible through a single point of contact.</p>
+      </div>
+      <div class="panels">
+        <div class="p">
+          <div class="ttl"><span class="ic">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+          </span> Vision</div>
+          <h3>Customer-centric excellence.</h3>
+          <p>We pride ourselves on comprehensive solutions, all accessible through a single point of contact. Your success is our priority.</p>
+        </div>
+        <div class="p">
+          <div class="ttl"><span class="ic">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4Z"/></svg>
+          </span> Mission</div>
+          <h3>Lead with transparency.</h3>
+          <p>Reach the apex of customs brokerage by minimizing risk and integrating compliance into responsive, personalized cross-border solutions — guided by C-TPAT-grade safety standards.</p>
+        </div>
+      </div>
+    </div>
+    <div class="crumb"><b style="color:#9fd0ff">ISN Customs Broker</b> · Company Profile</div>
+    <div class="pageno">04 / 16</div>
+  </section>
+
+  <!-- ============ SLIDE 5: Our Services ============ -->
+  <section class="slide services" data-title="Our Services">
+    <div class="head"><h2>Our Services</h2></div>
+    <div class="cards">
+      <div class="svc s1">
+        <div class="art">
+          <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#0e3a7a"/><stop offset="1" stop-color="#1f7adb"/></linearGradient></defs>
+            <rect width="200" height="200" fill="url(#g1)"/>
+            <g fill="#fff" opacity=".88">
+              <!-- ship hull -->
+              <path d="M20 130 L180 130 L160 170 L40 170 Z" opacity=".95"/>
+              <!-- containers -->
+              <rect x="32" y="90" width="30" height="36" fill="#ff6a6a"/>
+              <rect x="64" y="90" width="30" height="36" fill="#1a4ea3"/>
+              <rect x="96" y="90" width="30" height="36" fill="#22a2ff"/>
+              <rect x="128" y="90" width="30" height="36" fill="#fff"/>
+              <rect x="48" y="60" width="30" height="28" fill="#22a2ff"/>
+              <rect x="80" y="60" width="30" height="28" fill="#ff6a6a"/>
+              <rect x="112" y="60" width="30" height="28" fill="#fff"/>
+              <!-- cranes -->
+              <path d="M30 60 L30 30 L100 30" stroke="#fff" stroke-width="3" fill="none"/>
+              <path d="M170 60 L170 30 L120 30" stroke="#fff" stroke-width="3" fill="none"/>
+              <circle cx="60" cy="42" r="3" fill="#ffe27a"/>
+              <circle cx="140" cy="42" r="3" fill="#ffe27a"/>
+            </g>
+          </svg>
+        </div>
+        <div class="label">FREIGHT FORWARDER</div>
+      </div>
+      <div class="svc s2">
+        <div class="art">
+          <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#0a2752"/><stop offset="1" stop-color="#0a66ff"/></linearGradient></defs>
+            <rect width="200" height="200" fill="url(#g2)"/>
+            <!-- handshake -->
+            <g fill="#fff" opacity=".95">
+              <path d="M40 110 Q70 70 100 110 Q130 150 160 110" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
+              <circle cx="60" cy="100" r="14"/>
+              <circle cx="140" cy="100" r="14"/>
+              <rect x="46" y="120" width="28" height="40" rx="6"/>
+              <rect x="126" y="120" width="28" height="40" rx="6"/>
+            </g>
+            <!-- document -->
+            <g transform="translate(85 130)" fill="#22a2ff" stroke="#fff" stroke-width="2">
+              <rect x="0" y="0" width="30" height="40" rx="3" fill="#fff"/>
+              <rect x="4" y="8" width="22" height="2" fill="#0a66ff" stroke="none"/>
+              <rect x="4" y="14" width="22" height="2" fill="#0a66ff" stroke="none"/>
+              <rect x="4" y="20" width="14" height="2" fill="#0a66ff" stroke="none"/>
+            </g>
+          </svg>
+        </div>
+        <div class="label">CUSTOMS BROKER</div>
+      </div>
+      <div class="svc s3">
+        <div class="art">
+          <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="g3" x1="0" x2="1"><stop offset="0" stop-color="#0a4fbf"/><stop offset="1" stop-color="#22a2ff"/></linearGradient></defs>
+            <rect width="200" height="200" fill="url(#g3)"/>
+            <!-- warehouse -->
+            <g fill="#fff" opacity=".96">
+              <rect x="20" y="80" width="160" height="80"/>
+              <path d="M20 80 L100 40 L180 80 Z"/>
+            </g>
+            <g fill="#0a4fbf">
+              <rect x="40" y="110" width="32" height="40"/>
+              <rect x="84" y="110" width="32" height="40"/>
+              <rect x="128" y="110" width="32" height="40"/>
+            </g>
+            <!-- hard hat people -->
+            <g fill="#fff">
+              <circle cx="70" cy="170" r="6"/>
+              <circle cx="130" cy="170" r="6"/>
+            </g>
+          </svg>
+        </div>
+        <div class="label">LOGISTICS SERVICES</div>
+      </div>
+    </div>
+    <div class="crumb" style="bottom:32px"><b>ISN Customs Broker</b> · Company Profile</div>
+    <div class="pageno" style="bottom:32px;color:#0a2752">05 / 16</div>
+  </section>
+
+  <!-- ============ SLIDE 6: Freight Forwarder ============ -->
+  <section class="slide" data-title="Freight Forwarder">
+    <div class="ff" style="height:100%">
+      <div class="gallery">
+        <div class="tile">
+          <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="ff1" x1="0" x2="1"><stop offset="0" stop-color="#0a4fbf"/><stop offset="1" stop-color="#22a2ff"/></linearGradient></defs>
+            <rect width="200" height="200" fill="url(#ff1)"/>
+            <g fill="#fff" opacity=".95">
+              <path d="M10 140 L190 140 L170 175 L30 175 Z"/>
+              <rect x="30" y="100" width="30" height="36" fill="#ff6a6a"/>
+              <rect x="62" y="100" width="30" height="36" fill="#fff"/>
+              <rect x="94" y="100" width="30" height="36" fill="#1a4ea3"/>
+              <rect x="126" y="100" width="30" height="36" fill="#22a2ff"/>
+              <rect x="46" y="72" width="30" height="26" fill="#fff"/>
+              <rect x="78" y="72" width="30" height="26" fill="#ff6a6a"/>
+              <rect x="110" y="72" width="30" height="26" fill="#1a4ea3"/>
+            </g>
+          </svg>
+        </div>
+        <div class="tile">
+          <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+            <rect width="200" height="200" fill="#dbeaff"/>
+            <!-- truck -->
+            <g>
+              <rect x="20" y="80" width="100" height="60" fill="#fff"/>
+              <path d="M120 100 L160 100 L170 130 L120 130 Z" fill="#f3c451"/>
+              <rect x="120" y="130" width="50" height="20" fill="#1a1a1a"/>
+              <circle cx="50" cy="155" r="14" fill="#222"/><circle cx="50" cy="155" r="6" fill="#666"/>
+              <circle cx="100" cy="155" r="14" fill="#222"/><circle cx="100" cy="155" r="6" fill="#666"/>
+              <circle cx="150" cy="155" r="14" fill="#222"/><circle cx="150" cy="155" r="6" fill="#666"/>
+              <rect x="20" y="80" width="100" height="60" fill="none" stroke="#0a4fbf" stroke-width="2"/>
+            </g>
+          </svg>
+        </div>
+        <div class="tile span2">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="ff2" x1="0" x2="1"><stop offset="0" stop-color="#08234c"/><stop offset="1" stop-color="#0a66ff"/></linearGradient></defs>
+            <rect width="400" height="200" fill="url(#ff2)"/>
+            <!-- globe -->
+            <circle cx="120" cy="100" r="60" fill="none" stroke="#fff" stroke-width="2" opacity=".4"/>
+            <ellipse cx="120" cy="100" rx="60" ry="20" fill="none" stroke="#fff" stroke-width="2" opacity=".4"/>
+            <ellipse cx="120" cy="100" rx="20" ry="60" fill="none" stroke="#fff" stroke-width="2" opacity=".4"/>
+            <ellipse cx="120" cy="100" rx="40" ry="60" fill="none" stroke="#fff" stroke-width="2" opacity=".4"/>
+            <!-- plane -->
+            <g fill="#fff">
+              <path d="M260 90 L340 80 L344 86 L290 96 L300 110 L290 112 L274 100 L266 102 L260 96 Z"/>
+            </g>
+            <!-- icons orbiting -->
+            <g fill="#fff" opacity=".85">
+              <circle cx="200" cy="60" r="14"/>
+              <circle cx="220" cy="140" r="10"/>
+              <circle cx="170" cy="170" r="8"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="right">
+        <span class="eyebrow">Service Pillar 01</span>
+        <h2 style="margin-top:14px">Freight<br/>Forwarder</h2>
+        <ul>
+          <li><span class="dot"></span> Northbound / Southbound Transfers <span class="ic">→</span></li>
+          <li><span class="dot"></span> Northbound / Southbound HAZMAT Transfers <span class="ic">→</span></li>
+          <li><span class="dot"></span> National / International Service <span class="ic">→</span></li>
+          <li><span class="dot"></span> Cross Docking <span class="ic">→</span></li>
+          <li><span class="dot"></span> Overseas Shipments <span class="ic">→</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="crumb" style="color:rgba(11,26,54,.5)"><b>ISN Customs Broker</b> · Company Profile</div>
+    <div class="pageno">06 / 16</div>
+  </section>
+
+  <!-- ============ SLIDE 7: Customs Broker ============ -->
+  <section class="slide" data-title="Customs Broker">
+    <div class="cb" style="height:100%">
+      <div class="left">
+        <span class="eyebrow" style="margin-top:48px">Service Pillar 02</span>
+        <h2>Customs<br/>Broker.</h2>
+        <ul>
+          <li><b>·</b> ACE Entries, Pre-Entry Clearance</li>
+          <li><b>·</b> IN-BONDS QP/QX · Passenger · Hand Carry</li>
+          <li><b>·</b> Importer Security Filing (ISF)</li>
+          <li><b>·</b> Automated Export System (AES) Filing, Foreign Trade Zones (FTZ)</li>
+          <li><b>·</b> Reconciliations · General Order (GO) · Blue Letter</li>
+          <li><b>·</b> EDI · Temporary Importation Under Bond (TIB) · Customs Bonds</li>
+          <li><b>·</b> Automatic Clearing House Statements (ACH)</li>
+        </ul>
+      </div>
+      <div class="photo">
+        <svg viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice">
+          <defs><linearGradient id="cb1" x1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbeaff"/><stop offset="1" stop-color="#a9c8ff"/></linearGradient></defs>
+          <rect width="400" height="600" fill="url(#cb1)"/>
+          <!-- shelves -->
+          <g fill="#fff" opacity=".95">
+            <rect x="20" y="120" width="360" height="20"/>
+            <rect x="20" y="260" width="360" height="20"/>
+            <rect x="20" y="400" width="360" height="20"/>
+          </g>
+          <!-- boxes -->
+          <g fill="#d39256">
+            <rect x="30" y="60" width="80" height="60"/>
+            <rect x="120" y="80" width="60" height="40"/>
+            <rect x="200" y="50" width="90" height="70"/>
+            <rect x="40" y="200" width="70" height="60"/>
+            <rect x="130" y="220" width="80" height="40"/>
+            <rect x="240" y="190" width="100" height="70"/>
+            <rect x="60" y="340" width="80" height="60"/>
+            <rect x="170" y="360" width="60" height="40"/>
+            <rect x="250" y="330" width="90" height="70"/>
+          </g>
+          <!-- two figures -->
+          <g fill="#0a4fbf">
+            <circle cx="120" cy="500" r="22"/>
+            <rect x="98" y="528" width="44" height="60" rx="6"/>
+            <circle cx="240" cy="500" r="22"/>
+            <rect x="218" y="528" width="44" height="60" rx="6"/>
+          </g>
+          <!-- clipboard -->
+          <g fill="#fff" stroke="#0a4fbf" stroke-width="2">
+            <rect x="250" y="540" width="40" height="50" rx="3"/>
+            <line x1="258" y1="554" x2="282" y2="554"/>
+            <line x1="258" y1="562" x2="282" y2="562"/>
+            <line x1="258" y1="570" x2="274" y2="570"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="crumb" style="color:rgba(11,26,54,.5)"><b>ISN Customs Broker</b> · Company Profile</div>
+    <div class="pageno">07 / 16</div>
+  </section>
+
+  <!-- ============ SLIDE 8: Logistics ============ -->
+  <section class="slide" data-title="Logistics Services">
+    <div class="lg" style="height:100%">
+      <div class="photo">
+        <svg viewBox="0 0 1280 460" preserveAspectRatio="xMidYMid slice">
+          <defs><linearGradient id="wh" x1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a3a7a"/><stop offset="1" stop-color="#1a6bd6"/></linearGradient></defs>
+          <rect width="1280" height="460" fill="url(#wh)"/>
+          <!-- shelves -->
+          <g fill="#fff" opacity=".88">
+            <rect x="40" y="60" width="380" height="20"/>
+            <rect x="40" y="160" width="380" height="20"/>
+            <rect x="40" y="260" width="380" height="20"/>
+            <rect x="860" y="60" width="380" height="20"/>
+            <rect x="860" y="160" width="380" height="20"/>
+            <rect x="860" y="260" width="380" height="20"/>
+          </g>
+          <!-- boxes on shelves -->
+          <g fill="#d39256">
+            <rect x="60" y="20" width="60" height="40"/><rect x="130" y="20" width="50" height="40"/><rect x="200" y="20" width="60" height="40"/><rect x="280" y="20" width="80" height="40"/>
+            <rect x="60" y="120" width="60" height="40"/><rect x="130" y="120" width="50" height="40"/><rect x="220" y="120" width="80" height="40"/>
+            <rect x="60" y="220" width="80" height="40"/><rect x="160" y="220" width="60" height="40"/>
+            <rect x="880" y="20" width="60" height="40"/><rect x="950" y="20" width="80" height="40"/><rect x="1050" y="20" width="50" height="40"/>
+            <rect x="880" y="120" width="60" height="40"/><rect x="960" y="120" width="80" height="40"/>
+            <rect x="880" y="220" width="50" height="40"/><rect x="940" y="220" width="80" height="40"/>
+          </g>
+          <!-- forklift -->
+          <g transform="translate(560 230)">
+            <rect x="0" y="0" width="160" height="100" fill="#f3c451"/>
+            <rect x="120" y="20" width="40" height="60" fill="#fff"/>
+            <rect x="160" y="40" width="100" height="14" fill="#f3c451"/>
+            <rect x="220" y="0" width="20" height="80" fill="#222"/>
+            <circle cx="40" cy="120" r="20" fill="#222"/><circle cx="40" cy="120" r="8" fill="#666"/>
+            <circle cx="130" cy="120" r="20" fill="#222"/><circle cx="130" cy="120" r="8" fill="#666"/>
+          </g>
+          <!-- floor -->
+          <rect x="0" y="380" width="1280" height="80" fill="rgba(0,0,0,.18)"/>
+        </svg>
+      </div>
+      <div class="bottom">
+        <div class="pills">
+          <div>Contract Logistics</div>
+          <div>Bonded Warehouses</div>
+          <div>Land, Air, and Sea Transport</div>
+          <div>Bonded Yards</div>
+          <div>Warehouse Service</div>
+          <div>Forklift Services On-Site</div>
+          <div>Bonded Carrier</div>
+          <div>Heavy Equipment Available</div>
+        </div>
+        <div class="title">
+          <div>
+            <h2>Logistics<br/>Services.</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="crumb" style="color:rgba(11,26,54,.5)"><b>ISN Customs Broker</b> · Company Profile</div>
+    <div class="pageno">08 / 16</div>
+  </section>
+
+  <!-- ============ SLIDE 9: Why ISN Stands Out ============ -->
+  <section class="slide" data-title="Why ISN Stands Out">
+    <div class="why" style="height:100%">
+      <div class="left">
+        <span class="eyebrow">Differentiators</span>
+        <h2 style="margin-top:14px">Why does <span>ISN</span><br/>stand out?</h2>
+        <p>ISN offers bespoke shipping and logistics solutions in accordance with your unique business needs — designed to reduce friction, increase visibility, and protect your cargo at every step.</p>
+
+        <div class="grid">
+          <div class="it"><h4>Tailored Solutions, Professional Service</h4><p>Customized solutions and expert guidance to address your unique requirements effectively.</p></div>
+          <div class="it"><h4>Cost-Effective Solutions</h4><p>Competitive pricing strategies that deliver exceptional value without compromising quality.</p></div>
+          <div class="it"><h4>Direct Insights from US Customs</h4><p>Direct access to expert advice and insights from US Customs authorities — operational efficiency.</p></div>
+          <div class="it"><h4>National Permit for Seamless Customs</h4><p>National permit enables seamless customs procedures across airports and highways nationwide.</p></div>
+          <div class="it"><h4>Confidentiality Assured</h4><p>Sensitive information treated with the highest level of confidentiality, safeguarding your operations and data integrity.</p></div>
+          <div class="it"><h4>C-TPAT Certification</h4><p>As a certified C-TPAT company, we uphold the highest standards of security and compliance.</p></div>
+          <div class="it"><h4>Regional Leadership</h4><p>Security measures, accuracy, and on-time delivery — peace of mind for our clients across the region.</p></div>
+          <div class="it"><h4>Remote Location Filing</h4><p>Participation in the RLF Program lets us streamline processing from any location within the USA.</p></div>
+        </div>
+      </div>
+      <div class="right-art">
+        <svg viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="why1" x1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#08234c"/><stop offset="1" stop-color="#0a66ff"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="800" fill="url(#why1)"/>
+          <!-- grid -->
+          <g stroke="#fff" stroke-opacity=".06" stroke-width="1">
+            <path d="M0 0 V800 M75 0 V800 M150 0 V800 M225 0 V800 M300 0 V800 M375 0 V800 M450 0 V800 M525 0 V800 M600 0 V800"/>
+            <path d="M0 0 H600 M0 100 H600 M0 200 H600 M0 300 H600 M0 400 H600 M0 500 H600 M0 600 H600 M0 700 H600 M0 800 H600"/>
+          </g>
+          <!-- plane -->
+          <g transform="translate(80 100)" fill="#fff" opacity=".95">
+            <path d="M0 50 L120 30 L130 36 L40 60 L60 90 L48 92 L18 70 L8 72 L0 60 Z"/>
+          </g>
+          <!-- truck -->
+          <g transform="translate(70 380)">
+            <rect x="0" y="0" width="180" height="90" fill="#fff"/>
+            <rect x="180" y="20" width="60" height="70" fill="#f3c451"/>
+            <circle cx="40" cy="100" r="18" fill="#222"/>
+            <circle cx="220" cy="100" r="18" fill="#222"/>
+            <rect x="20" y="20" width="140" height="50" fill="#0a4fbf"/>
+            <text x="90" y="50" text-anchor="middle" fill="#fff" font-family="Manrope" font-size="20" font-weight="800">ISN</text>
+          </g>
+          <!-- ship -->
+          <g transform="translate(80 560)" fill="#fff">
+            <path d="M0 80 L300 80 L270 130 L30 130 Z"/>
+            <rect x="40" y="30" width="50" height="50" fill="#ff6a6a"/>
+            <rect x="100" y="30" width="50" height="50" fill="#22a2ff"/>
+            <rect x="160" y="30" width="50" height="50" fill="#fff"/>
+            <rect x="220" y="30" width="50" height="50" fill="#ff6a6a"/>
+            <rect x="60" y="0" width="50" height="30" fill="#22a2ff"/>
+            <rect x="120" y="0" width="50" height="30" fill="#ff6a6a"/>
+            <rect x="180" y="0" width="50" height="30" fill="#fff"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="pageno">09 / 16</div>
+  </section>
+
+  <!-- ============ SLIDE 10: Value-Added Services ============ -->
+  <section class="slide" data-title="Value-Added Services">
+    <div class="vas" style="height:100%">
+      <div class="left">
+        <span class="eyebrow">Beyond the Basics</span>
+        <h2 style="margin-top:14px">Value-Added<br/>Services.</h2>
+        <p class="lede">Explore a range of additional solutions tailored to enhance your experience and meet your evolving needs.</p>
+        <div class="grid">
+          <div class="t fill">Bonded Warehouses with Cameras, Security &amp; Surveillance</div>
+          <div class="t">Bonded Yard with Cameras, Security &amp; Surveillance</div>
+          <div class="t fill">Certified HAZMAT Carriers</div>
+          <div class="t">Customs Tax Recovery Service</div>
+          <div class="t fill">Heavy Equipment in All Locations</div>
+          <div class="t">Open 24 / 7, 365 Days</div>
+        </div>
+      </div>
+      <div class="right">
+        <svg viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice">
+          <defs><linearGradient id="vas1" x1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a4fbf"/><stop offset="1" stop-color="#22a2ff"/></linearGradient></defs>
+          <rect width="600" height="800" fill="url(#vas1)"/>
+          <!-- warehouse trusses -->
+          <g stroke="#fff" stroke-opacity=".5" stroke-width="2" fill="none">
+            <path d="M0 200 L600 200"/>
+            <path d="M0 220 L600 220"/>
+            <path d="M50 200 L100 80 L150 200"/>
+            <path d="M170 200 L220 80 L270 200"/>
+            <path d="M290 200 L340 80 L390 200"/>
+            <path d="M410 200 L460 80 L510 200"/>
+          </g>
+          <!-- truck -->
+          <g transform="translate(360 460)">
+            <rect x="0" y="0" width="180" height="100" fill="#fff"/>
+            <rect x="180" y="20" width="60" height="80" fill="#fff"/>
+            <circle cx="40" cy="110" r="22" fill="#222"/><circle cx="40" cy="110" r="10" fill="#666"/>
+            <circle cx="220" cy="110" r="22" fill="#222"/><circle cx="220" cy="110" r="10" fill="#666"/>
+          </g>
+          <!-- floor stripe -->
+          <rect x="0" y="640" width="600" height="40" fill="#f3c451"/>
+        </svg>
+      </div>
+    </div>
+    <div class="crumb" style="color:rgba(11,26,54,.5)"><b>ISN Customs Broker</b> · Company Profile</div>
+    <div class="pageno">10 / 16</div>
+  </section>
+
+  <!-- ============ SLIDE 11: Bonded Yard ============ -->
+  <section class="slide" data-title="Bonded Yard">
+    <div class="by" style="height:100%">
+      <div class="gallery">
+        <div>
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="220" fill="#a9c8ff"/>
+            <rect x="0" y="150" width="400" height="70" fill="#caa872"/>
+            <!-- machinery row -->
+            <g fill="#f3c451" stroke="#7a5a18" stroke-width="2">
+              <rect x="20" y="100" width="60" height="40"/>
+              <rect x="90" y="100" width="60" height="40"/>
+              <rect x="160" y="100" width="60" height="40"/>
+              <rect x="230" y="100" width="60" height="40"/>
+              <rect x="300" y="100" width="60" height="40"/>
+              <circle cx="50" cy="160" r="14" fill="#222"/>
+              <circle cx="120" cy="160" r="14" fill="#222"/>
+              <circle cx="190" cy="160" r="14" fill="#222"/>
+              <circle cx="260" cy="160" r="14" fill="#222"/>
+              <circle cx="330" cy="160" r="14" fill="#222"/>
+            </g>
+          </svg>
+        </div>
+        <div>
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="220" fill="#9bbef0"/>
+            <rect x="0" y="150" width="400" height="70" fill="#aaa"/>
+            <!-- tanks -->
+            <g>
+              <ellipse cx="80" cy="120" rx="60" ry="30" fill="#e2e2e2"/>
+              <ellipse cx="220" cy="120" rx="60" ry="30" fill="#e2e2e2"/>
+              <ellipse cx="350" cy="120" rx="40" ry="22" fill="#e2e2e2"/>
+              <rect x="20" y="120" width="120" height="40" fill="#e2e2e2"/>
+              <rect x="160" y="120" width="120" height="40" fill="#e2e2e2"/>
+              <rect x="310" y="120" width="80" height="30" fill="#e2e2e2"/>
+              <circle cx="80" cy="140" r="14" fill="#3aa67c"/>
+              <circle cx="220" cy="140" r="14" fill="#3aa67c"/>
+            </g>
+          </svg>
+        </div>
+        <div>
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="220" fill="#9bbef0"/>
+            <rect x="0" y="150" width="400" height="70" fill="#aaa"/>
+            <!-- pipes -->
+            <g>
+              <rect x="20" y="100" width="360" height="60" fill="#e2e2e2"/>
+              <circle cx="80" cy="130" r="20" fill="#fff"/>
+              <circle cx="200" cy="130" r="20" fill="#3aa67c"/>
+              <circle cx="320" cy="130" r="20" fill="#fff"/>
+            </g>
+          </svg>
+        </div>
+        <div>
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="220" fill="#444"/>
+            <g fill="#d39256">
+              <rect x="40" y="120" width="80" height="60"/>
+              <rect x="140" y="100" width="80" height="80"/>
+              <rect x="240" y="120" width="80" height="60"/>
+            </g>
+            <rect x="0" y="180" width="400" height="40" fill="#222"/>
+          </svg>
+        </div>
+      </div>
+      <div class="right">
+        <span class="eyebrow" style="align-self:end">Facility 01</span>
+        <h2>Bonded<br/>Yard.</h2>
+        <div class="photo" style="height:220px">
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="220" fill="#3a3a3a"/>
+            <g fill="#d39256">
+              <rect x="40" y="100" width="60" height="60"/>
+              <rect x="110" y="100" width="60" height="60"/>
+              <rect x="180" y="100" width="60" height="60"/>
+              <rect x="250" y="100" width="60" height="60"/>
+              <rect x="320" y="100" width="60" height="60"/>
+            </g>
+            <rect x="0" y="160" width="400" height="60" fill="#1f1f1f"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="crumb" style="color:rgba(11,26,54,.5)"><b>ISN Customs Broker</b> · Company Profile</div>
+    <div class="pageno">11 / 16</div>
+  </section>
+
+  <!-- ============ SLIDE 12: Bonded Warehouse ============ -->
+  <section class="slide" data-title="Bonded Warehouse">
+    <div class="bw" style="height:100%">
+      <div class="left">
+        <span class="eyebrow">Facility 02</span>
+        <h2 style="margin-top:14px">Bonded<br/>Warehouse.</h2>
+        <div class="photo">
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="220" fill="#2a2a2a"/>
+            <g fill="#d39256">
+              <rect x="20" y="100" width="80" height="60"/>
+              <rect x="120" y="100" width="80" height="60"/>
+              <rect x="220" y="100" width="80" height="60"/>
+              <rect x="320" y="100" width="60" height="60"/>
+            </g>
+            <rect x="0" y="160" width="400" height="60" fill="#111"/>
+          </svg>
+        </div>
+      </div>
+      <div class="photo">
+        <svg viewBox="0 0 700 600" preserveAspectRatio="xMidYMid slice">
+          <defs><linearGradient id="bw1" x1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a7a7a"/><stop offset="1" stop-color="#2a2a2a"/></linearGradient></defs>
+          <rect width="700" height="600" fill="url(#bw1)"/>
+          <!-- ceiling lights -->
+          <g fill="#fff8c8">
+            <circle cx="120" cy="80" r="10"/><circle cx="260" cy="80" r="10"/><circle cx="400" cy="80" r="10"/><circle cx="540" cy="80" r="10"/>
+          </g>
+          <!-- floor -->
+          <rect x="0" y="480" width="700" height="120" fill="#1c1c1c"/>
+          <!-- pallets -->
+          <g fill="#caa872">
+            <rect x="80" y="380" width="160" height="100"/>
+            <rect x="280" y="380" width="160" height="100"/>
+            <rect x="480" y="380" width="160" height="100"/>
+            <rect x="80" y="280" width="100" height="100"/>
+            <rect x="200" y="280" width="100" height="100"/>
+          </g>
+          <!-- shelving -->
+          <g stroke="#fff" stroke-opacity=".15" stroke-width="2">
+            <line x1="0" y1="280" x2="700" y2="280"/>
+            <line x1="0" y1="180" x2="700" y2="180"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="crumb" style="color:rgba(11,26,54,.5)"><b>ISN Customs Broker</b> · Company Profile</div>
+    <div class="pageno">12 / 16</div>
+  </section>
+
+  <!-- ============ SLIDE 13: Customs Broker Process ============ -->
+  <section class="slide proc" data-title="Customs Broker Process">
+    <div class="map"></div>
+    <div class="ttl">
+      <span class="eyebrow">End-to-End Workflow</span>
+      <h2 style="margin-top:10px">Customs Broker</h2>
+    </div>
+    <div class="row">
+      <div class="step dn">
+        <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/><path d="m18 16 3 3-3 3" stroke="currentColor"/></svg></div>
+        <h4>Clearances by<br/>American Customs:<br/>Import &amp; Export</h4>
+      </div>
+      <div class="step up">
+        <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h12"/><path d="m17 17 4 4"/></svg></div>
+        <h4>Reception Coordination<br/>and Shipment of Goods</h4>
+      </div>
+      <div class="step dn">
+        <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h6M8 17h4"/></svg></div>
+        <h4>Tariff<br/>Classification</h4>
+      </div>
+      <div class="step up">
+        <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h4>Compliance<br/>with Obligations</h4>
+      </div>
+      <div class="step dn">
+        <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M8 6V3M16 6V3"/></svg></div>
+        <h4>Temporary &amp;<br/>Definitive Imports</h4>
+      </div>
+      <div class="step up">
+        <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h10l2 4v14H5V7l2-4Z"/><path d="M9 11h6M9 15h6"/></svg></div>
+        <h4>Preparation &amp;<br/>Review of Documents</h4>
+      </div>
+    </div>
+    <div class="crumb" style="color:rgba(11,26,54,.5)"><b>ISN Customs Broker</b> · Company Profile</div>
+    <div class="pageno">13 / 16</div>
+  </section>
+
+  <!-- ============ SLIDE 14: Service Unit Hexagons ============ -->
+  <section class="slide su" data-title="Our Service Unit">
+    <div class="head">
+      <span class="eyebrow" style="background:rgba(255,255,255,.18);color:#fff">Capabilities</span>
+      <h2 style="margin-top:6px">Our Service Unit</h2>
+    </div>
+    <div class="stage">
+      <div class="hex-grid">
+        <div class="hx light p1">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#0a66ff"><circle cx="12" cy="12" r="9"/><path d="m6 18 12-12M6 6l12 12"/></svg></div>
+          Inbonds<br/>Cancellations<br/>(IT · IE · TE)
+        </div>
+        <div class="hx fill p2">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13a7 7 0 0 1 14 0M8 13a4 4 0 0 1 8 0M11 13a1 1 0 0 1 2 0"/></svg></div>
+          Electronic<br/>Manifests
+        </div>
+        <div class="hx light p3">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#0a66ff"><path d="M12 2a6 6 0 0 0-6 6c0 4 6 12 6 12s6-8 6-12a6 6 0 0 0-6-6Z"/><path d="M9 9a3 3 0 0 1 6 0"/></svg></div>
+          Entries
+        </div>
+        <div class="hx fill p4">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          Import Security<br/>Filing (ISF)
+        </div>
+        <div class="hx light p5">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#0a66ff"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M7 7V5h10v2"/></svg></div>
+          Bonded Warehouse<br/>Yards &amp; Carriers
+        </div>
+        <div class="hx fill p6">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="16" height="12" rx="2"/><path d="M4 10h16"/></svg></div>
+          S.E.D
+        </div>
+        <div class="hx light p7">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#0a66ff"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg></div>
+          Wide
+        </div>
+        <div class="hx fill p10">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></div>
+          Inbonds
+        </div>
+      </div>
+    </div>
+    <div class="crumb" style="color:rgba(11,26,54,.5)"><b>ISN Customs Broker</b> · Company Profile</div>
+    <div class="pageno">14 / 16</div>
+  </section>
+
+  <!-- ============ SLIDE 15: Partners + Contact ============ -->
+  <section class="slide dark pc" data-title="Partners & Contact">
+    <div class="bg"></div>
+    <div class="pad" style="padding:56px 56px;height:100%">
+      <div>
+        <span class="eyebrow">Get in touch</span>
+        <h2 style="margin-top:10px">Trusted by<br/>industry leaders.</h2>
+        <p class="lede">Two-way, fully-integrated cross-border solutions backed by 35 years of experience.</p>
+        <div class="contact">
+          <div class="row"><span class="ic">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92V21a1 1 0 0 1-1.09 1A19.86 19.86 0 0 1 2 4.09 1 1 0 0 1 3 3h4.09a1 1 0 0 1 1 .75l1 4a1 1 0 0 1-.27 1L7.21 10.21a16 16 0 0 0 6.58 6.58l1.46-1.61a1 1 0 0 1 1-.27l4 1a1 1 0 0 1 .75 1Z"/></svg>
+          </span> <span>(830) 775 1666</span></div>
+          <div class="row"><span class="ic">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 7 9-7"/></svg>
+          </span> <span>isn@isnbroker.com</span></div>
+          <div class="row"><span class="ic">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 0 0-8-8Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span> <span>594 Industrial Blvd · Unit A · Del Rio, TX 78840 · USA</span></div>
+          <div class="row"><span class="ic">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+          </span> <span>www.isnbroker.com</span></div>
+        </div>
+        <div class="ctpat"><span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg>
+        </span> C-TPAT VALIDATED</div>
+      </div>
+      <div class="partners">
+        <div class="lg">COMMERCIAL<br/>SOLUTIONS</div>
+        <div class="lg dark">UNDER<span style="color:#ff3a3a">TERRA</span></div>
+        <div class="lg">DOER · FER</div>
+        <div class="lg">General<br/>Magneticos</div>
+        <div class="lg brand">GENTHERM</div>
+        <div class="lg">General<br/>Electric</div>
+        <div class="lg dark">NAFTA<br/>TRADERS</div>
+        <div class="lg">Black Steel</div>
+        <div class="lg">Park<br/>Ohio</div>
+        <div class="lg brand">RESCO</div>
+        <div class="lg">Santiago<br/>Forwarding</div>
+        <div class="lg">CSI</div>
+        <div class="lg brand">SNC</div>
+        <div class="lg">+ More</div>
+        <div class="lg dark">35 Years<br/>Partnership</div>
+      </div>
+    </div>
+    <div class="pageno">15 / 16</div>
+  </section>
+
+  <!-- ============ SLIDE 16: Thank You / Ecosystem ============ -->
+  <section class="slide dark end" data-title="Thank You">
+    <div class="pad" style="padding:64px;height:100%">
+      <div>
+        <span class="eyebrow" style="background:rgba(255,255,255,.18);color:#fff">Thank you</span>
+        <h2 style="margin-top:14px">Let's move<br/>your cargo<br/><span>further.</span></h2>
+        <p class="lede">From customs clearance to bonded logistics — ISN and its partners are ready to handle your next cross-border move.</p>
+        <a class="url" href="https://www.isnbroker.com" target="_blank" rel="noopener"><span class="dot"></span> www.isnbroker.com</a>
+      </div>
+      <div class="ecosystem">
+        <svg class="links" viewBox="0 0 500 460" preserveAspectRatio="none">
+          <g stroke="#9fd0ff" stroke-width="2" fill="none" opacity=".6">
+            <path d="M80 160 C 180 80, 280 80, 380 160"/>
+            <path d="M80 160 C 160 280, 280 380, 380 160"/>
+            <path d="M150 380 L 350 380"/>
+            <path d="M250 80 L 250 380"/>
+          </g>
+        </svg>
+        <div class="node n1"><span class="dot"></span> RODGAR INVESTMENT GROUP</div>
+        <div class="node n2 dark">UNDER<span style="color:#ff3a3a">TERRA</span></div>
+        <div class="node n3 brand">ISN CUSTOMS</div>
+        <div class="node n4">DYNSER</div>
+        <div class="node n5 brand">PROJECT A</div>
+      </div>
+    </div>
+    <div class="pageno">16 / 16</div>
+  </section>
+
+</div>
+
+<div class="toolbar">
+  <div class="pill">
+    <button id="prev" aria-label="Previous slide">◀</button>
+    <span class="count" id="count">— / 16</span>
+    <button id="next" aria-label="Next slide">▶</button>
+    <span class="hint">← / → to navigate · F for fullscreen</span>
+  </div>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const count = document.getElementById('count');
+  function currentIndex(){
+    const mid = window.scrollY + window.innerHeight/2;
+    let i = 0, best = Infinity;
+    slides.forEach((s,idx)=>{
+      const r = s.getBoundingClientRect();
+      const top = r.top + window.scrollY;
+      const c = top + r.height/2;
+      const d = Math.abs(c - mid);
+      if(d < best){best = d; i = idx;}
+    });
+    return i;
+  }
+  function update(){
+    const i = currentIndex();
+    count.textContent = String(i+1).padStart(2,'0') + ' / ' + String(slides.length).padStart(2,'0');
+  }
+  function go(delta){
+    const i = currentIndex();
+    const t = Math.max(0, Math.min(slides.length-1, i+delta));
+    slides[t].scrollIntoView({behavior:'smooth', block:'center'});
+  }
+  document.getElementById('prev').addEventListener('click', ()=>go(-1));
+  document.getElementById('next').addEventListener('click', ()=>go(1));
+  window.addEventListener('keydown', e=>{
+    if(e.key==='ArrowDown' || e.key==='ArrowRight' || e.key===' '){ e.preventDefault(); go(1); }
+    if(e.key==='ArrowUp' || e.key==='ArrowLeft'){ e.preventDefault(); go(-1); }
+    if(e.key==='Home'){ slides[0].scrollIntoView({behavior:'smooth'}); }
+    if(e.key==='End'){ slides[slides.length-1].scrollIntoView({behavior:'smooth'}); }
+    if(e.key==='f' || e.key==='F'){
+      if(!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  update();
+</script>
+</body>
+</html>
