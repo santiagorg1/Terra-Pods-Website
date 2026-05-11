@@ -1181,7 +1181,8 @@
     <button id="prev" aria-label="Previous slide">◀</button>
     <span class="count" id="count">— / 16</span>
     <button id="next" aria-label="Next slide">▶</button>
-    <span class="hint">← / → to navigate · F for fullscreen</span>
+    <span class="hint">← / → · F fullscreen</span>
+    <button id="download" aria-label="Download as HTML" title="Download a copy of this presentation" style="width:auto;padding:0 12px;gap:6px;font-weight:700">↓ Download</button>
   </div>
 </div>
 
@@ -1209,6 +1210,15 @@
     const t = Math.max(0, Math.min(slides.length-1, i+delta));
     slides[t].scrollIntoView({behavior:'smooth', block:'center'});
   }
+  document.getElementById('download').addEventListener('click', ()=>{
+    const html = '<!doctype html>\n' + document.documentElement.outerHTML;
+    const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'ISN-Customs-Broker.html';
+    document.body.appendChild(a); a.click();
+    setTimeout(()=>{URL.revokeObjectURL(url); a.remove();}, 0);
+  });
   document.getElementById('prev').addEventListener('click', ()=>go(-1));
   document.getElementById('next').addEventListener('click', ()=>go(1));
   window.addEventListener('keydown', e=>{
