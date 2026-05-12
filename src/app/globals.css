@@ -132,11 +132,11 @@ body {
   }
 
   .scene-dark {
-    @apply relative overflow-hidden bg-ink-950 text-white;
+    @apply relative isolate overflow-hidden bg-ink-950 text-white;
   }
 
   .scene-light {
-    @apply relative overflow-hidden bg-white text-ink-950;
+    @apply relative isolate overflow-hidden bg-white text-ink-950;
   }
 
   .grain::after {
