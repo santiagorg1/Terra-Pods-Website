@@ -3,11 +3,6 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 
-/**
- * Mounts a Lenis smooth-scroll instance on the document. RAF-driven
- * inertia gives the page a luxury, glide-on-rails feel rather than
- * the OS default. Disabled if the user prefers reduced motion.
- */
 export default function SmoothScroll() {
   useEffect(() => {
     if (
@@ -18,9 +13,8 @@ export default function SmoothScroll() {
     }
 
     const lenis = new Lenis({
-      duration: 1.4,
+      duration: 1.35,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      // Touch devices use native momentum; only smooth wheel on desktop.
       smoothWheel: true,
       wheelMultiplier: 1,
       lerp: 0.085,

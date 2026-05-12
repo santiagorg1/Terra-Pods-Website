@@ -1,104 +1,128 @@
 "use client";
 
-import Link from "next/link";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
+const BADGES = [
+  ["35+", "Years on the border"],
+  ["C-TPAT", "Validated member"],
+  ["24 / 7", "365 days a year"],
+  ["RLF", "Nationwide filing"],
+];
+
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const yHead = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
-  const opacityHead = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
   return (
     <section
       ref={ref}
-      className="scene-tall vignette grain pt-24 sm:pt-28"
+      className="scene-dark relative min-h-[100svh] w-full"
+      aria-label="Hero"
     >
-      {/* Atmospheric background — gold + cool blue */}
-      <motion.div aria-hidden style={{ y: yBg }} className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-warm-night" />
-        <div className="absolute inset-x-0 top-0 h-[80vh] bg-radial-glow" />
-        {/* Warm gold core */}
-        <div className="absolute left-[20%] top-[28%] h-[80vh] w-[80vh] rounded-full bg-accent/[0.07] blur-[110px]" />
-        {/* Cool azure counterpoint */}
-        <div className="absolute right-[5%] top-[18%] h-[70vh] w-[70vh] rounded-full bg-azure-glow/[0.10] blur-[120px]" />
-        {/* Distant lapis depth */}
-        <div className="absolute left-[5%] bottom-[5%] h-[50vh] w-[50vh] rounded-full bg-lapis/[0.18] blur-[100px]" />
-        {/* Light leak */}
-        <div className="absolute inset-y-0 left-[-10%] w-[35%] animate-lightPan bg-gradient-to-r from-transparent via-accent/[0.05] to-transparent" />
+      {/* Cinematic background */}
+      <motion.div
+        style={{ y, scale }}
+        className="absolute inset-0 -z-10 will-change-transform"
+      >
+        <Image
+          src="/isn/hero-port.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/65 via-ink-950/40 to-ink-950" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_30%,rgba(10,132,255,0.18),transparent_55%)]" />
       </motion.div>
 
       <motion.div
-        style={{ y: yHead, opacity: opacityHead }}
-        className="container-narrow relative flex flex-1 flex-col items-center justify-center text-center"
+        style={{ opacity }}
+        className="container-page relative flex min-h-[100svh] flex-col justify-end pb-12 pt-32 sm:pb-20 sm:pt-40"
       >
-        <motion.span
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-          className="eyebrow-center"
-        >
-          Terra Pods · 2028
-        </motion.span>
-
-        <h1 className="display-1 mt-12 max-w-[14ch] sm:mt-14">
+        <div className="max-w-5xl">
           <motion.span
-            initial={{ opacity: 0, y: 32 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="block"
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="eyebrow"
           >
-            Architectural pods,
+            Company Profile · 2026
           </motion.span>
-          <motion.span
-            initial={{ opacity: 0, y: 32 }}
+
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="block"
+            transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="display-1 mt-6"
           >
-            <span className="display-italic text-twilight">quietly</span>
-            <span className="text-white/95"> composed.</span>
-          </motion.span>
-        </h1>
+            Take control of
+            <br />
+            your <span className="text-grad-brand">border</span>.
+          </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.4, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="lead-prose mt-14 max-w-xl text-balance text-ink-200 sm:mt-16"
-        >
-          Ten series. Twenty-six models.
-          <br className="hidden sm:block" /> From a sixteen-square-metre studio to a forty-five-square-metre flagship — engineered in our factory, delivered complete.
-        </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="lead-prose mt-8 max-w-2xl"
+          >
+            Licensed U.S. customs brokerage, freight forwarding, and integrated
+            logistics — coordinated under one accountable team, with 35 years on
+            the U.S.–Mexico border.
+          </motion.p>
 
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-10 flex flex-wrap items-center gap-3"
+          >
+            <a href="#contact" className="btn-primary">
+              Start a shipment
+              <span aria-hidden>→</span>
+            </a>
+            <a href="#services" className="btn-ghost">
+              Explore services
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Trust badges row */}
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.4, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-16 flex flex-col items-center gap-6 sm:mt-20"
+          transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-md sm:mt-24 sm:grid-cols-4"
         >
-          <Link href="/models" className="btn-luxury">
-            Explore the catalog
-            <span className="text-base">→</span>
-          </Link>
-          <Link href="/financing" className="btn-link">
-            Or model your investment <span>↓</span>
-          </Link>
+          {BADGES.map(([n, label]) => (
+            <div key={n} className="bg-ink-950/40 px-6 py-5">
+              <div className="font-display text-xl font-medium tracking-tight text-white sm:text-2xl">
+                {n}
+              </div>
+              <div className="mt-1 text-[11px] uppercase tracking-[0.22em] text-ink-300">
+                {label}
+              </div>
+            </div>
+          ))}
         </motion.div>
       </motion.div>
 
-      {/* Scroll cue */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.6, delay: 1.4 }}
-        className="relative mb-14 flex flex-col items-center gap-3 text-[10px] uppercase tracking-[0.32em] text-ink-400"
-      >
-        <span>Scroll</span>
-        <span className="block h-14 w-px bg-gradient-to-b from-accent/60 via-azure/40 to-transparent" />
-      </motion.div>
+      {/* Scroll hint */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-6 flex justify-center">
+        <div className="flex flex-col items-center gap-2 text-[10px] uppercase tracking-[0.32em] text-ink-300/80">
+          <span>Scroll</span>
+          <span className="h-8 w-px animate-scrollHint bg-gradient-to-b from-white/60 to-transparent" />
+        </div>
+      </div>
     </section>
   );
 }

@@ -10,48 +10,30 @@ const config: Config = {
     extend: {
       colors: {
         ink: {
-          950: "#050607",
-          900: "#0a0c0e",
-          800: "#101316",
-          700: "#181c20",
-          600: "#22272c",
-          500: "#3a4046",
-          400: "#6a7178",
-          300: "#9aa1a8",
-          200: "#c8ced3",
-          100: "#e8ecef",
+          950: "#05070b",
+          900: "#080b11",
+          800: "#0c1018",
+          700: "#121823",
+          600: "#1a2230",
+          500: "#2a3344",
+          400: "#5a6577",
+          300: "#8a93a3",
+          200: "#bcc3cf",
+          100: "#e6e9ef",
+          50:  "#f4f6fa",
+        },
+        brand: {
+          DEFAULT: "#0a84ff",
+          soft: "#3aa0ff",
+          deep: "#0a4ea3",
+          midnight: "#04122b",
+          steel: "#1a3a6b",
+          ice: "#cfe3ff",
         },
         accent: {
-          DEFAULT: "#c9a86a",
-          soft: "#d9bf8e",
-          deep: "#8a6f3d",
-        },
-        brass: {
-          DEFAULT: "#b08c4f",
-          soft: "#d6b785",
-          deep: "#604319",
-        },
-        champagne: {
-          DEFAULT: "#e7d3a8",
-          soft: "#f3e6c5",
-        },
-        moss: {
-          DEFAULT: "#5a6b4a",
-          deep: "#384228",
-        },
-        ember: {
-          DEFAULT: "#a85a3c",
-          deep: "#5a2614",
-        },
-        azure: {
-          DEFAULT: "#6f8ba8",
-          soft: "#9bb6cf",
-          deep: "#324a66",
-          glow: "#8fb6dd",
-        },
-        lapis: {
-          DEFAULT: "#3f5d80",
-          deep: "#1c2c44",
+          DEFAULT: "#0a84ff",
+          soft: "#3aa0ff",
+          deep: "#0a4ea3",
         },
       },
       fontFamily: {
@@ -67,19 +49,18 @@ const config: Config = {
         ],
         display: [
           "var(--font-display)",
-          "ui-serif",
-          "Georgia",
-          "Cambria",
-          "Times New Roman",
-          "serif",
+          "var(--font-inter)",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
         ],
       },
       letterSpacing: {
         tightest: "-0.04em",
-        cinema: "-0.06em",
+        cinema: "-0.055em",
       },
       lineHeight: {
-        editorial: "1.18",
+        editorial: "1.05",
       },
       transitionTimingFunction: {
         "soft-out": "cubic-bezier(0.22, 1, 0.36, 1)",
@@ -90,20 +71,14 @@ const config: Config = {
         "2000": "2000ms",
       },
       backgroundImage: {
-        "radial-glow":
-          "radial-gradient(ellipse 80% 60% at 30% 0%, rgba(201,168,106,0.22), transparent 65%), radial-gradient(ellipse 70% 60% at 80% 30%, rgba(143,182,221,0.14), transparent 60%)",
-        "radial-fade":
-          "radial-gradient(ellipse at center, rgba(255,255,255,0.06), transparent 70%)",
-        "warm-night":
-          "linear-gradient(180deg, rgba(201,168,106,0.10) 0%, rgba(143,182,221,0.06) 35%, rgba(5,6,7,1) 100%)",
-        "ember-glow":
-          "radial-gradient(ellipse at 30% 0%, rgba(217,191,142,0.18), transparent 55%), radial-gradient(ellipse at 75% 100%, rgba(143,182,221,0.10), transparent 60%)",
-        "azure-glow":
-          "radial-gradient(ellipse at 40% 0%, rgba(143,182,221,0.16), transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(63,93,128,0.14), transparent 65%)",
+        "brand-glow":
+          "radial-gradient(ellipse 60% 50% at 30% 0%, rgba(10,132,255,0.18), transparent 60%), radial-gradient(ellipse 50% 50% at 80% 30%, rgba(58,160,255,0.12), transparent 60%)",
+        "brand-fade":
+          "linear-gradient(180deg, rgba(4,18,43,0) 0%, rgba(4,18,43,0.85) 65%, rgba(4,18,43,1) 100%)",
         "vignette":
-          "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.35) 80%, rgba(0,0,0,0.7) 100%)",
+          "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.45) 80%, rgba(0,0,0,0.78) 100%)",
         grain:
-          "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
       },
       keyframes: {
         floatUp: {
@@ -119,8 +94,8 @@ const config: Config = {
           "100%": { transform: "translateX(-50%)" },
         },
         slowPulse: {
-          "0%, 100%": { opacity: "0.4", transform: "scale(1)" },
-          "50%": { opacity: "0.7", transform: "scale(1.04)" },
+          "0%, 100%": { opacity: "0.35", transform: "scale(1)" },
+          "50%": { opacity: "0.65", transform: "scale(1.04)" },
         },
         scrollHint: {
           "0%, 100%": { transform: "translateY(0)", opacity: "0.3" },
@@ -128,8 +103,16 @@ const config: Config = {
         },
         lightPan: {
           "0%": { transform: "translateX(-15%) skewX(-12deg)", opacity: "0" },
-          "30%": { opacity: "0.4" },
+          "30%": { opacity: "0.35" },
           "100%": { transform: "translateX(115%) skewX(-12deg)", opacity: "0" },
+        },
+        orbit: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        ping2: {
+          "0%": { transform: "scale(1)", opacity: "0.7" },
+          "100%": { transform: "scale(2.2)", opacity: "0" },
         },
       },
       animation: {
@@ -139,6 +122,8 @@ const config: Config = {
         slowPulse: "slowPulse 8s ease-in-out infinite",
         scrollHint: "scrollHint 2.4s ease-in-out infinite",
         lightPan: "lightPan 8s cubic-bezier(0.22, 1, 0.36, 1) infinite",
+        orbit: "orbit 60s linear infinite",
+        ping2: "ping2 3s cubic-bezier(0, 0, 0.2, 1) infinite",
       },
     },
   },
