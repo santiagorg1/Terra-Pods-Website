@@ -57,6 +57,14 @@ export default function Contact() {
               <a href="tel:+18307751666" className="btn-ghost">
                 Call (830) 775-1666
               </a>
+              <a
+                href="/presentations/ISN-Customs-Brokerage-Deck.pptx"
+                download
+                className="btn-ghost"
+              >
+                Download company deck
+                <span aria-hidden>↓</span>
+              </a>
             </div>
           </Reveal>
 
