@@ -15,9 +15,9 @@ REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 PPTX = os.path.join(REPO, "public/presentations/ISN-Customs-Brokerage-Deck.pptx")
 
 PHOTO_SWAPS = [
-    (7,  "public/isn/photos/08-customs-officer.jpg"),
-    (9,  "public/isn/photos/10-aerial-logistics.jpg"),
-    (10, "public/isn/photos/04-air-cargo.jpg"),
+    (7,  "public/isn/photos/10-aerial-logistics.jpg"),
+    (9,  "public/isn/photos/06-world-map.jpg"),
+    (10, "public/isn/photos/01-rail-crossing.jpg"),
     (11, "public/isn/photos/03-container-ship.jpg"),
     (12, "public/isn/photos/02-highway-truck.jpg"),
 ]
@@ -79,9 +79,16 @@ def is_client_card(shp):
     return 3.6 <= w_in <= 4.1
 
 
+def is_grid_picture(shp):
+    """True for logo PICTURE shapes already placed in the slide-17 grid area (idempotent re-runs)."""
+    if shp.shape_type != MSO_SHAPE_TYPE.PICTURE or shp.top is None:
+        return False
+    return 3.3 <= (shp.top / 914400) <= 6.9
+
+
 def rebuild_slide_17(slide):
-    # Remove old card shapes
-    to_remove = [s for s in slide.shapes if is_client_card(s)]
+    # Remove old text-card shapes and any logo pictures from a prior run
+    to_remove = [s for s in slide.shapes if is_client_card(s) or is_grid_picture(s)]
     for s in to_remove:
         s._element.getparent().remove(s._element)
 
